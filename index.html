@@ -160,19 +160,19 @@
           <div class="swiper-slide">
             <p class="font-bold mt-4">- Shevira Febriani | D3 Manajemen Informatika Polsri</p>
             <p class="italic">"Layanan pembuatan CV sangat membantu saya dalam melamar pekerjaan. Desainnya profesional dan menarik"</p>
-          </div>
+          </div><br>
           <div class="swiper-slide">
             <p class="font-bold mt-4">- M. Alif Pasha | D3 Manajemen Informatika Polsri</p>
             <p class="italic">"Laporan Akhir saya disusun dengan sangat baik, mengikuti semua persyaratan akademik. Proses revisi cepat dan sangat memuaskan. Saya merasa lebih percaya diri untuk mengajukan laporan saya!"</p>
-          </div>
+          </div><br>
           <div class="swiper-slide">
-            <p class="font-bold mt-4">- I Nyoman Wira | D3 Manajemen Informatika Polsri</p>
+            <p class="font-bold mt-4">- I Nyoman Wira Satya | D3 Manajemen Informatika Polsri</p>
             <p class="italic">"Revisi Bab 1 saya dikerjakan dengan sangat baik dan cepat. Starmoon Labs benar-benar membantu saya untuk menyesuaikan laporan saya. Pembuatan Bab 4 juga sangat detail dan terstruktur dengan jelas.!"</p>
-          </div>
+          </div><br>
           <div class="swiper-slide">
             <p class="font-bold mt-4">- Royhan Andreas | D3 Manajemen Informatika Polsri</p>
             <p class="italic">"Layanan pembuatan website untuk tugas kuliah saya sangat memuaskan. Starmoon Labs berhasil mengembangkan website yang sesuai dengan ketentuan dosen menggunakan HTML dan CSS"</p>
-          </div>
+          </div><br>
           <div class="swiper-slide">
             <p class="font-bold mt-4">- Caca | D3 Administrasi Polsri</p>
             <p class="italic">"Pencarian jurnal yang dilakukan oleh Starmoon Labs sangat membantu dalam mencari referensi yang tepat untuk tugas akhir saya"</p>
@@ -319,10 +319,11 @@
       },
     });
     
-    // Toggle Sidebar on Hamburger Click
-    const menuButton = document.getElementById('menu-button');
+  // Toggle Sidebar on Hamburger Click
+  const menuButton = document.getElementById('menu-button');
     const sidebar = document.getElementById('sidebar');
     const closeButton = document.getElementById('close-button');
+    const sidebarLinks = document.querySelectorAll('#sidebar a'); // Ambil semua link di dalam sidebar
 
     menuButton.addEventListener('click', () => {
       sidebar.classList.remove('hidden');
@@ -331,6 +332,14 @@
     closeButton.addEventListener('click', () => {
       sidebar.classList.add('hidden');
     });
+
+    // Tambahkan event listener untuk setiap link di sidebar
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.add('hidden'); // Tutup sidebar setelah klik opsi
+      });
+    });
+
 
     document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Mencegah form untuk reload halaman
@@ -355,6 +364,19 @@
     // Arahkan pengguna ke WhatsApp dengan pesan yang sudah disusun
     window.open(whatsappURL, '_blank');
   });
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    
   </script>
 </body>
 </html>
