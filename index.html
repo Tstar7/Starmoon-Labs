@@ -56,6 +56,65 @@
       max-width: 100%; /* Memastikan gambar tidak melebihi lebar layar */
       height: auto; /* Menjaga proporsi gambar */
     }
+
+    /* Formulir Kontak */
+#contact-form {
+  max-width: 100%;
+  padding: 0 1rem; /* Memberikan sedikit padding di kiri dan kanan untuk ruang di layar kecil */
+}
+
+input, textarea {
+  border: 1px solid #ccc; /* Menambahkan border agar elemen terlihat lebih jelas */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Style untuk input dan textarea */
+input[type="text"], input[type="email"], textarea {
+  padding: 12px;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Untuk mobile: Menyesuaikan ukuran font dan padding */
+@media (max-width: 768px) {
+  #contact-form {
+    max-width: 100%; /* Memastikan form memenuhi lebar layar */
+  }
+
+  input, textarea {
+    font-size: 1rem; /* Ukuran font yang nyaman di perangkat kecil */
+    padding: 12px; /* Padding lebih besar agar lebih mudah digunakan */
+    width: 100%; /* Memastikan lebar input memenuhi lebar layar */
+  }
+
+  button {
+    width: 100%; /* Membuat tombol kirim mengisi lebar form */
+    padding: 12px; /* Menyesuaikan padding untuk tampilan mobile */
+  }
+
+  .container {
+    padding: 0 1rem; /* Memberikan ruang kiri dan kanan di container */
+  }
+}
+
+/* Styling untuk tombol */
+button {
+  background-color: #D8C4B6;
+  color: #213555;
+  padding: 16px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%; /* Memastikan tombol mengisi lebar penuh di mobile */
+}
+
+button:hover {
+  background-color: #F5EFE7;
+}
+
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
