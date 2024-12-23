@@ -8,47 +8,61 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
- 
-   * {
-  box-sizing: border-box; /* Menjaga semua elemen tetap dalam batas lebar yang diinginkan */
-  margin: 0;
-  padding: 0;
-}
- 
+    
+    * {
+      box-sizing: border-box; /* Menjaga semua elemen tetap dalam batas lebar yang diinginkan */
+      margin: 0;
+      padding: 0;
+    }
+
     body, html {
-    width: 100%;
-    overflow-x: hidden; /* Menyembunyikan scroll horizontal */
-    margin: 0; /* Menghilangkan margin default */
-    padding: 0; /* Menghilangkan padding default */
-    scroll-behavior: smooth;
-  width: 100%; /* Memastikan lebar halaman tidak melebihi 100% */
-}
+      width: 100%;
+      overflow-x: hidden; /* Menyembunyikan scroll horizontal */
+      margin: 0; /* Menghilangkan margin default */
+      padding: 0; /* Menghilangkan padding default */
+      scroll-behavior: smooth;
+      width: 100%; /* Memastikan lebar halaman tidak melebihi 100% */
+    }
 
-.container {
-  max-width: 100%;
-}
+    .container {
+      max-width: 100%;
+    }
 
+    header {
+      position: fixed; /* Agar navbar tetap di atas saat di-scroll */
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      z-index: 1000; /* Agar navbar berada di atas konten lainnya */
+      background-color: #213555; /* Ganti dengan warna navbar */
+      color: white;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-header, footer, section {
-    max-width: 100%;
-}
+    body {
+      padding-top: 80px; /* Sesuaikan dengan tinggi navbar agar konten tidak tertutup */
+    }
 
-#sidebar {
-    overflow-y: auto; /* Jika sidebar memiliki banyak konten, biarkan bisa scroll vertikal */
-}
+    nav {
+      margin: 10px;
+    }
 
-img {
-    max-width: 100%; /* Memastikan gambar tidak melebihi lebar layar */
-    height: auto; /* Menjaga proporsi gambar */
-}
+    #sidebar {
+      overflow-y: auto; /* Jika sidebar memiliki banyak konten, biarkan bisa scroll vertikal */
+    }
 
+    img {
+      max-width: 100%; /* Memastikan gambar tidak melebihi lebar layar */
+      height: auto; /* Menjaga proporsi gambar */
+    }
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
   <!-- Header -->
-  <header class="bg-[#213555] text-white p-5 shadow-md sticky top-0 z-50">
+  <header class="bg-[#213555] text-white p-5 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold"><i class='bx bx-star'></i> Starmoon Labs<h1>
+      <h1 class="text-2xl font-bold"><i class='bx bx-star'></i> Starmoon Labs</h1>
       <!-- Navbar for Desktop -->
       <nav class="hidden md:block">
         <ul class="flex space-x-6">
@@ -87,6 +101,8 @@ img {
       <a href="#contact" class="text-xl hover:text-[#D8C4B6]">Kontak</a>
     </nav>
   </div>
+</body>
+</html>
 
   <!-- Hero Section -->
   <section class="relative h-screen flex items-center justify-center bg-gradient-to-r from-[#3E5879] to-[#213555] text-white">
@@ -396,18 +412,20 @@ img {
     window.open(whatsappURL, '_blank');
   });
 
-        const menuToggle = document.getElementById('menu-toggle');
-        const menuClose = document.getElementById('menu-close');
-        const mobileMenu = document.getElementById('mobile-menu');
+ // Mendapatkan elemen tombol menu dan sidebar
+ const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-        });
+    // Menampilkan menu mobile saat tombol menu diklik
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show'); // Menambahkan/removing class 'show'
+    });
 
-        menuClose.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-    
+    // Menutup menu mobile saat tombol close diklik
+    menuClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('show'); // Menghilangkan class 'show'
+    });
   </script>
 </body>
 </html>
