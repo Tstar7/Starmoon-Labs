@@ -9,13 +9,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
  
+   * {
+  box-sizing: border-box; /* Menjaga semua elemen tetap dalam batas lebar yang diinginkan */
+  margin: 0;
+  padding: 0;
+}
+ 
     body, html {
     width: 100%;
     overflow-x: hidden; /* Menyembunyikan scroll horizontal */
     margin: 0; /* Menghilangkan margin default */
     padding: 0; /* Menghilangkan padding default */
     scroll-behavior: smooth;
+  width: 100%; /* Memastikan lebar halaman tidak melebihi 100% */
 }
+
+.container {
+  max-width: 100%;
+}
+
 
 header, footer, section {
     max-width: 100%;
