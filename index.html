@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="icon.png" type="image/png" />
+  <title>Starmoon Labs</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <!-- Header -->
+  <header class="bg-[#213555] text-white p-5 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold"><i class='bx bx-star'></i> Starmoon Labs<h1>
+      <!-- Navbar for Desktop -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          <li><a href="#services" class="hover:text-[#D8C4B6]">Layanan</a></li>
+          <li><a href="#portfolio" class="hover:text-[#D8C4B6]">Portofolio</a></li>
+          <li><a href="#testimonials" class="hover:text-[#D8C4B6]">Testimoni</a></li>
+          <li><a href="#blog" class="hover:text-[#D8C4B6]">Blog</a></li>
+          <li><a href="#contact" class="hover:text-[#D8C4B6]">Kontak</a></li>
+        </ul>
+      </nav>
+      <!-- Hamburger Menu for Mobile -->
+      <div class="md:hidden flex items-center">
+        <button id="menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar for Mobile -->
+  <div id="sidebar" class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 hidden md:hidden">
+    <div class="flex justify-end p-4">
+      <button id="close-button" class="text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col items-center space-y-8 text-white mt-16">
+      <a href="#services" class="text-xl hover:text-[#D8C4B6]">Layanan</a>
+      <a href="#portfolio" class="text-xl hover:text-[#D8C4B6]">Portofolio</a>
+      <a href="#testimonials" class="text-xl hover:text-[#D8C4B6]">Testimoni</a>
+      <a href="#blog" class="text-xl hover:text-[#D8C4B6]">Blog</a>
+      <a href="#contact" class="text-xl hover:text-[#D8C4B6]">Kontak</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center bg-gradient-to-r from-[#3E5879] to-[#213555] text-white">
+    <div class="text-center">
+      <h2 class="text-4xl font-bold mb-4 animate-bounce">Selamat Datang di Starmoon Labs <i class='bx bx-star'></i></h2>
+      <p class="text-lg mb-8">Solusi Kreatif untuk CV, Website, dan Laporan Mahasiswa</p>
+      <a href="#services" class="bg-[#D8C4B6] text-[#213555] px-6 py-3 rounded-full hover:bg-[#F5EFE7] transition duration-300">Lihat Layanan</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Tentang Kami <i class='bx bx-id-card'></i></h3>
+      <p class="text-lg text-center mb-8 text-gray-700">Starmoon Labs hadir sebagai solusi kreatif untuk membantu individu dan profesional dalam pembuatan CV, website, serta laporan dengan desain dan konten berkualitas tinggi. Kami berkomitmen untuk memberikan layanan terbaik yang mendukung pengembangan karir dan memenuhi berbagai kebutuhan pribadi maupun profesional Anda.</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Layanan Kami <i class='bx bx-book-content'></i></h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Service 1 -->
+        <div class="flex items-center bg-[#F5EFE7] shadow-lg rounded-lg hover:scale-105 transition p-6">
+          <img src="cv.png" alt="CV" class="w-40 h-40 object-cover rounded-md mr-6">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Pembuatan CV</h4>
+            <p>CV profesional untuk melamar pekerjaan yang dioptimalkan untuk ATS maupun Non-ATS.</p>
+            <p class="mt-4 font-bold">CV ATS mulai dari harga: <br>Rp 20.000</p>
+            <p class="mt-4 font-bold">CV Non-ATS mulai dari harga: <br>Rp 15.000</p>
+          </div>
+        </div>
+        <!-- Service 2 -->
+        <div class="flex items-center bg-[#F5EFE7] shadow-lg rounded-lg hover:scale-105 transition p-6">
+          <img src="web.png" alt="Website" class="w-40 h-40 object-cover rounded-md mr-6">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Pembuatan Website</h4>
+            <p>Website front-end yang responsif dan menarik untuk kebutuhan usaha, tugas kuliah, portofolio, dan lain-lain.</p>
+            <p class="mt-4 font-bold">Mulai dari harga: Rp 150.000</p>
+          </div>
+        </div>
+        <!-- Service 3 -->
+        <div class="flex items-center bg-[#F5EFE7] shadow-lg rounded-lg hover:scale-105 transition p-6">
+          <img src="joki tugas.png" alt="Tugas" class="w-40 h-40 object-cover rounded-md mr-6">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Joki Tugas</h4>
+            <p>Pengerjaan tugas siswa serta mahasiswa dengan hasil yang rapi dan tepat waktu.</p>
+            <p class="mt-4 font-bold">Mulai dari harga: <br>Rp 20.000/tugas</p>
+          </div>
+        </div>
+        <!-- Service 4 -->
+        <div class="flex items-center bg-[#F5EFE7] shadow-lg rounded-lg hover:scale-105 transition p-6">
+          <img src="cari jurnal.png" alt="Laporan" class="w-40 h-40 object-cover rounded-md mr-6">
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Pencarian Jurnal</h4>
+            <p>Mencari dan mengumpulkan jurnal-jurnal ilmiah yang relevan dengan topik tugas atau penelitian Anda.</p>
+            <p class="mt-4 font-bold">Mulai dari harga: Rp 20.000/perjunal</p>
+          </div>
+        </div>
+         <!-- Service 5 -->
+         <div class="flex items-center bg-[#F5EFE7] shadow-lg rounded-lg hover:scale-105 transition p-6">
+            <img src="laporan.png" alt="Laporan" class="w-40 h-40 object-cover rounded-md mr-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-4">Laporan KP dan LA</h4>
+              <p>Pembuatan laporan Kerja Praktik (KP) dan Laporan Akhir (LA) khusus untuk mahasiswa D3 Manajemen Informatika Polsri. Laporan disusun sesuai dengan pedoman dan struktur akademik yang berlaku di Polsri, memastikan setiap bab memenuhi standar yang dibutuhkan.</p>
+              <br><p>Struktur Laporan:</p>
+              <p class="mt-4 text-lg font-semibold">  
+                Daftar Isi: Rp 120.000 <br>
+                Bab 1: Rp 120.000 <br>
+                Bab 2: Rp 250.000 <br>
+                Bab 3: Rp 150.000 <br>
+                Bab 4: Rp 450.000 <br>
+                Bab 5: Rp 50.000
+                <br><br>
+                Bonus Revisi 1x
+                </p>
+            </div>
+          </div>
+          
+           <!-- Service 6 -->
+        <div class="flex items-center bg-[#F5EFE7] shadow-lg rounded-lg hover:scale-105 transition p-6">
+            <img src="revisi laporan.png" alt="Laporan" class="w-40 h-40 object-cover rounded-md mr-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-4">Revisi Laporan KP dan LA</h4>
+              <p>Layanan revisi laporan Kerja Praktik (KP) dan Laporan Akhir (LA) khusus untuk mahasiswa D3 Manajemen Informatika Polsri. Laporan disusun sesuai dengan pedoman dan struktur akademik yang berlaku di Polsri, memastikan setiap bab memenuhi standar yang dibutuhkan.</p>
+              <p class="mt-4 font-bold">Mulai dari harga: 50.000</p><br>
+              <p>Note: <br>
+               Tergantung seberapa banyak dan sulit nya revisi</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimoni Section -->
+  <section id="testimonials" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Testimoni Klien <i class='bx bx-message-square-dots'></i></h3>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <p class="font-bold mt-4">- Shevira Febriani | D3 Manajemen Informatika Polsri</p>
+            <p class="italic">"Layanan pembuatan CV sangat membantu saya dalam melamar pekerjaan. Desainnya profesional dan menarik"</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="font-bold mt-4">- M. Alif Pasha | D3 Manajemen Informatika Polsri</p>
+            <p class="italic">"Laporan Akhir saya disusun dengan sangat baik, mengikuti semua persyaratan akademik. Proses revisi cepat dan sangat memuaskan. Saya merasa lebih percaya diri untuk mengajukan laporan saya!"</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="font-bold mt-4">- I Nyoman Wira Satya | D3 Manajemen Informatika Polsri</p>
+            <p class="italic">"Revisi Bab 1 saya dikerjakan dengan sangat baik dan cepat. Starmoon Labs benar-benar membantu saya untuk menyesuaikan laporan saya. Pembuatan Bab 4 juga sangat detail dan terstruktur dengan jelas.!"</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="font-bold mt-4">- Royhan Andreas | D3 Manajemen Informatika Polsri</p>
+            <p class="italic">"Layanan pembuatan website untuk tugas kuliah saya sangat memuaskan. Starmoon Labs berhasil mengembangkan website yang sesuai dengan ketentuan dosen menggunakan HTML dan CSS"</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="font-bold mt-4">- Caca | D3 Administrasi Polsri</p>
+            <p class="italic">"Pencarian jurnal yang dilakukan oleh Starmoon Labs sangat membantu dalam mencari referensi yang tepat untuk tugas akhir saya"</p>
+          </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Portofolio Kami <i class='bx bx-food-menu'></i></h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+       
+          <img src="Laporan la.jpg" alt="Proyek 1" class="rounded-lg shadow-lg group-hover:opacity-80 transition duration-300">
+        </a>
+       
+          <img src="portofolio1.jpg" alt="Proyek 2" class="rounded-lg shadow-lg group-hover:opacity-80 transition duration-300">
+        </a>
+       
+          <img src="saya1.jpeg" alt="Proyek 3" class="rounded-lg shadow-lg group-hover:opacity-80 transition duration-300">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Artikel & Tips <i class='bx bx-file-find'></i></h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="bg-[#F5EFE7] p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-4">Tips Membuat CV ATS Friendly</h4>
+          <p>Pelajari cara membuat CV yang ramah ATS agar peluang Anda lebih besar untuk lolos seleksi.</p>
+          <a href="#" class="text-[#213555] font-bold mt-4 block">Baca Selengkapnya</a>
+        </div>
+        <div class="bg-[#F5EFE7] p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-4">Panduan Membuat Website Portofolio</h4>
+          <p>Tips dan trik dalam membuat website portofolio yang dapat meningkatkan peluang karir Anda.</p>
+          <a href="#" class="text-[#213555] font-bold mt-4 block">Baca Selengkapnya</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-[#F5EFE7]">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">FAQ <i class='bx bx-flag'></i></h3>
+      <div class="space-y-8">
+        <div class="border-b border-[#213555] pb-6">
+          <h4 class="text-xl font-semibold">Apa itu CV ATS?</h4>
+          <p class="text-gray-700">CV ATS adalah CV yang disusun dengan format yang dapat dibaca oleh sistem ATS (Applicant Tracking System) yang digunakan perusahaan untuk menyaring pelamar kerja.</p>
+        </div>
+        <div class="border-b border-[#213555] pb-6">
+          <h4 class="text-xl font-semibold">Apa yang termasuk dalam pembuatan website?</h4>
+          <p class="text-gray-700"> Kami menyediakan layanan pembuatan website front-end yang responsif dan menarik. Website akan dioptimalkan untuk tampilan di perangkat mobile dan desktop, serta dapat disesuaikan dengan kebutuhan.</p>
+        </div>
+        <div class="border-b border-[#213555] pb-6">
+          <h4 class="text-xl font-semibold"> Apa yang termasuk dalam layanan laporan KP dan LA?</h4>
+          <p class="text-gray-700">Kami menawarkan layanan pembuatan laporan Kerja Praktik (KP) dan Laporan Akhir (LA) sesuai dengan struktur yang baik dan format yang jelas. Laporan akan disesuaikan dengan standar akademik dan membutuhkan masukan dari klien selama proses pembuatan.</p>
+        </div>
+        <div class="border-b border-[#213555] pb-6">
+          <h4 class="text-xl font-semibold"> Apakah ada layanan revisi untuk laporan KP dan LA?</h4>
+          <p class="text-gray-700">Ya, kami menyediakan layanan revisi untuk laporan KP dan LA. Anda dapat mengajukan revisi pada setiap bab sesuai dengan umpan balik yang diberikan oleh dosen atau pembimbing Anda.</p>
+        </div>
+        <div class="border-b border-[#213555] pb-6">
+          <h4 class="text-xl font-semibold"> Apa itu layanan pencarian jurnal?</h4>
+          <p class="text-gray-700"> Layanan pencarian jurnal membantu Anda menemukan jurnal ilmiah yang relevan dengan topik atau bidang studi Anda. Kami membantu mahasiswa dan profesional mencari referensi berkualitas untuk keperluan penelitian atau tugas akhir.</p>
+        </div>
+        <div class="border-b border-[#213555] pb-6">
+          <h4 class="text-xl font-semibold"> Apakah layanan joki tugas tersedia untuk SMP dan SMA?</h4>
+          <p class="text-gray-700"> Tentu! Kami juga menawarkan layanan joki tugas untuk tingkat SMP dan SMA. Kami dapat membantu dengan tugas-tugas yang berkaitan dengan bahasa Indonesia, bahasa inggris, sejarah, dan banyak lagi.</p>
+          </div>
+        <div class="border-b border-[#213555] pb-6">
+          <h4 class="text-xl font-semibold">Bagaimana cara memesan layanan?</h4>
+          <p class="text-gray-700">Anda dapat langsung menghubungi kami melalui form kontak atau WhatsApp untuk pemesanan layanan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 bg-[#3E5879] text-white text-center">
+    <div class="container mx-auto">
+        <h3 class="text-3xl font-semibold mb-8">Hubungi Kami <i class='bx bx-message-alt-dots'></i></h3>
+        <!-- Formulir Kontak -->
+        <form id="contact-form" class="max-w-xl mx-auto">
+            <div class="mb-4">
+                <input type="text" id="name" placeholder="Nama Anda" required class="px-4 py-2 rounded-md w-full text-black">
+            </div>
+            <div class="mb-4">
+                <input type="email" id="email" placeholder="Email Anda" required class="px-4 py-2 rounded-md w-full text-black">
+            </div>
+            <div class="mb-4">
+                <textarea id="message" placeholder="Pesan Anda" required class="px-4 py-2 rounded-md w-full text-black"></textarea>
+            </div>
+            <!-- Button Kirim -->
+            <button type="submit" class="bg-[#D8C4B6] text-[#213555] px-6 py-3 rounded-full hover:bg-[#F5EFE7] transition duration-300">
+                Kirim Pesan
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- Profil Saya Section -->
+<section id="about-me" class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Tentang Saya <i class='bx bx-user'></i></h3>
+    <div class="flex flex-col md:flex-row items-center justify-center">
+      <!-- Foto Saya -->
+      <div class="w-[600px] h-[300px] overflow-hidden mb-6 md:mb-0">
+        <img src="saya.jpeg" alt="Foto Saya" class="object-cover w-full h-full">
+      </div>
+      <!-- Deskripsi Tentang Saya -->
+      <div class="md:ml-8 text-center md:text-left">
+        <p class="text-lg text-gray-700 mb-4">Hai, saya Tegar Suryatama, seorang fresh graduate D3 Manajemen Informatika dari Politeknik Sriwijaya (Polsri). Saya memiliki ketertarikan dan keahlian di bidang teknologi informasi, khususnya dalam pengembangan website, pembuatan CV, dan penulisan laporan akademik. Selain itu, saya juga memiliki pengalaman dalam membantu mahasiswa lainnya menyelesaikan tugas kuliah dengan pendekatan yang efisien dan tepat waktu.</p>
+        <p class="text-lg text-gray-700 mb-6">Sebagai seorang yang selalu berusaha memberikan hasil terbaik, saya berkomitmen untuk membantu mahasiswa dan profesional lainnya mencapai tujuan mereka melalui layanan berkualitas yang saya tawarkan. Saya senang berkolaborasi dan selalu terbuka untuk berbicara lebih lanjut tentang bagaimana saya bisa membantu Anda mencapai kesuksesan.</p>
+        <!-- Tombol menuju Portofolio -->
+        <a href="https://tstar7.github.io/Portfolio-Tegar-Suryatama/" class="bg-[#D8C4B6] text-[#213555] px-6 py-3 rounded-full hover:bg-[#F5EFE7] transition duration-300">Lihat Portofolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-[#213555] text-white py-8">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Starmoon Labs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+    
+    // Toggle Sidebar on Hamburger Click
+    const menuButton = document.getElementById('menu-button');
+    const sidebar = document.getElementById('sidebar');
+    const closeButton = document.getElementById('close-button');
+
+    menuButton.addEventListener('click', () => {
+      sidebar.classList.remove('hidden');
+    });
+
+    closeButton.addEventListener('click', () => {
+      sidebar.classList.add('hidden');
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah form untuk reload halaman
+    
+    // Ambil data dari input
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    // Cek apakah semua field diisi
+    if (!name || !email || !message) {
+      alert('Mohon lengkapi semua kolom sebelum mengirim.');
+      return;
+    }
+
+    // Menyusun pesan yang akan dikirim ke WhatsApp
+    const whatsappMessage = `Nama: ${name}%0AEmail: ${email}%0APesan: ${message}`;
+    
+    // URL WhatsApp dengan pesan otomatis
+    const whatsappURL = `https://wa.me/6285609478775?text=${whatsappMessage}`;
+    
+    // Arahkan pengguna ke WhatsApp dengan pesan yang sudah disusun
+    window.open(whatsappURL, '_blank');
+  });
+  </script>
+</body>
+</html>
