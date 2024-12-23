@@ -8,9 +8,28 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+ 
+    body, html {
+    width: 100%;
+    overflow-x: hidden; /* Menyembunyikan scroll horizontal */
+    margin: 0; /* Menghilangkan margin default */
+    padding: 0; /* Menghilangkan padding default */
+    scroll-behavior: smooth;
+}
+
+header, footer, section {
+    max-width: 100%;
+}
+
+#sidebar {
+    overflow-y: auto; /* Jika sidebar memiliki banyak konten, biarkan bisa scroll vertikal */
+}
+
+img {
+    max-width: 100%; /* Memastikan gambar tidak melebihi lebar layar */
+    height: auto; /* Menjaga proporsi gambar */
+}
+
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
