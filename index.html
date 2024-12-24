@@ -484,7 +484,7 @@
        },
      });
  
-     // Toggle Sidebar on Hamburger Click
+ // Toggle Sidebar on Hamburger Click
 const menuButton = document.getElementById('menu-button');
 const sidebar = document.getElementById('sidebar');
 const closeButton = document.getElementById('close-button');
@@ -505,6 +505,16 @@ document.addEventListener('click', (event) => {
     sidebar.classList.add('hidden');
   }
 });
+
+// Menutup sidebar otomatis setelah memilih salah satu opsi
+const sidebarLinks = document.querySelectorAll('#sidebar a'); // Ambil semua link di dalam sidebar
+
+sidebarLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    sidebar.classList.add('hidden'); // Tutup sidebar setelah klik opsi
+  });
+});
+
  
      // WhatsApp Form Submit
      document.getElementById('contact-form').addEventListener('submit', function(event) {
