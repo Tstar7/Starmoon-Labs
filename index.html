@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon.png" type="image/png" />
   <title>Starmoon Labs</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    
     * {
-      box-sizing: border-box; /* Menjaga semua elemen tetap dalam batas lebar yang diinginkan */
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    .hidden {
+      display: none;
+    }
+
     body, html {
       width: 100%;
-      overflow-x: hidden; /* Menyembunyikan scroll horizontal */
-      margin: 0; /* Menghilangkan margin default */
-      padding: 0; /* Menghilangkan padding default */
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
       scroll-behavior: smooth;
-      width: 100%; /* Memastikan lebar halaman tidak melebihi 100% */
+      width: 100%;
     }
 
     .container {
@@ -29,19 +33,19 @@
     }
 
     header {
-      position: fixed; /* Agar navbar tetap di atas saat di-scroll */
+      position: fixed;
       top: 0px;
       left: 0px;
       width: 100%;
-      z-index: 1000; /* Agar navbar berada di atas konten lainnya */
-      background-color: #213555; /* Ganti dengan warna navbar */
+      z-index: 1000;
+      background-color: #213555;
       color: white;
       padding: 10px 0;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     body {
-      padding-top: 80px; /* Sesuaikan dengan tinggi navbar agar konten tidak tertutup */
+      padding-top: 80px;
     }
 
     nav {
@@ -49,72 +53,67 @@
     }
 
     #sidebar {
-      overflow-y: auto; /* Jika sidebar memiliki banyak konten, biarkan bisa scroll vertikal */
+      overflow-y: none;
     }
 
     img {
-      max-width: 100%; /* Memastikan gambar tidak melebihi lebar layar */
-      height: auto; /* Menjaga proporsi gambar */
+      max-width: 100%;
+      height: auto;
     }
 
-    /* Formulir Kontak */
-#contact-form {
-  max-width: 100%;
-  padding: 0 1rem; /* Memberikan sedikit padding di kiri dan kanan untuk ruang di layar kecil */
-}
+    #contact-form {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
 
-input, textarea {
-  border: 1px solid #ccc; /* Menambahkan border agar elemen terlihat lebih jelas */
-  outline: none;
-  transition: border-color 0.3s ease;
-}
+    input, textarea {
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
 
-/* Style untuk input dan textarea */
-input[type="text"], input[type="email"], textarea {
-  padding: 12px;
-  font-size: 1rem;
-  width: 100%;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
+    input[type="text"], input[type="email"], textarea {
+      padding: 12px;
+      font-size: 1rem;
+      width: 100%;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
 
-/* Untuk mobile: Menyesuaikan ukuran font dan padding */
-@media (max-width: 768px) {
-  #contact-form {
-    max-width: 100%; /* Memastikan form memenuhi lebar layar */
-  }
+    @media (max-width: 768px) {
+      #contact-form {
+        max-width: 100%;
+      }
 
-  input, textarea {
-    font-size: 1rem; /* Ukuran font yang nyaman di perangkat kecil */
-    padding: 12px; /* Padding lebih besar agar lebih mudah digunakan */
-    width: 100%; /* Memastikan lebar input memenuhi lebar layar */
-  }
+      input, textarea {
+        font-size: 1rem;
+        padding: 12px;
+        width: 100%;
+      }
 
-  button {
-    width: 100%; /* Membuat tombol kirim mengisi lebar form */
-    padding: 12px; /* Menyesuaikan padding untuk tampilan mobile */
-  }
+      button {
+        width: 100%;
+        padding: 12px;
+      }
 
-  .container {
-    padding: 0 1rem; /* Memberikan ruang kiri dan kanan di container */
-  }
-}
+      .container {
+        padding: 0 1rem;
+      }
+    }
 
-/* Styling untuk tombol */
-button {
-  background-color: #D8C4B6;
-  color: #213555;
-  padding: 16px;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%; /* Memastikan tombol mengisi lebar penuh di mobile */
-}
+    button {
+      background-color: #D8C4B6;
+      color: #213555;
+      padding: 16px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
 
-button:hover {
-  background-color: #F5EFE7;
-}
-
+    button:hover {
+      background-color: #F5EFE7;
+    }
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -126,9 +125,10 @@ button:hover {
       <nav class="hidden md:block">
         <ul class="flex space-x-6">
           <li><a href="#services" class="hover:text-[#D8C4B6]">Layanan</a></li>
-          <li><a href="#portfolio" class="hover:text-[#D8C4B6]">Portofolio</a></li>
           <li><a href="#testimonials" class="hover:text-[#D8C4B6]">Testimoni</a></li>
+          <li><a href="#portfolio" class="hover:text-[#D8C4B6]">Portofolio</a></li>
           <li><a href="#blog" class="hover:text-[#D8C4B6]">Blog</a></li>
+          <li><a href="#faq" class="hover:text-[#D8C4B6]">FAQ</a></li>
           <li><a href="#contact" class="hover:text-[#D8C4B6]">Kontak</a></li>
         </ul>
       </nav>
@@ -154,14 +154,13 @@ button:hover {
     </div>
     <nav class="flex flex-col items-center space-y-8 text-white mt-16">
       <a href="#services" class="text-xl hover:text-[#D8C4B6]">Layanan</a>
-      <a href="#portfolio" class="text-xl hover:text-[#D8C4B6]">Portofolio</a>
       <a href="#testimonials" class="text-xl hover:text-[#D8C4B6]">Testimoni</a>
+      <a href="#portfolio" class="text-xl hover:text-[#D8C4B6]">Portofolio</a>
+      <a href="#faq" class="text-xl hover:text-[#D8C4B6]">FAQ</a>
       <a href="#blog" class="text-xl hover:text-[#D8C4B6]">Blog</a>
       <a href="#contact" class="text-xl hover:text-[#D8C4B6]">Kontak</a>
     </nav>
   </div>
-</body>
-</html>
 
   <!-- Hero Section -->
   <section class="relative h-screen flex items-center justify-center bg-gradient-to-r from-[#3E5879] to-[#213555] text-white">
@@ -180,7 +179,6 @@ button:hover {
     </div>
   </section>
 
- 
   <!-- Services Section -->
   <section id="services" class="py-20 bg-white">
     <div class="container mx-auto px-6">
@@ -298,7 +296,7 @@ button:hover {
             <p class="italic">"Laporan Akhir saya disusun dengan sangat baik, mengikuti semua persyaratan akademik. Proses revisi cepat dan sangat memuaskan. Saya merasa lebih percaya diri untuk mengajukan laporan saya!"</p>
           </div><br>
           <div class="swiper-slide">
-            <p class="font-bold mt-4">- I Nyoman Wira | D3 Manajemen Informatika Polsri</p>
+            <p class="font-bold mt-4">- I Nyoman Wira Satya | D3 Manajemen Informatika Polsri</p>
             <p class="italic">"Revisi Bab 1 saya dikerjakan dengan sangat baik dan cepat. Starmoon Labs benar-benar membantu saya untuk menyesuaikan laporan saya. Pembuatan Bab 4 juga sangat detail dan terstruktur dengan jelas.!"</p>
           </div><br>
           <div class="swiper-slide">
@@ -353,42 +351,77 @@ button:hover {
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="py-20 bg-[#F5EFE7]">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">FAQ <i class='bx bx-flag'></i></h3>
-      <div class="space-y-8">
-        <div class="border-b border-[#213555] pb-6">
-          <h4 class="text-xl font-semibold">Apa itu CV ATS?</h4>
-          <p class="text-gray-700">CV ATS adalah CV yang disusun dengan format yang dapat dibaca oleh sistem ATS (Applicant Tracking System) yang digunakan perusahaan untuk menyaring pelamar kerja.</p>
-        </div>
-        <div class="border-b border-[#213555] pb-6">
-          <h4 class="text-xl font-semibold">Apa yang termasuk dalam pembuatan website?</h4>
-          <p class="text-gray-700"> Kami menyediakan layanan pembuatan website front-end yang responsif dan menarik. Website akan dioptimalkan untuk tampilan di perangkat mobile dan desktop, serta dapat disesuaikan dengan kebutuhan.</p>
-        </div>
-        <div class="border-b border-[#213555] pb-6">
-          <h4 class="text-xl font-semibold"> Apa yang termasuk dalam layanan laporan KP dan LA?</h4>
-          <p class="text-gray-700">Kami menawarkan layanan pembuatan laporan Kerja Praktik (KP) dan Laporan Akhir (LA) sesuai dengan struktur yang baik dan format yang jelas. Laporan akan disesuaikan dengan standar akademik dan membutuhkan masukan dari klien selama proses pembuatan.</p>
-        </div>
-        <div class="border-b border-[#213555] pb-6">
-          <h4 class="text-xl font-semibold"> Apakah ada layanan revisi untuk laporan KP dan LA?</h4>
-          <p class="text-gray-700">Ya, kami menyediakan layanan revisi untuk laporan KP dan LA. Anda dapat mengajukan revisi pada setiap bab sesuai dengan umpan balik yang diberikan oleh dosen atau pembimbing Anda.</p>
-        </div>
-        <div class="border-b border-[#213555] pb-6">
-          <h4 class="text-xl font-semibold"> Apa itu layanan pencarian jurnal?</h4>
-          <p class="text-gray-700"> Layanan pencarian jurnal membantu Anda menemukan jurnal ilmiah yang relevan dengan topik atau bidang studi Anda. Kami membantu mahasiswa dan profesional mencari referensi berkualitas untuk keperluan penelitian atau tugas akhir.</p>
-        </div>
-        <div class="border-b border-[#213555] pb-6">
-          <h4 class="text-xl font-semibold"> Apakah layanan joki tugas tersedia untuk SMP dan SMA?</h4>
-          <p class="text-gray-700"> Tentu! Kami juga menawarkan layanan joki tugas untuk tingkat SMP dan SMA. Kami dapat membantu dengan tugas-tugas yang berkaitan dengan bahasa Indonesia, bahasa inggris, sejarah, dan banyak lagi.</p>
-          </div>
-        <div class="border-b border-[#213555] pb-6">
-          <h4 class="text-xl font-semibold">Bagaimana cara memesan layanan?</h4>
-          <p class="text-gray-700">Anda dapat langsung menghubungi kami melalui form kontak atau WhatsApp untuk pemesanan layanan.</p>
-        </div>
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-[#F5EFE7]">
+  <div class="container mx-auto px-6">
+    <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">FAQ <i class='bx bx-flag'></i></h3>
+    <div class="space-y-4">
+
+      <!-- FAQ Item -->
+      <div class="border-b border-[#213555]">
+        <button class="faq-toggle text-xl font-semibold w-full text-left py-4 focus:outline-none flex justify-between">
+          Apa itu CV ATS?
+          <span class="icon">+</span>
+        </button>
+        <p class="faq-content hidden text-gray-700 pb-4">CV ATS adalah CV yang disusun dengan format yang dapat dibaca oleh sistem ATS (Applicant Tracking System) yang digunakan perusahaan untuk menyaring pelamar kerja.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div class="border-b border-[#213555]">
+        <button class="faq-toggle text-xl font-semibold w-full text-left py-4 focus:outline-none flex justify-between">
+          Apa yang termasuk dalam pembuatan website?
+          <span class="icon">+</span>
+        </button>
+        <p class="faq-content hidden text-gray-700 pb-4">Kami menyediakan layanan pembuatan website front-end yang responsif dan menarik. Website akan dioptimalkan untuk tampilan di perangkat mobile dan desktop, serta dapat disesuaikan dengan kebutuhan.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div class="border-b border-[#213555]">
+        <button class="faq-toggle text-xl font-semibold w-full text-left py-4 focus:outline-none flex justify-between">
+          Apa yang termasuk dalam layanan laporan KP dan LA?
+          <span class="icon">+</span>
+        </button>
+        <p class="faq-content hidden text-gray-700 pb-4">Kami menawarkan layanan pembuatan laporan Kerja Praktik (KP) dan Laporan Akhir (LA) sesuai dengan struktur yang baik dan format yang jelas. Laporan akan disesuaikan dengan standar akademik dan membutuhkan masukan dari klien selama proses pembuatan.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div class="border-b border-[#213555]">
+        <button class="faq-toggle text-xl font-semibold w-full text-left py-4 focus:outline-none flex justify-between">
+          Apakah ada layanan revisi untuk laporan KP dan LA?
+          <span class="icon">+</span>
+        </button>
+        <p class="faq-content hidden text-gray-700 pb-4">Ya, kami menyediakan layanan revisi untuk laporan KP dan LA. Anda dapat mengajukan revisi pada setiap bab sesuai dengan umpan balik yang diberikan oleh dosen atau pembimbing Anda.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div class="border-b border-[#213555]">
+        <button class="faq-toggle text-xl font-semibold w-full text-left py-4 focus:outline-none flex justify-between">
+          Apa itu layanan pencarian jurnal?
+          <span class="icon">+</span>
+        </button>
+        <p class="faq-content hidden text-gray-700 pb-4">Layanan pencarian jurnal membantu Anda menemukan jurnal ilmiah yang relevan dengan topik atau bidang studi Anda. Kami membantu mahasiswa dan profesional mencari referensi berkualitas untuk keperluan penelitian atau tugas akhir.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div class="border-b border-[#213555]">
+        <button class="faq-toggle text-xl font-semibold w-full text-left py-4 focus:outline-none flex justify-between">
+          Apakah layanan joki tugas tersedia untuk SMP dan SMA?
+          <span class="icon">+</span>
+        </button>
+        <p class="faq-content hidden text-gray-700 pb-4">Tentu! Kami juga menawarkan layanan joki tugas untuk tingkat SMP dan SMA. Kami dapat membantu dengan tugas-tugas yang berkaitan dengan bahasa Indonesia, bahasa inggris, sejarah, dan banyak lagi.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div class="border-b border-[#213555]">
+        <button class="faq-toggle text-xl font-semibold w-full text-left py-4 focus:outline-none flex justify-between">
+          Bagaimana cara memesan layanan?
+          <span class="icon">+</span>
+        </button>
+        <p class="faq-content hidden text-gray-700 pb-4">Anda dapat langsung menghubungi kami melalui form kontak atau WhatsApp untuk pemesanan layanan.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section id="contact" class="py-20 bg-[#3E5879] text-white text-center">
     <div class="container mx-auto">
@@ -440,77 +473,77 @@ button:hover {
     </div>
   </footer>
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script>
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
-    
-  // Toggle Sidebar on Hamburger Click
-  const menuButton = document.getElementById('menu-button');
-    const sidebar = document.getElementById('sidebar');
-    const closeButton = document.getElementById('close-button');
-    const sidebarLinks = document.querySelectorAll('#sidebar a'); // Ambil semua link di dalam sidebar
+   <!-- Swiper JS -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+   <script>
+     const swiper = new Swiper('.swiper-container', {
+       loop: true,
+       pagination: {
+         el: '.swiper-pagination',
+         clickable: true,
+       },
+     });
+ 
+     // Toggle Sidebar on Hamburger Click
+const menuButton = document.getElementById('menu-button');
+const sidebar = document.getElementById('sidebar');
+const closeButton = document.getElementById('close-button');
 
-    menuButton.addEventListener('click', () => {
-      sidebar.classList.remove('hidden');
-    });
+// Tampilkan sidebar saat tombol menu diklik
+menuButton.addEventListener('click', () => {
+  sidebar.classList.toggle('hidden'); // Toggle kelas 'hidden'
+});
 
-    closeButton.addEventListener('click', () => {
-      sidebar.classList.add('hidden');
-    });
+// Menutup sidebar saat tombol close diklik
+closeButton.addEventListener('click', () => {
+  sidebar.classList.add('hidden'); // Menambahkan kelas 'hidden' untuk menutup sidebar
+});
 
-    // Tambahkan event listener untuk setiap link di sidebar
-    sidebarLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        sidebar.classList.add('hidden'); // Tutup sidebar setelah klik opsi
-      });
-    });
-
-
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Mencegah form untuk reload halaman
-    
-    // Ambil data dari input
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // Cek apakah semua field diisi
-    if (!name || !email || !message) {
-      alert('Mohon lengkapi semua kolom sebelum mengirim.');
-      return;
-    }
-
-    // Menyusun pesan yang akan dikirim ke WhatsApp
-    const whatsappMessage = `Nama: ${name}%0AEmail: ${email}%0APesan: ${message}`;
-    
-    // URL WhatsApp dengan pesan otomatis
-    const whatsappURL = `https://wa.me/6285609478775?text=${whatsappMessage}`;
-    
-    // Arahkan pengguna ke WhatsApp dengan pesan yang sudah disusun
-    window.open(whatsappURL, '_blank');
-  });
-
- // Mendapatkan elemen tombol menu dan sidebar
- const menuToggle = document.getElementById('menu-toggle');
-    const menuClose = document.getElementById('menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    // Menampilkan menu mobile saat tombol menu diklik
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('show'); // Menambahkan/removing class 'show'
-    });
-
-    // Menutup menu mobile saat tombol close diklik
-    menuClose.addEventListener('click', () => {
-      mobileMenu.classList.remove('show'); // Menghilangkan class 'show'
-    });
-  </script>
+// Menutup sidebar jika ada klik di luar sidebar (opsional)
+document.addEventListener('click', (event) => {
+  if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
+    sidebar.classList.add('hidden');
+  }
+});
+ 
+     // WhatsApp Form Submit
+     document.getElementById('contact-form').addEventListener('submit', function(event) {
+       event.preventDefault(); // Mencegah form reload halaman
+ 
+       const name = document.getElementById('name').value;
+       const email = document.getElementById('email').value;
+       const message = document.getElementById('message').value;
+ 
+       if (!name || !email || !message) {
+         alert('Mohon lengkapi semua kolom sebelum mengirim.');
+         return;
+       }
+ 
+       const whatsappMessage = `Nama: ${name}%0AEmail: ${email}%0APesan: ${message}`;
+       const whatsappURL = `https://wa.me/6285609478775?text=${whatsappMessage}`;
+ 
+       window.open(whatsappURL, '_blank');
+     });
+ 
+     // FAQ Toggle
+     document.addEventListener('DOMContentLoaded', function () {
+       const toggles = document.querySelectorAll('.faq-toggle');
+ 
+       toggles.forEach(toggle => {
+         toggle.addEventListener('click', function () {
+           const content = this.nextElementSibling;
+           const icon = this.querySelector('.icon');
+ 
+           if (content.classList.contains('hidden')) {
+             content.classList.remove('hidden');
+             icon.textContent = '-';
+           } else {
+             content.classList.add('hidden');
+             icon.textContent = '+';
+           }
+         });
+       });
+     });
+   </script>
 </body>
 </html>
