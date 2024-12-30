@@ -114,6 +114,25 @@
     button:hover {
       background-color: #F5EFE7;
     }
+
+   .btn-testimonial {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Media query for large screens (laptop and up) */
+  @media (min-width: 1024px) {
+    .btn-testimonial {
+      font-size: 1rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  }
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -313,38 +332,34 @@
 
 
 <!-- Testimoni Section -->
-  <section id="testimonials" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Testimoni Klien <i class='bx bx-message-square-dots'></i></h3>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <p class="font-bold mt-4">- Shevira Febriani | D3 Manajemen Informatika Polsri</p>
-            <p class="italic">"Layanan pembuatan CV sangat membantu saya dalam melamar pekerjaan. Desainnya profesional dan menarik"</p>
-          </div>
-          <div class="swiper-slide">
-            <p class="font-bold mt-4">- M. Alif Pasha | D3 Manajemen Informatika Polsri</p>
-            <p class="italic">"Laporan Akhir saya disusun dengan sangat baik, mengikuti semua persyaratan akademik. Proses revisi cepat dan sangat memuaskan. Saya merasa lebih percaya diri untuk mengajukan laporan saya!"</p>
-          </div>
-          <div class="swiper-slide">
-            <p class="font-bold mt-4">- I Nyoman Wira | D3 Manajemen Informatika Polsri</p>
-            <p class="italic">"Revisi Bab 1 saya dikerjakan dengan sangat baik dan cepat. Starmoon Labs benar-benar membantu saya untuk menyesuaikan laporan saya. Pembuatan Bab 4 juga sangat detail dan terstruktur dengan jelas.!"</p>
-          </div>
-          <div class="swiper-slide">
-            <p class="font-bold mt-4">- Royhan Andreas | D3 Manajemen Informatika Polsri</p>
-            <p class="italic">"Layanan pembuatan website untuk tugas kuliah saya sangat memuaskan. Starmoon Labs berhasil mengembangkan website yang sesuai dengan ketentuan dosen menggunakan HTML dan CSS"</p>
-          </div>
-          <div class="swiper-slide">
-            <p class="font-bold mt-4">- Caca | D3 Administrasi Polsri</p>
-            <p class="italic">"Pencarian jurnal yang dilakukan oleh Starmoon Labs sangat membantu dalam mencari referensi yang tepat untuk tugas akhir saya"</p>
-          </div>
-        </div>
-        <div class="flex justify-center mt-8">
-          <a href="https://whatsapp.com/channel/0029VawuDIXL2ATsXwJTgb3J" class="bg-[#D8C4B6] text-[#213555] px-6 py-3 rounded-full hover:bg-[#F5EFE7] transition duration-300">Lihat Selengkapnya</a>
-        </div>
+<section id="testimonials" class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <h3 class="text-3xl font-semibold text-center text-[#213555] mb-12">Testimoni Klien <i class='bx bx-message-square-dots'></i></h3>
+
+    <!-- Testimonial Card -->
+    <div class="max-w-lg mx-auto mb-8">
+      <div class="bg-white border-2 border-[#213555] p-6 rounded-lg shadow-lg">
+        <p id="testimonial-name" class="font-bold text-center mb-4">Shevira | Pembuatan CV</p>
+        <p id="testimonial-feedback" class="italic text-center mb-4">"Layanan pembuatan CV sangat membantu saya melamar pekerjaan. Desainnya profesional, sesuai dengan pengalaman saya, dan membuat saya lebih percaya diri dalam mencari pekerjaan."</p>
       </div>
     </div>
-  </section>
+
+    <!-- Prev and Next buttons (with margin to separate from testimonial) -->
+    <div class="flex justify-center mt-8 space-x-4">
+      <button id="prev" class="bg-[#213555] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#3E5879] transition duration-300">
+        Prev
+      </button>
+      <button id="next" class="bg-[#213555] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#3E5879] transition duration-300">
+        Next
+      </button>
+    </div>
+
+    <!-- Button for more testimonials -->
+    <div class="flex justify-center mt-8">
+      <a href="https://whatsapp.com/channel/0029VawuDIXL2ATsXwJTgb3J" class="bg-[#D8C4B6] text-[#213555] px-6 py-3 rounded-full hover:bg-[#F5EFE7] transition duration-300">Lihat Selengkapnya</a>
+    </div>
+  </div>
+</section>
 
   <!-- Portfolio Section -->
 <!--   <section id="portfolio" class="py-20 bg-white">
@@ -586,6 +601,44 @@ sidebarLinks.forEach(link => {
          });
        });
      });
+
+     const testimonials = [
+  { name: "Shevira", course: "Pembuatan CV", feedback: "Layanan pembuatan CV dari Starmoon Labs sangat membantu saya dalam melamar pekerjaan. Desainnya menarik, mencerminkan pengalaman saya dengan jelas. Proses cepat, komunikasi lancar, dan saya merasa lebih percaya diri. Sangat merekomendasikan bagi yang ingin membuat CV." },
+  { name: "Alif Pasha", course: "Laporan Akhir & Revisi", feedback: "Laporan Akhir saya disusun dengan sangat baik oleh Starmoon Labs, sesuai dengan persyaratan akademik. Penyusunan dan revisi cepat serta sangat memuaskan. Laporan saya terstruktur dengan baik dan sesuai format yang benar. Berkat layanan ini, saya lebih percaya diri untuk mengajukan laporan." },
+  { name: "Nyoman Wira", course: "Laporan Akhir", feedback: "Revisi Bab 1 saya dikerjakan dengan cepat dan teliti. Starmoon Labs membantu menyesuaikan laporan dengan standar akademik. Pembuatan Bab 4 juga sangat detail dan terstruktur, memudahkan saya dalam memahami laporan. Saya sangat puas dengan hasil pekerjaan mereka." },
+  { name: "Royhan", course: "Pembuatan Website", feedback: "Layanan pembuatan website untuk tugas kuliah saya sangat memuaskan. Starmoon Labs mengembangkan website sesuai ketentuan dosen menggunakan HTML dan CSS. Website yang dibuat sangat fungsional dan mudah diakses. Proses pengerjaannya cepat dan hasilnya memuaskan." },
+  { name: "Caca", course: "Pencarian Jurnal", feedback: "Pencarian jurnal yang dilakukan oleh Starmoon Labs sangat membantu saya menemukan referensi yang tepat dan relevan untuk tugas akhir saya. Mereka cepat dan efisien dalam mencari jurnal berkualitas, memudahkan saya dalam menyelesaikan penelitian dengan lebih terarah." },
+  { name: "Fajarul", course: "Laporan Akhir", feedback: "Starmoon Labs membantu mendesain alur aplikasi dengan jelas dan mudah dipahami. Pembuatan Bab 1 dan 2 juga dikerjakan dengan cepat dan sesuai harapan. Tim sangat responsif, memberikan masukan yang berguna, dan membantu saya untuk melanjutkan proyek dengan lebih percaya diri." },
+  { name: "Erlinda", course: "Pemisah & Pemersatu File", feedback: "Starmoon Labs membantu saya memisahkan file Word dan PDF dengan rapi dan efisien. Pekerjaan dilakukan dengan cepat dan teliti, memastikan setiap file sesuai format yang dibutuhkan. Ini memudahkan saya mengelola dokumen dan fokus pada aspek lain dari tugas akhir." },
+  { name: "Anggun", course: "Laporan Akhir", feedback: "Revisi Bab 4 dan pembuatan daftar isi dikerjakan dengan cepat dan memuaskan. Bab 4 diperbaiki dengan sangat detail, dan daftar isi disusun dengan rapi, memudahkan navigasi laporan. Proses pengerjaannya sangat efisien, membuat saya lebih percaya diri dengan laporan saya." },
+  { name: "Fadhil", course: "Laporan Akhir & Aplikasi Berbasis Web", feedback: "Bab 4 dan aplikasi web yang dikerjakan oleh Starmoon Labs sangat memuaskan. Setiap elemen aplikasi dirancang dengan baik dan sesuai dengan ketentuan. Proses pengerjaan efisien, komunikasi lancar, dan saya merasa lebih percaya diri dengan hasil akhirnya." },
+  { name: "Adam", course: "Laporan Akhir & Aplikasi Berbasis Web", feedback: "Bab 4 dan aplikasi web yang dikerjakan oleh Starmoon Labs sangat memuaskan. Setiap bagian Bab 4 dikerjakan dengan detail dan aplikasi web sangat user-friendly. Proses pengerjaan cepat dan hasilnya sesuai harapan, membuat saya lebih baik dengan tugas akhir saya." },
+  { name: "Rahma", course: "Tugas Kuliah", feedback: "Starmoon Labs membantu saya dalam menyusun tugas proposal penelitian dengan sangat baik. Mereka membantu merancang struktur yang jelas dan mudah dipahami, serta memberikan saran yang sangat berguna dalam penulisan. Prosesnya cepat dan komunikasi lancar." }
+];
+
+  let currentIndex = 0;
+
+  // Update testimonial content
+  function updateTestimonial(index) {
+    const testimonial = testimonials[index];
+    document.getElementById('testimonial-name').innerText = `- ${testimonial.name} | ${testimonial.course}`;
+    document.getElementById('testimonial-feedback').innerText = `"${testimonial.feedback}"`;
+  }
+
+  // Prev button action
+  document.getElementById('prev').addEventListener('click', () => {
+    currentIndex = (currentIndex === 0) ? testimonials.length - 1 : currentIndex - 1;
+    updateTestimonial(currentIndex);
+  });
+
+  // Next button action
+  document.getElementById('next').addEventListener('click', () => {
+    currentIndex = (currentIndex === testimonials.length - 1) ? 0 : currentIndex + 1;
+    updateTestimonial(currentIndex);
+  });
+
+  // Initialize with first testimonial
+  updateTestimonial(currentIndex);
    </script>
 </body>
 </html>
