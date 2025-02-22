@@ -217,10 +217,65 @@
     }
 }
 
+/* music1 */
+@keyframes floatUp {
+            0% { opacity: 0; transform: translateY(10px); }
+            50% { opacity: 1; transform: translateY(-10px); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+        .note {
+            position: absolute;
+            animation: floatUp 2s linear infinite;
+        }
+        .cassette {
+            width: 80px;
+            height: 50px;
+            background-color: #555;
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .cassette::before {
+            content: "🎶"; /* Logo note */
+            font-size: 24px;
+            color: white;
+        }
+
+        /* Styling untuk kaset dengan logo note di tengahnya */
+        @media (max-width: 600px) {
+            .cassette {
+                width: 60px;
+                height: 40px;
+            }
+
+            .cassette::before {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .cassette {
+                width: 50px;
+                height: 35px;
+            }
+
+            .cassette::before {
+                font-size: 18px;
+            }
+        }
+
+        #music-container {
+            position: relative;
+            z-index: 10; /* Pastikan elemen ini di atas elemen lainnya */
+        }
   }
   </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-50 font-sans" onload="autoPlayMusic()">
+
   <!-- Header -->
   <header class="bg-[#213555] text-white p-5 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
@@ -255,7 +310,8 @@
       </button>
     </div>
     <nav class="flex flex-col items-center space-y-8 text-white mt-16">
-      <a href="#services" class="text-xl hover:text-[#D8C4B6]">Layanan</a>
+      <a href="#services" class="text-xl hover:text-[#D8C4B6]">Layanan</a>
+      <a href="#testimonials" class="text-xl hover:text-[#D8C4B6]">Testimoni</a>
       <a href="#blog" class="text-xl hover:text-[#D8C4B6]">Template</a>
       <a href="#faq" class="text-xl hover:text-[#D8C4B6]">FAQ</a>
       <a href="#contact" class="text-xl hover:text-[#D8C4B6]">Kontak</a>
@@ -704,6 +760,29 @@
           <button type="submit" class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700">Kirim Pesan</button>
       </form>
   </div>
+
+  <!-- music1 -->
+  <audio id="bg-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung pemutar audio.
+</audio>
+
+<!-- Floating Button -->
+<div class="fixed bottom-10 right-10 flex items-center gap-3">
+    <!-- Judul Lagu -->
+    <div id="music-title" 
+        class="bg-white text-black text-sm px-3 py-1 rounded shadow-md opacity-0 transition-opacity duration-300">
+        🎵 Judul Lagu
+    </div>
+    <div id="music-container" class="relative">
+        <!-- Kaset -->
+        <div id="music-btn" onclick="toggleMusic()" 
+            class="cassette cursor-pointer transition-transform duration-300">
+        </div>
+        <!-- Not Musik -->
+        <div id="music-notes" class="absolute bottom-14 right-6"></div>
+    </div>
+</div>
 </section>
 
 
@@ -843,6 +922,65 @@ sidebarLinks.forEach(link => {
         // Menampilkan slide pertama saat halaman dimuat
         showSlides();
 
+
+        // music1
+        let music = document.getElementById("bg-music");
+        let musicBtn = document.getElementById("music-btn");
+        let musicTitle = document.getElementById("music-title");
+        let musicNotes = document.getElementById("music-notes");
+        let isPlaying = false;
+        let titleTimeout;
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicBtn.classList.add("spin");
+                musicTitle.classList.add("opacity-100");
+                generateMusicNotes();
+                hideTitleAfterDelay();
+                isPlaying = true;
+            } else {
+                music.pause();
+                musicBtn.classList.remove("spin");
+                musicTitle.classList.remove("opacity-100");
+                musicNotes.innerHTML = "";
+                clearTimeout(titleTimeout);
+                isPlaying = false;
+            }
+        }
+
+        function generateMusicNotes() {
+            musicNotes.innerHTML = "";
+            for (let i = 0; i < 3; i++) {
+                let note = document.createElement("div");
+                note.innerHTML = "🎵";
+                note.classList.add("note");
+                note.style.left = `${Math.random() * 20}px`;
+                note.style.animationDelay = `${i * 0.5}s`;
+                musicNotes.appendChild(note);
+            }
+        }
+
+        function hideTitleAfterDelay() {
+            clearTimeout(titleTimeout);
+            titleTimeout = setTimeout(() => {
+                musicTitle.classList.remove("opacity-100");
+            }, 5000);
+        }
+
+        function autoPlayMusic() {
+            if (!isPlaying) {
+                music.play().then(() => {
+                    musicBtn.classList.add("spin");
+                    musicTitle.classList.add("opacity-100");
+                    generateMusicNotes();
+                    hideTitleAfterDelay();
+                    isPlaying = true;
+                }).catch(error => {
+                    console.log("Autoplay gagal: User harus berinteraksi dengan halaman terlebih dahulu.", error);
+                });
+            }
+        }
     
    </script>
 </body>
