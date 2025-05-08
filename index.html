@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Starmoon Labs | Jasa Joki Dokumen </title>
+  <title>Starmoon Labs | Membantumu dengan senang hati ^^</title>
   <link rel="icon" type="image/png" href="icon.png?v=1">
   <!-- Tailwind CDN (versi stabil) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,9 +22,46 @@
   scroll-behavior: smooth;
 }
 
+ /* Loading animation */
+ #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+    }
+
+    #loading.hidden {
+      animation: fadeOut 3s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
   </style>
 </head>
 <body class="bg-pink-50 text-gray-800">
+
+  <!-- Loading Animation -->
+  <div id="loading">
+    <div class="animate-bounce text-4xl font-bold text-[#b08968]">⭐ Starmoon Labs...</div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('loading').classList.add('hidden');
+    });
+  </script>
 
 <!-- Hero Section -->
 <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 text-center p-6" data-aos="fade-down">
@@ -36,7 +73,7 @@
 <!-- Tentang Kami -->
 <section class="py-16 px-6 text-center bg-white" data-aos="fade-up">
   <h2 class="text-3xl font-bold mb-4 text-indigo-700">Tentang Kami</h2>
-  <p class="max-w-2xl mx-auto">Kami menyediakan layanan joki dokumen cepat, rapi, dan profesional. Dari pembuatan CV ATS/non-ATS, portofolio Excel, tugas akademik, sampai laporan akhir jurusan MI. Harga bersahabat, hasil memuaskan!</p>
+  <p class="max-w-2xl mx-auto">Kami menyediakan layanan joki dokumen cepat, rapi, dan profesional. Dari pembuatan CV ATS/non-ATS, portofolio Excel, tugas kuliah, laporan akhir jurusan MI, dll. Harga bersahabat, hasil memuaskan!</p>
 </section>
 
 <!-- Layanan -->
@@ -66,11 +103,13 @@
   
       <!-- Card Web Front End & PHP App -->
       <div class="bg-white p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-indigo-600 mb-2">Website & Website APP</h3>
+        <h3 class="text-xl font-bold text-indigo-600 mb-2">Web Front End & PHP App</h3>
         <ul class="list-disc ml-5 text-gray-700">
           <li>Basic: 100k - 200k</li>
           <li>Interactive: 150k - 300k</li>
-          <li>Website App PHP: 300k - 1.000k</li>
+          <li>App PHP: 300k - 1.000k</li>
+          <br>
+          <a href="basic.html">Example</a><br>
         </ul>
       </div>
   
@@ -81,6 +120,7 @@
           <li>PPT: 3k/slide</li>
           <li>Makalah: 5k/hal</li>
           <li>Jurnal: 10k/file</li>
+          <li>Essai: 30k/file</li>
         </ul>
       </div>
   
@@ -106,6 +146,59 @@
           <li>Bab 5: 50k</li>
         </ul>
       </div>
+
+<!-- Card Paket Bundle: CV & Surat Lamaran -->
+<div class="bg-gradient-to-r from-purple-100 to-blue-100 p-6 rounded-xl border-2 border-blue-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
+  <h3 class="text-xl font-bold text-blue-700 mb-3">Paket CV & Surat Lamaran Kerja</h3>
+  <ul class="list-disc ml-5 text-gray-800 space-y-1">
+    <li>CV ATS + Surat Lamaran: <span class="font-semibold text-blue-600">25k</span></li>
+    <li>CV Non-ATS + Surat Lamaran: <span class="font-semibold text-blue-600">22k</span></li>
+  </ul>
+</div>
+
+<!-- Card Paket Bundle: Pengolahan File -->
+<div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-xl border-2 border-yellow-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
+  <h3 class="text-xl font-bold text-yellow-700 mb-3">Paket Pengolahan File</h3>
+  <ul class="list-disc ml-5 text-gray-800 space-y-1">
+    <li>Paket Basic <br> (Gabung + Kompresi ≤5 file): <span class="font-semibold text-yellow-600">8k</span></li>
+    <li>Paket Profesional <br> (Pemisah + Gabung + Konversi ≤10 file): <span class="font-semibold text-yellow-600">20k</span></li>
+    <li>Paket Lengkap <br> (Semua layanan ≤15 file): <span class="font-semibold text-yellow-600">30k</span></li>
+    <li>Tambahan file: <span class="font-semibold text-yellow-600">+1k/file</span></li>
+  </ul>
+</div>
+
+<!-- Card Paket Bundle: Portofolio Excel -->
+<div class="bg-gradient-to-r from-green-100 to-emerald-100 p-6 rounded-xl border-2 border-green-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
+  <h3 class="text-xl font-bold text-green-700 mb-3">Paket Bundle Portofolio Excel</h3>
+  <ul class="list-disc ml-5 text-gray-800 space-y-1">
+    <li>Paket Komplit <br> (Basic + Intermediate + Advanced): <span class="font-semibold text-green-600">300k</span></li>
+    <li>Paket Siap Kerja <br> (Intermediate + Advanced + CV ATS): <span class="font-semibold text-green-600">270k</span></li>
+    <li>Paket Pemula Naik Level <br> (Basic + Intermediate): <span class="font-semibold text-green-600">130k</span></li>
+  </ul>
+</div>
+
+<!-- Card Paket Bundle: Tugas Mahasiswa -->
+<div class="bg-gradient-to-r from-pink-100 to-red-100 p-6 rounded-xl border-2 border-pink-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
+  <h3 class="text-xl font-bold text-pink-700 mb-3">Paket Bundle Tugas Mahasiswa</h3>
+  <ul class="list-disc ml-5 text-gray-800 space-y-1">
+    <li>Paket Presentasi Cepat <br> (PPT ≤10 slide): <span class="font-semibold text-pink-600">25k</span></li>
+    <li>Paket Akademik Komplit <br> (Essai + PPT): <span class="font-semibold text-pink-600">50k</span></li>
+    <li>Paket Penulis Produktif <br> (Essai + Jurnal): <span class="font-semibold text-pink-600">50k</span></li>
+    <li>Paket Tugas Full Service <br> (Makalah + PPT + Essai): <span class="font-semibold text-pink-600">150k</span></li>
+  </ul>
+</div>
+
+<!-- Card Paket Bundle: Laporan MI (KP & LA) -->
+<div class="bg-gradient-to-r from-indigo-100 to-sky-100 p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
+  <h3 class="text-xl font-bold text-indigo-700 mb-3">Paket Laporan MI (KP & LA)</h3>
+  <ul class="list-disc ml-5 text-gray-800 space-y-1">
+    <li>Paket Pemula <br> (Bab 1 + 2): <span class="font-semibold text-indigo-600">260k</span></li>
+    <li>Paket Tengah Jalan <br> (Bab 3, 4 & 5): <span class="font-semibold text-indigo-600">500k</span></li>
+    <li>Paket Lengkap <br> (Bab 1–5 Full): <span class="font-semibold text-indigo-600">700k</span></li>
+  </ul>
+</div>
+
+
   
     </div>
   </section>
@@ -118,41 +211,98 @@
     <div class="space-y-6">
         
         <div>
-            <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq1')">Bisa tidak order jasa di luar list layanan?</button>
-            <p id="faq1" class="hidden text-gray-700 mt-2">Tentu bisa! Kami sangat fleksibel. Jika kamu punya kebutuhan lain di luar layanan yang tertera, langsung hubungi kami lewat WhatsApp atau email. Kami akan bantu diskusikan dan sesuaikan dengan kebutuhanmu.</p>
+            <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq2')">Bisa tidak order jasa di luar list layanan?</button>
+            <p id="faq2" class="hidden text-gray-700 mt-2">Tentu bisa! Kami sangat fleksibel. Jika kamu punya kebutuhan lain di luar layanan yang tertera, langsung hubungi kami lewat WhatsApp atau email. Kami akan bantu diskusikan dan sesuaikan dengan kebutuhanmu.</p>
           </div>
           
       <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq2')">Apa itu jasa joki dokumen?</button>
-        <p id="faq2" class="hidden text-gray-700 mt-2">Jasa joki dokumen adalah layanan yang membantu kamu dalam pembuatan berbagai dokumen, seperti CV, portofolio, tugas kuliah, laporan akhir, dan lain-lain.</p>
+        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq1')">Apa itu jasa joki dokumen?</button>
+        <p id="faq1" class="hidden text-gray-700 mt-2">Jasa joki dokumen adalah layanan yang membantu kamu dalam pembuatan berbagai dokumen, seperti CV, portofolio, tugas kuliah, laporan akhir, dan lain-lain.</p>
       </div>
 
       <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq3')">Berapa lama waktu pengerjaan?</button>
-        <p id="faq3" class="hidden text-gray-700 mt-2">Waktu pengerjaan tergantung layanan yang dipesan.</p>
+        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq5')">
+          Apakah ada bonus revisi?
+        </button>
+        <p id="faq5" class="hidden text-gray-700 mt-2">
+          Ya, tersedia bonus revisi mulai dari 1 kali hingga 3 kali, tergantung jenis pesanan revisi. Kami memastikan hasil akhir sesuai dengan kebutuhan dan keinginan Anda.
+        </p>
+      </div>
+      
+
+      <div>
+        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq2')">Berapa lama waktu pengerjaan?</button>
+        <p id="faq2" class="hidden text-gray-700 mt-2">Waktu pengerjaan tergantung layanan yang dipesan.</p>
       </div>
 
       <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq4')">Bagaimana cara memesan?</button>
-        <p id="faq4" class="hidden text-gray-700 mt-2">Untuk memesan, kamu bisa menghubungi kami melalui WhatsApp yang tersedia di halaman kontak.</p>
+        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq3')">Bagaimana cara memesan?</button>
+        <p id="faq3" class="hidden text-gray-700 mt-2">Untuk memesan, kamu bisa menghubungi kami melalui WhatsApp yang tersedia di halaman kontak.</p>
       </div>
 
       <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq5')">Bagaimana cara pembayaran?</button>
-        <p id="faq5" class="hidden text-gray-700 mt-2">Pembayaran dapat dilakukan dengan dua opsi: DP 50% di awal dan sisanya setelah pekerjaan selesai, atau langsung lunas di awal. Kami menerima transfer bank dan pembayaran melalui e-wallet.</p>
+        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq4')">Bagaimana cara pembayaran?</button>
+        <p id="faq4" class="hidden text-gray-700 mt-2">Pembayaran dapat dilakukan dengan dua opsi: DP 50% di awal dan sisanya setelah pekerjaan selesai, atau langsung lunas di awal. Kami menerima transfer bank dan pembayaran melalui e-wallet.</p>
       </div>
-
-      <div>
-  <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq6')">Apakah harga bisa nego?</button>
-  <p id="faq6" class="hidden text-gray-700 mt-2">Bisa dong! Kami terbuka untuk diskusi harga, apalagi kalau kamu ambil lebih dari satu layanan atau punya budget tertentu. Langsung aja hubungi kami yaa~</p>
-</div>
-
     </div>
   </div>
 </section>
 
+<section class="py-16 px-6 bg-white" data-aos="fade-up">
+  <div class="flex flex-col md:flex-row justify-center items-center mb-8">
+    <!-- Icon Person -->
+    <div class="flex justify-center items-center mb-4 md:mb-0">
+        <i class="fas fa-user-circle text-6xl text-green-400"></i>
+    </div>
+    <!-- Angka Animasi Orang Terbantu -->
+    <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
+        <span id="animated-number" class="count-up" data-start="0" data-end="50" data-duration="10000">0</span><span class="text-xl">+</span>
+    </div>
+    <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
+        Orang Terbantu
+    </div>
+
+    <!-- Spacer -->
+    <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
+        |
+    </div>
+
+    <!-- Icon Kunjungan Web -->
+    <div class="flex justify-center items-center mb-4 md:mb-0">
+        <i class="fas fa-chart-line text-6xl text-blue-400"></i>
+    </div>
+    <!-- Angka Animasi Kunjungan Web -->
+    <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
+        <span id="animated-number-web" class="count-up" data-start="0" data-end="100" data-duration="10000">0</span><span class="text-xl">+</span>
+    </div>
+    <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
+        Kunjungan Web
+    </div>
+
+    <!-- Spacer -->
+    <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
+        |
+    </div>
+
+    <!-- Icon Tingkat Kepuasan Pengguna -->
+    <div class="flex justify-center items-center mb-4 md:mb-0">
+        <i class="fas fa-star text-6xl text-yellow-300"></i>
+    </div>
+    <!-- Angka Animasi Tingkat Kepuasan Pengguna -->
+    <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
+        <span id="animated-number-satisfaction" class="count-up" data-start="0" data-end="90" data-duration="10000">0</span><span class="text-xl">%</span>
+    </div>
+    <div class="ml-4 text-lg md:text-xl font-medium text-black-700">
+        Tingkat Kepuasan Pengguna
+    </div>
+  </div>
+</section>
+
+
+
 <!-- Testimoni -->
 <section class="py-16 px-6 bg-white" data-aos="fade-up">
+
     <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">Testimoni Klien</h2>
     <div class="overflow-x-auto no-scrollbar">
         <div class="flex space-x-6 snap-x snap-mandatory px-2 md:px-10 overflow-x-hidden pb-4 scroll-smooth" id="scroll-container">
@@ -318,10 +468,21 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
   
         <!-- Kolom 1: Syarat & Ketentuan -->
-            <div>
-                <h4 class="text-xl font-bold text-pink-700 mb-4">Moto</h4>
-                <p class="text-gray-600">“Inovasi tanpa batas, kualitas tanpa kompromi.” Kami di Starmoon Labs berkomitmen untuk memberikan layanan terbaik, terpercaya, dan efisien dalam setiap solusi digital yang kami hadirkan.</p>
-              </div>
+        <div>
+          <h4 class="text-xl font-bold text-pink-700 mb-4">Moto</h4>
+          <p class="text-gray-600 mb-4 text-justify">
+            "Menjadi solusi digital yang mudah dijangkau dan berkualitas, dengan komitmen untuk membantu individu dan bisnis tumbuh melalui layanan yang ramah, profesional, dan inovatif."
+          </p>
+        
+          <h4 class="text-xl font-bold text-pink-700 mb-4">Misi</h4>
+          <ul class="list-disc list-outside pl-4 text-gray-600 text-justify space-y-2">
+            <li>Memberikan layanan digital yang berkualitas dengan harga terjangkau.</li>
+            <li>Mendampingi klien dari berbagai latar belakang untuk berkembang di era digital.</li>
+            <li>Mengedepankan pelayanan yang ramah, cepat, dan solutif.</li>
+            <li>Menciptakan hasil kerja kreatif yang sesuai kebutuhan dan tren masa kini.</li>
+          </ul>
+        </div>
+        
     
   
         <!-- Kolom 2: Dukungan Pelanggan -->
@@ -419,6 +580,30 @@
     const faq = document.getElementById(faqId);
     faq.classList.toggle('hidden');
   }
+
+// Count-up Animation untuk angka
+document.addEventListener('DOMContentLoaded', function () {
+    const animatedNumbers = document.querySelectorAll('.count-up');
+    
+    animatedNumbers.forEach((element) => {
+        const start = parseInt(element.getAttribute('data-start'));
+        const end = parseInt(element.getAttribute('data-end'));
+        const duration = parseInt(element.getAttribute('data-duration'));
+        let current = start;
+        const stepTime = Math.abs(Math.floor(duration / (end - start)));
+
+        function updateNumber() {
+            current++;
+            element.textContent = current;
+            if (current < end) {
+                setTimeout(updateNumber, stepTime);
+            }
+        }
+        updateNumber();
+    });
+});
+
+
 </script>
 
 </body>
