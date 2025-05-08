@@ -7,6 +7,9 @@
   <link rel="icon" type="image/png" href="icon.png?v=1">
   <!-- Tailwind CDN (versi stabil) -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tambahkan ini di dalam <head> atau sebelum penutup </body> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -197,11 +200,31 @@
     <li>Paket Lengkap <br> (Bab 1–5 Full): <span class="font-semibold text-indigo-600">700k</span></li>
   </ul>
 </div>
-
-
-  
     </div>
   </section>
+  
+  <section id="faq" class="py-16 px-6 bg-white" data-aos="fade-up">
+    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">Tukar Kode</h2>
+    
+    <div class="max-w-md mx-auto bg-indigo-50 p-6 rounded-xl shadow-md space-y-4">
+      <h3 class="text-xl font-semibold text-indigo-700 text-center">Masukkan Kode Bonus Anda</h3>
+      
+      <input
+        id="kode-input"
+        type="text"
+        placeholder="Disini...."
+        class="w-full px-4 py-2 border border-indigo-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+      
+      <button
+        onclick="tukarKode()"
+        class="w-full bg-indigo-700 text-white py-2 rounded-md hover:bg-indigo-800 transition duration-200"
+      >
+        Tukar Kode
+      </button>
+    </div>
+  </section>
+  
   
 
 <!-- FAQ Section -->
@@ -273,7 +296,7 @@
     </div>
     <!-- Angka Animasi Kunjungan Web -->
     <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number-web" class="count-up" data-start="0" data-end="100" data-duration="35000">0</span><span class="text-xl">+</span>
+        <span id="animated-number-web" class="count-up" data-start="0" data-end="100" data-duration="10000">0</span><span class="text-xl">+</span>
     </div>
     <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
         Kunjungan Web
@@ -290,7 +313,7 @@
     </div>
     <!-- Angka Animasi Tingkat Kepuasan Pengguna -->
     <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number-satisfaction" class="count-up" data-start="0" data-end="90" data-duration="35000">0</span><span class="text-xl">%</span>
+        <span id="animated-number-satisfaction" class="count-up" data-start="0" data-end="90" data-duration="10000">0</span><span class="text-xl">%</span>
     </div>
     <div class="ml-4 text-lg md:text-xl font-medium text-black-700">
         Tingkat Kepuasan Pengguna
@@ -603,6 +626,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function tukarKode() {
+    const inputKode = document.getElementById("kode-input").value.trim().toUpperCase();
+
+    let fileGambar = "";
+    if (inputKode === "STARMOONLABS100") {
+      fileGambar = "Voucher StarmoonLabs 1.png";
+    } else if (inputKode === "STARMOONLABS50") {
+      fileGambar = "Voucher StarmoonLabs 2.png";
+    }
+
+    if (fileGambar) {
+      const link = document.createElement('a');
+      link.href = fileGambar;
+      link.download = fileGambar;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // SweetAlert sukses
+      Swal.fire({
+        icon: 'success',
+        title: 'YEEAAY 😻',
+        text: 'Vocher Starmoon Labs sedang diunduh ^^',
+        confirmButtonColor: '#6366F1'
+      });
+
+    } else {
+      // SweetAlert gagal
+      Swal.fire({
+        icon: 'error',
+        title: 'ALAMAK 🙀',
+        text: 'Silakan lakukan minimal 1 kali pemesanan untuk mendapatkan kode:p. Kode yang Anda masukkan salah!',
+        confirmButtonColor: '#EF4444'
+      });
+    }
+  }
 
 </script>
 
