@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,8 +9,9 @@
   <!-- Tailwind CDN (versi stabil) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Tambahkan ini di dalam <head> atau sebelum penutup -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Confetti Animation -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -22,11 +24,11 @@
     }
 
     .scroll-smooth {
-  scroll-behavior: smooth;
-}
+      scroll-behavior: smooth;
+    }
 
- /* Loading animation */
- #loading {
+    /* Loading animation */
+    #loading {
       position: fixed;
       top: 0;
       left: 0;
@@ -50,10 +52,10 @@
         visibility: hidden;
       }
     }
-
   </style>
 </head>
-<body class="bg-pink-50 text-gray-800">
+
+<body class="bg-white text-gray-800">
 
   <!-- Loading Animation -->
   <div id="loading">
@@ -66,26 +68,39 @@
     });
   </script>
 
-<!-- Hero Section -->
-<section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 text-center p-6" data-aos="fade-down">
-  <h1 class="text-5xl font-bold mb-5 text-white drop-shadow-lg">Starmoon Labs</h1>
-  <p class="text-xl text-white mb-6">CV • Portofolio • Tugas Akademik • Laporan KP & LA MI • Website • Aplikasi berbasis Web • Dan lain-lain</p>
-  <a href="#layanan" class="bg-white text-indigo-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white transition">Lihat Layanan</a>
-</section>
+  <!-- Hero Section -->
+  <section
+    class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-200 via-purple-200 to-indigo-200 text-center p-6"
+    data-aos="fade-down">
+    <h1 class="text-5xl font-bold mb-5 text-white drop-shadow-lg">Starmoon Labs</h1>
+    <p class="text-xl text-white mb-6">CV • Portofolio • Tugas Akademik • Laporan KP & LA MI • Website • Aplikasi
+      berbasis Web • Dan lain-lain</p>
+    <a href="#layanan"
+      class="bg-white text-indigo-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white transition">Lihat
+      Layanan</a>
+  </section>
 
-<!-- Tentang Kami -->
-<section class="py-16 px-6 text-center bg-white" data-aos="fade-up">
-  <h2 class="text-3xl font-bold mb-4 text-indigo-700">Tentang Kami</h2>
-  <p class="max-w-2xl mx-auto">Kami menyediakan layanan joki dokumen cepat, rapi, dan profesional. Dari pembuatan CV ATS/non-ATS, portofolio Excel, tugas kuliah, laporan akhir jurusan MI, dll. Harga bersahabat, hasil memuaskan!</p>
-</section>
+  <!-- Tentang Kami -->
+  <section class="py-16 px-6 text-center bg-white" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Tentang Kami</h2>
+    <p class="max-w-2xl mx-auto">Kami menyediakan layanan pengerjaan dokumen yang cepat, rapi, dan terpercaya!
+      <br></br>
+      Melayani pembuatan CV ATS/non-ATS, portofolio Excel, tugas kuliah dan tugas sekolah, laporan akhir
+      jurusan Manajemen Informatika, laporan akhir universitas lain, pembuatan aplikasi berbasis website, pembuatan
+      website, serta berbagai kebutuhan lainnya sesuai permintaan pelanggan.
+      <br></br>
+      Harga bersahabat, pengerjaan rapi, dan hasil bisa disesuaikan dengan kebutuhan kamu!
+    </p>
+  </section>
 
-<!-- Layanan -->
-<section id="layanan" class="py-16 px-6 bg-gradient-to-b from-white to-pink-100">
+  <!-- Layanan -->
+  <section id="layanan" class="py-16 px-6 bg-gradient-to-b from-white to-indigo-100">
     <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12" data-aos="fade-right">Layanan Kami</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-  
+
       <!-- Card CV -->
-      <div class="bg-white p-6 rounded-xl border-2 border-green-400 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
+      <div class="bg-white p-6 rounded-xl border-2 border-green-400 shadow-lg hover:shadow-2xl transition"
+        data-aos="zoom-in">
         <h3 class="text-xl font-bold text-green-600 mb-2">CV</h3>
         <ul class="list-disc ml-5 text-gray-700">
           <li>ATS: 20k</li>
@@ -93,43 +108,47 @@
           <li>Surat lamaran: 10k</li>
         </ul>
       </div>
-  
+
       <!-- Card Portofolio Excel -->
-      <div class="bg-white p-6 rounded-xl border-2 border-yellow-400 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
+      <div class="bg-white p-6 rounded-xl border-2 border-yellow-400 shadow-lg hover:shadow-2xl transition"
+        data-aos="zoom-in">
         <h3 class="text-xl font-bold text-yellow-600 mb-2">Portofolio Excel</h3>
         <ul class="list-disc ml-5 text-gray-700">
-          <li>Basic: 50k</li>
-          <li>Intermediate: 100k</li>
-          <li>Advance: 250k</li>
+          <li>Basic: 100k - 200k</li>
+          <li>Intermediate: 200k - 300k</li>
+          <li>Advance: 300k - 400k</li>
         </ul>
       </div>
-  
+
       <!-- Card Web Front End & PHP App -->
-      <div class="bg-white p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
+      <div class="bg-white p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition"
+        data-aos="zoom-in">
         <h3 class="text-xl font-bold text-indigo-600 mb-2">Website & Aplikasi berbasis Web</h3>
         <ul class="list-disc ml-5 text-gray-700">
-          <li>Basic: 100k - 200k</li>
-          <li>Interactive: 150k - 300k</li>
+          <li>Basic: 150k - 300k</li>
+          <li>Interactive: 300k - 500k</li>
           <li>Aplikasi berbasis Web: 500k - 1.000k</li>
           <br>
           <a href="basic.html">Example</a><br>
         </ul>
       </div>
-  
+
       <!-- Card Tugas -->
-      <div class="bg-white p-6 rounded-xl border-2 border-blue-500 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
+      <div class="bg-white p-6 rounded-xl border-2 border-blue-500 shadow-lg hover:shadow-2xl transition"
+        data-aos="zoom-in">
         <h3 class="text-xl font-bold text-blue-600 mb-2">Tugas</h3>
         <ul class="list-disc ml-5 text-gray-700">
           <li>PPT: 2k/slide</li>
           <li>Essai: 4k/slide</li>
           <li>Makalah: 3k/hal</li>
           <li>Proposal: 3k/slide</li>
-          <li>Jurnal: 3k/file</li>
+          <li>Mencari Jurnal: 5k/file</li>
         </ul>
       </div>
-  
+
       <!-- Card Pengolahan File -->
-      <div class="bg-white p-6 rounded-xl border-2 border-purple-600 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
+      <div class="bg-white p-6 rounded-xl border-2 border-purple-600 shadow-lg hover:shadow-2xl transition"
+        data-aos="zoom-in">
         <h3 class="text-xl font-bold text-purple-600 mb-2">Pengolahan File</h3>
         <ul class="list-disc ml-5 text-gray-700">
           <li>Pemisah: 3k/file</li>
@@ -139,443 +158,435 @@
         </ul>
       </div>
 
-        <!-- Card Pengolahan File -->
-      <div class="bg-white p-6 rounded-xl border-2 border-purple-600 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
+      <!-- Card Pengolahan File -->
+      <div class="bg-white p-6 rounded-xl border-2 border-purple-600 shadow-lg hover:shadow-2xl transition"
+        data-aos="zoom-in">
         <h3 class="text-xl font-bold text-purple-600 mb-2">Diagram</h3>
         <ul class="list-disc ml-5 text-gray-700">
-          <li>Basic: 150k - 250k</li>
-          <li>Standar: 200k - 300k</li>
-          <li>Lengkap: 250k - 400k</li>
+          <li>Basic: 150k - 300k</li>
+          <li>Standar: 200k - 400k</li>
+          <li>Lengkap: 250k - 500k</li>
         </ul>
       </div>
-  
+
       <!-- Card Laporan MI -->
-      <div class="bg-white p-6 rounded-xl border-2 border-red-500 shadow-lg hover:shadow-2xl transition" data-aos="zoom-in">
+      <div class="bg-white p-6 rounded-xl border-2 border-red-500 shadow-lg hover:shadow-2xl transition"
+        data-aos="zoom-in">
         <h3 class="text-xl font-bold text-red-600 mb-2">Laporan MI 'KP, LA & TA'</h3>
         <ul class="list-disc ml-5 text-gray-700">
-          <li>Bab 1: 100k</li>
-          <li>Bab 2: 200k - 250k</li>
-          <li>Bab 3: 250k - 350k</li>
-          <li>Bab 4: 300k - 500k</li>
-          <li>Bab 5: 50k</li>
+          <li>Daftar Isi dan No Halaman: 50K - 200k</li>
+          <li>Bab 1: 150k - 200k</li>
+          <li>Bab 2: 250k - 400k</li>
+          <li>Bab 3: 200k - 350k</li>
+          <li>Bab 4: 400k - 550k</li>
+          <li>Bab 5: 20K - 50k</li>
+          <li>Rapihin Laporan: 50K - 200k</li>
+
         </ul>
       </div>
 
-<!-- Card Paket Bundle: CV & Surat Lamaran -->
-<div class="bg-gradient-to-r from-purple-100 to-blue-100 p-6 rounded-xl border-2 border-blue-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
-  <h3 class="text-xl font-bold text-blue-700 mb-3">Paket CV & Surat Lamaran Kerja</h3>
-  <ul class="list-disc ml-5 text-gray-800 space-y-1">
-    <li>CV ATS + Surat Lamaran: <span class="font-semibold text-blue-600">25k</span></li>
-    <li>CV Non-ATS + Surat Lamaran: <span class="font-semibold text-blue-600">22k</span></li>
-  </ul>
-</div>
+      <!-- Card Paket Bundle: CV & Surat Lamaran -->
+      <div class="bg-white p-6 rounded-xl border-2 border-blue-500 shadow-lg hover:shadow-2xl transition"
+        data-aos="fade-up">
+        <h3 class="text-xl font-bold text-blue-700 mb-3">Paket CV & Surat Lamaran Kerja</h3>
+        <ul class="list-disc ml-5 text-gray-800 space-y-1">
+          <li>CV ATS + Surat Lamaran: <span class="font-semibold text-blue-600">25k</span></li>
+          <li>CV Non-ATS + Surat Lamaran: <span class="font-semibold text-blue-600">22k</span></li>
+        </ul>
+      </div>
 
-<!-- Card Paket Bundle: Pengolahan File -->
-<div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 rounded-xl border-2 border-yellow-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
-  <h3 class="text-xl font-bold text-yellow-700 mb-3">Paket Pengolahan File</h3>
-  <ul class="list-disc ml-5 text-gray-800 space-y-1">
-    <li>Paket Basic <br> (Gabung + Kompresi ≤5 file): <span class="font-semibold text-yellow-600">8k</span></li>
-    <li>Paket Profesional <br> (Pemisah + Gabung + Konversi ≤10 file): <span class="font-semibold text-yellow-600">20k</span></li>
-    <li>Paket Lengkap <br> (Semua layanan ≤15 file): <span class="font-semibold text-yellow-600">30k</span></li>
-    <li>Tambahan file: <span class="font-semibold text-yellow-600">+1k/file</span></li>
-  </ul>
-</div>
+      <!-- Card Paket Bundle: Pengolahan File -->
+      <div class="bg-white p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition"
+        data-aos="fade-up">
+        <h3 class="text-xl font-bold text-indigo-700 mb-3">Paket Pengolahan File</h3>
+        <ul class="list-disc ml-5 text-gray-800 space-y-1">
+          <li>Paket Basic <br> (Gabung + Kompresi ≤5 file): <span class="font-semibold text-indigo-600">8k</span></li>
+          <li>Paket Profesional <br> (Pemisah + Gabung + Konversi ≤10 file): <span
+              class="font-semibold text-indigo-600">20k</span></li>
+          <li>Paket Lengkap <br> (Semua layanan ≤15 file): <span class="font-semibold text-indigo-600">30k</span></li>
+          <li>Tambahan file: <span class="font-semibold text-indigo-600">+1k/file</span></li>
+        </ul>
+      </div>
 
-<!-- Card Paket Bundle: Portofolio Excel -->
-<div class="bg-gradient-to-r from-green-100 to-emerald-100 p-6 rounded-xl border-2 border-green-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
-  <h3 class="text-xl font-bold text-green-700 mb-3">Paket Bundle Portofolio Excel</h3>
-  <ul class="list-disc ml-5 text-gray-800 space-y-1">
-    <li>Paket Komplit <br> (Basic + Intermediate + Advanced): <span class="font-semibold text-green-600">300k</span></li>
-    <li>Paket Siap Kerja <br> (Intermediate + Advanced + CV ATS): <span class="font-semibold text-green-600">270k</span></li>
-    <li>Paket Pemula Naik Level <br> (Basic + Intermediate): <span class="font-semibold text-green-600">130k</span></li>
-  </ul>
-</div>
-
-<!-- Card Paket Bundle: Tugas Mahasiswa -->
-<div class="bg-gradient-to-r from-pink-100 to-red-100 p-6 rounded-xl border-2 border-pink-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
-  <h3 class="text-xl font-bold text-pink-700 mb-3">Paket Bundle Tugas Mahasiswa</h3>
-  <ul class="list-disc ml-5 text-gray-800 space-y-1">
-    <li>Paket Presentasi Cepat <br> (PPT ≤10 slide): <span class="font-semibold text-pink-600">25k</span></li>
-    <li>Paket Akademik Komplit <br> (Essai + PPT): <span class="font-semibold text-pink-600">50k</span></li>
-    <li>Paket Penulis Produktif <br> (Essai + Jurnal): <span class="font-semibold text-pink-600">50k</span></li>
-    <li>Paket Tugas Full Service <br> (Makalah + PPT + Essai): <span class="font-semibold text-pink-600">150k</span></li>
-  </ul>
-</div>
-
-<!-- Card Paket Bundle: Laporan MI (KP & LA) -->
-<div class="bg-gradient-to-r from-indigo-100 to-sky-100 p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition" data-aos="fade-up">
-  <h3 class="text-xl font-bold text-indigo-700 mb-3">Paket Laporan MI 'KP, LA & TA'</h3>
-  <ul class="list-disc ml-5 text-gray-800 space-y-1">
-    <li>Paket Pemula <br> (Bab 1 + 2): <span class="font-semibold text-indigo-600">330k</span></li>
-    <li>Paket Tengah Jalan <br> (Bab 3, 4 & 5): <span class="font-semibold text-indigo-600">700k</span></li>
-    <li>Paket Lengkap <br> (Bab 1–5 Full + Aplikasi): <span class="font-semibold text-indigo-600">1.500k</span></li>
-  </ul>
-</div>
     </div>
   </section>
 
   <section class="py-16 px-6 bg-white" data-aos="fade-up">
-  <div class="max-w-xl mx-auto">
-    <h2 class="text-2xl font-bold mb-8 text-center">Aplikasi yang Telah Dikerjakan</h2>
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-2xl font-bold mb-8 text-center">Aplikasi yang Telah Dikerjakan</h2>
 
-    <!-- Aplikasi berbasis website -->
-    <div class="mb-6">
-      <div class="flex items-center justify-between mb-1">
-        <span class="font-medium text-lg">Aplikasi berbasis website</span>
-        <span class="font-bold text-lg" id="count1">0+</span>
+      <!-- Aplikasi berbasis website -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-medium text-lg">Aplikasi berbasis website</span>
+          <span class="font-bold text-lg" id="count1">0+</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div id="bar1" class="bg-green-400 h-4 rounded-full" style="width: 0%"></div>
+        </div>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-        <div id="bar1" class="bg-green-400 h-4 rounded-full" style="width: 0%"></div>
+
+      <!-- Aplikasi berbasis web dengan metode tertentu -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-medium text-lg">Aplikasi berbasis web dengan metode tertentu</span>
+          <span class="font-bold text-lg" id="count2">0</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div id="bar2" class="bg-green-400 h-4 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Laporan MI -->
+      <h2 class="text-2xl font-bold mb-4 mt-10 text-center">Laporan MI 'KP, LA & TA' Telah Dikerjakan</h2>
+
+      <!-- KP -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-medium text-lg">Kerja Praktek (KP)</span>
+          <span class="font-bold text-lg" id="count3">5+</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div id="bar3" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- LA -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-medium text-lg">Laporan Akhir (LA)</span>
+          <span class="font-bold text-lg" id="count4">5+</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div id="bar4" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- TA -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-medium text-lg">Tugas Akhir (TA)</span>
+          <span class="font-bold text-lg" id="count5">2</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div id="bar5" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Aplikasi berbasis web dengan metode tertentu -->
-    <div class="mb-6">
-      <div class="flex items-center justify-between mb-1">
-        <span class="font-medium text-lg">Aplikasi berbasis web dengan metode tertentu</span>
-        <span class="font-bold text-lg" id="count2">0</span>
-      </div>
-      <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-        <div id="bar2" class="bg-green-400 h-4 rounded-full" style="width: 0%"></div>
-      </div>
-    </div>
 
-    <br>
-
-    <!-- Laporan MI -->
-    <h2 class="text-2xl font-bold mb-4 mt-10 text-center">Laporan MI 'KP, LA & TA' Telah Dikerjakan</h2>
-
-    <!-- KP -->
-    <div class="mb-6">
-      <div class="flex items-center justify-between mb-1">
-        <span class="font-medium text-lg">Kerja Praktek (KP)</span>
-        <span class="font-bold text-lg" id="count3">5+</span>
-      </div>
-      <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-        <div id="bar3" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
-      </div>
-    </div>
-
-    <!-- LA -->
-    <div class="mb-6">
-      <div class="flex items-center justify-between mb-1">
-        <span class="font-medium text-lg">Laporan Akhir (LA)</span>
-        <span class="font-bold text-lg" id="count4">3+</span>
-      </div>
-      <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-        <div id="bar4" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
-      </div>
-    </div>
-
-    <!-- TA -->
-    <div class="mb-6">
-      <div class="flex items-center justify-between mb-1">
-        <span class="font-medium text-lg">Tugas Akhir (TA)</span>
-        <span class="font-bold text-lg" id="count5">2</span>
-      </div>
-      <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-        <div id="bar5" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-  
-  <section id="faq" class="py-16 px-6 bg-gradient-to-b from-white to-pink-100" data-aos="fade-up">
+  <section id="faq" class="py-16 px-6 bg-gradient-to-b from-white to-indigo-100" data-aos="fade-up">
     <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">Tukar Kode</h2>
-    
+
     <div class="max-w-md mx-auto bg-indigo-50 p-6 rounded-xl shadow-md space-y-4">
-      <h3 class="text-xl font-semibold text-indigo-700 text-center">Masukkan Kode Bonus Anda</h3>
-      
-      <input
-        id="kode-input"
-        type="text"
-        placeholder="Disini...."
-        class="w-full px-4 py-2 border border-indigo-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-      />
-      
-      <button
-        onclick="tukarKode()"
-        class="w-full bg-indigo-700 text-white py-2 rounded-md hover:bg-indigo-800 transition duration-200"
-      >
+      <h3 class="text-xl font-semibold text-indigo-700 text-center">Masukkan Kode Voucher</h3>
+
+      <input id="kode-input" type="text" placeholder="Disini...." oninput="checkInputKode()"
+        class="w-full px-4 py-2 border border-indigo-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+
+      <button id="btn-tukar" onclick="tukarKode()" disabled
+        class="w-full bg-indigo-700 text-white py-2 rounded-md hover:bg-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200">
         Tukar Kode
       </button>
     </div>
   </section>
-  
-  
 
-<!-- FAQ Section -->
-<section id="faq" class="py-16 px-6 bg-white" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">FAQ</h2>
-  <div class="max-w-3xl mx-auto">
-    <div class="space-y-6">
-        
+
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-16 px-6 bg-white" data-aos="fade-up">
+    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">FAQ</h2>
+    <div class="max-w-3xl mx-auto">
+      <div class="space-y-6">
+
         <div>
-            <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq1')">Bisa tidak order jasa di luar list layanan?</button>
-            <p id="faq1" class="hidden text-gray-700 mt-2">Tentu bisa! Kami sangat fleksibel. Jika kamu punya kebutuhan lain di luar layanan yang tertera, langsung hubungi kami lewat WhatsApp atau email. Kami akan bantu diskusikan dan sesuaikan dengan kebutuhanmu.</p>
-          </div>
-          
-      <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq2')">Apa itu jasa joki dokumen?</button>
-        <p id="faq2" class="hidden text-gray-700 mt-2">Jasa joki dokumen adalah layanan yang membantu kamu dalam pembuatan berbagai dokumen, seperti CV, portofolio, tugas kuliah, laporan akhir, dan lain-lain.</p>
-      </div>
+          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
+            onclick="toggleFAQ('faq1')">Bisa tidak order jasa di luar list layanan?</button>
+          <p id="faq1" class="hidden text-gray-700 mt-2">Tentu bisa! Kami sangat fleksibel. Jika kamu punya kebutuhan
+            lain di luar layanan yang tertera, langsung hubungi kami lewat WhatsApp atau email. Kami akan bantu
+            diskusikan dan sesuaikan dengan kebutuhanmu.</p>
+        </div>
 
-      <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq3')">
-          Apakah ada bonus revisi?
-        </button>
-        <p id="faq3" class="hidden text-gray-700 mt-2">
-          Ya, tersedia bonus revisi mulai dari 1 kali hingga 3 kali, tergantung jenis pesanan revisi. Kami memastikan hasil akhir sesuai dengan kebutuhan dan keinginan Anda.
-        </p>
-      </div>
-      
+        <div>
+          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
+            onclick="toggleFAQ('faq2')">Apa itu jasa joki dokumen?</button>
+          <p id="faq2" class="hidden text-gray-700 mt-2">Jasa joki dokumen adalah layanan yang membantu kamu dalam
+            pembuatan berbagai dokumen, seperti CV, portofolio, tugas kuliah, laporan akhir, dan lain-lain.</p>
+        </div>
 
-      <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq4')">Berapa lama waktu pengerjaan?</button>
-        <p id="faq4" class="hidden text-gray-700 mt-2">Waktu pengerjaan tergantung layanan yang dipesan.</p>
-      </div>
+        <div>
+          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
+            onclick="toggleFAQ('faq3')">
+            Apakah ada bonus revisi?
+          </button>
+          <p id="faq3" class="hidden text-gray-700 mt-2">
+            Ya, tersedia bonus revisi mulai dari 1 kali hingga 3 kali, tergantung jenis pesanan revisi. Kami memastikan
+            hasil akhir sesuai dengan kebutuhan dan keinginan Anda.
+          </p>
+        </div>
 
-      <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq5')">Bagaimana cara memesan?</button>
-        <p id="faq5" class="hidden text-gray-700 mt-2">Untuk memesan, kamu bisa menghubungi kami melalui WhatsApp yang tersedia di halaman kontak.</p>
-      </div>
 
-      <div>
-        <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2" onclick="toggleFAQ('faq6')">Bagaimana cara pembayaran?</button>
-        <p id="faq6" class="hidden text-gray-700 mt-2">Pembayaran dapat dilakukan dengan dua opsi: DP 50% di awal dan sisanya setelah pekerjaan selesai, atau langsung lunas di awal. Kami menerima transfer bank dan pembayaran melalui e-wallet.</p>
+        <div>
+          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
+            onclick="toggleFAQ('faq4')">Berapa lama waktu pengerjaan?</button>
+          <p id="faq4" class="hidden text-gray-700 mt-2">Waktu pengerjaan tergantung layanan yang dipesan.</p>
+        </div>
+
+        <div>
+          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
+            onclick="toggleFAQ('faq5')">Bagaimana cara memesan?</button>
+          <p id="faq5" class="hidden text-gray-700 mt-2">Untuk memesan, kamu bisa menghubungi kami melalui WhatsApp yang
+            tersedia di halaman kontak.</p>
+        </div>
+
+        <div>
+          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
+            onclick="toggleFAQ('faq6')">Bagaimana cara pembayaran?</button>
+          <p id="faq6" class="hidden text-gray-700 mt-2">Pembayaran dapat dilakukan dengan dua opsi: DP 50% di awal dan
+            sisanya setelah pekerjaan selesai, atau langsung lunas di awal. Kami menerima transfer bank dan pembayaran
+            melalui e-wallet.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="py-16 px-6 bg-white" data-aos="fade-up">
-  <div class="flex flex-col md:flex-row justify-center items-center mb-8">
-    <!-- Icon Person -->
-    <div class="flex justify-center items-center mb-4 md:mb-0">
+  <section class="py-16 px-6 bg-white" data-aos="fade-up">
+    <div class="flex flex-col md:flex-row justify-center items-center mb-8">
+      <!-- Icon Person -->
+      <div class="flex justify-center items-center mb-4 md:mb-0">
         <i class="fas fa-user-circle text-6xl text-green-400"></i>
-    </div>
-    <!-- Angka Animasi Orang Terbantu -->
-    <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number" class="count-up" data-start="0" data-end="50" data-duration="33000">0</span><span class="text-xl">+</span>
-    </div>
-    <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
+      </div>
+      <!-- Angka Animasi Orang Terbantu -->
+      <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
+        <span id="animated-number" class="count-up" data-start="0" data-end="50" data-duration="33000">0</span><span
+          class="text-xl">+</span>
+      </div>
+      <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
         Orang Terbantu
-    </div>
+      </div>
 
-    <!-- Spacer -->
-    <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
+      <!-- Spacer -->
+      <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
         |
-    </div>
+      </div>
 
-    <!-- Icon Kunjungan Web -->
-    <div class="flex justify-center items-center mb-4 md:mb-0">
+      <!-- Icon Kunjungan Web -->
+      <div class="flex justify-center items-center mb-4 md:mb-0">
         <i class="fas fa-chart-line text-6xl text-blue-400"></i>
-    </div>
-    <!-- Angka Animasi Kunjungan Web -->
-    <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number-web" class="count-up" data-start="0" data-end="100" data-duration="33000">0</span><span class="text-xl">+</span>
-    </div>
-    <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
+      </div>
+      <!-- Angka Animasi Kunjungan Web -->
+      <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
+        <span id="animated-number-web" class="count-up" data-start="0" data-end="100"
+          data-duration="33000">0</span><span class="text-xl">+</span>
+      </div>
+      <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
         Kunjungan Web
-    </div>
+      </div>
 
-    <!-- Spacer -->
-    <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
+      <!-- Spacer -->
+      <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
         |
-    </div>
+      </div>
 
-    <!-- Icon Tingkat Kepuasan Pengguna -->
-    <div class="flex justify-center items-center mb-4 md:mb-0">
+      <!-- Icon Tingkat Kepuasan Pengguna -->
+      <div class="flex justify-center items-center mb-4 md:mb-0">
         <i class="fas fa-star text-6xl text-yellow-300"></i>
-    </div>
-    <!-- Angka Animasi Tingkat Kepuasan Pengguna -->
-    <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number-satisfaction" class="count-up" data-start="0" data-end="90" data-duration="33000">0</span><span class="text-xl">%</span>
-    </div>
-    <div class="ml-4 text-lg md:text-xl font-medium text-black-700">
+      </div>
+      <!-- Angka Animasi Tingkat Kepuasan Pengguna -->
+      <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
+        <span id="animated-number-satisfaction" class="count-up" data-start="0" data-end="90"
+          data-duration="33000">0</span><span class="text-xl">%</span>
+      </div>
+      <div class="ml-4 text-lg md:text-xl font-medium text-black-700">
         Tingkat Kepuasan Pengguna
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
 
-<!-- Testimoni -->
-<section class="py-16 px-6 bg-white" data-aos="fade-up">
+  <!-- Testimoni -->
+  <section class="py-16 px-6 bg-white" data-aos="fade-up">
 
     <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">Testimoni Klien</h2>
     <div class="overflow-x-auto no-scrollbar">
-        <div class="flex space-x-6 snap-x snap-mandatory px-2 md:px-10 overflow-x-hidden pb-4 scroll-smooth" id="scroll-container">
+      <div class="flex space-x-6 snap-x snap-mandatory px-2 md:px-10 overflow-x-hidden pb-4 scroll-smooth"
+        id="scroll-container">
 
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"CV ATS-nya sangat rapi dan berhasil lolos ke tahap interview. Sangat recommended!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- N**** T.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"CV non-ATS-nya sesuai dengan branding aku, desainnya estetik dan efektif!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- M**** A.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Portofolio Excel-nya jelas dan rapi. Atasan langsung suka!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- I**** D.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Web front-end-nya responsive, enak dilihat dan digunakan!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- Z**** R.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Laporan KP saya selesai tepat waktu dan sesuai dengan instruksi dosen!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- W**** S.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Portofolio Excel-nya sangat memudahkan saya dalam pekerjaan sehari-hari. Terima kasih!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- R**** H.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Desain PPT yang dibuat sangat eye-catching, presentasi jadi lebih menarik!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- D**** T.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Laporan makalah saya jadi lebih sistematis dan jelas. Sangat membantu!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- M**** K.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Portofolio Excel Advance-nya detail banget! Sangat membantu untuk presentasi bisnis."</p>
-                <span class="block mt-4 font-semibold text-pink-600">- L**** P.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"CV saya langsung diterima di perusahaan impian, berkat bantuan jasa ini!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- A**** W.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Desain UI/UX untuk aplikasi saya sangat keren dan user-friendly!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- K**** T.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Laporan riset saya dikerjakan dengan sangat baik dan sangat terperinci!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- H**** Y.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Pekerjaan PPT saya selesai dengan rapi dan professional, sangat membantu presentasi saya!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- M**** L.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Laporan tugas saya selesai tepat waktu dan sesuai dengan harapan dosen!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- F**** P.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Layanan konversi dan pemisahan file-nya cepat dan akurat, sangat membantu!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- T**** H.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Hasil pekerjaan laporan saya sangat terstruktur dan mudah dipahami!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- R**** J.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Laporan bab 4 saya selesai dengan sangat detail dan sesuai dengan instruksi!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- N**** F.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-                </div>
-            </div>
-
-            <div class="min-w-[300px] bg-pink-50 p-6 rounded-lg shadow snap-start">
-                <p class="italic">"Hasil tugas saya dikerjakan sangat baik dan sesuai dengan deadline!"</p>
-                <span class="block mt-4 font-semibold text-pink-600">- D**** K.</span>
-                <div class="mt-2 text-yellow-500">
-                    &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-                </div>
-            </div>
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"CV ATS-nya sangat rapi dan berhasil lolos ke tahap interview. Sangat recommended!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- N**** T.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
+          </div>
         </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"CV non-ATS-nya sesuai dengan branding aku, desainnya estetik dan efektif!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- M**** A.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Portofolio Excel-nya jelas dan rapi. Atasan langsung suka!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- I**** D.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Web front-end-nya responsive, enak dilihat dan digunakan!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- Z**** R.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Laporan KP saya selesai tepat waktu dan sesuai dengan instruksi dosen!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- W**** S.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Portofolio Excel-nya sangat memudahkan saya dalam pekerjaan sehari-hari. Terima kasih!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- R**** H.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Desain PPT yang dibuat sangat eye-catching, presentasi jadi lebih menarik!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- D**** T.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Laporan makalah saya jadi lebih sistematis dan jelas. Sangat membantu!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- M**** K.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Portofolio Excel Advance-nya detail banget! Sangat membantu untuk presentasi bisnis."</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- L**** P.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"CV saya langsung diterima di perusahaan impian, berkat bantuan jasa ini!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- A**** W.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Desain UI/UX untuk aplikasi saya sangat keren dan user-friendly!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- K**** T.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Laporan riset saya dikerjakan dengan sangat baik dan sangat terperinci!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- H**** Y.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Pekerjaan PPT saya selesai dengan rapi dan professional, sangat membantu presentasi saya!"
+          </p>
+          <span class="block mt-4 font-semibold text-indigo-600">- M**** L.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Laporan tugas saya selesai tepat waktu dan sesuai dengan harapan dosen!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- F**** P.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Layanan konversi dan pemisahan file-nya cepat dan akurat, sangat membantu!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- T**** H.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Hasil pekerjaan laporan saya sangat terstruktur dan mudah dipahami!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- R**** J.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Laporan bab 4 saya selesai dengan sangat detail dan sesuai dengan instruksi!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- N**** F.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
+          </div>
+        </div>
+
+        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
+          <p class="italic">"Hasil tugas saya dikerjakan sangat baik dan sesuai dengan deadline!"</p>
+          <span class="block mt-4 font-semibold text-indigo-600">- D**** K.</span>
+          <div class="mt-2 text-yellow-500">
+            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
 
-<!-- Kontak -->
-<section id="kontak" class="py-16 px-6 bg-gradient-to-b from-pink-100 to-white text-center">
-  <h2 class="text-3xl font-bold text-indigo-700 mb-4">Hubungi Kami</h2>
-  <p class="text-lg text-gray-700 mb-6">Untuk pertanyaan lebih lanjut atau memesan layanan, silakan hubungi kami!</p>
-  <a href="https://wa.me/6285762525951" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition">Hubungi via WhatsApp</a>
-</section>
+  <!-- Kontak -->
+  <section id="kontak" class="py-16 px-6 bg-gradient-to-b from-white text-center">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-4">Hubungi Kami</h2>
+    <p class="text-lg text-gray-700 mb-6">Untuk pertanyaan lebih lanjut atau memesan layanan, silakan hubungi kami!</p>
+    <a href="https://wa.me/6285762525951"
+      class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition">Hubungi via WhatsApp</a>
+  </section>
 
-<!-- Footer -->
-<footer class="bg-gradient-to-t from-pink-300 to-white text-gray-800 py-12 mt-16">
+  <!-- Footer -->
+  <footer class="bg-gradient-to-t from-indigo-300 to-white text-gray-800 py-12 mt-16">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-  
+
         <!-- Kolom 1: Syarat & Ketentuan -->
         <div>
-          <h4 class="text-xl font-bold text-pink-700 mb-4">Moto</h4>
+          <h4 class="text-xl font-bold text-indigo-700 mb-4">Moto</h4>
           <p class="text-gray-600 mb-4 text-justify">
-            "Menjadi solusi digital yang mudah dijangkau dan berkualitas, dengan komitmen untuk membantu individu dan bisnis tumbuh melalui layanan yang ramah, profesional, dan inovatif."
+            "Menjadi solusi digital yang mudah dijangkau dan berkualitas, dengan komitmen untuk membantu individu dan
+            bisnis tumbuh melalui layanan yang ramah, profesional, dan inovatif."
           </p>
-        
-          <h4 class="text-xl font-bold text-pink-700 mb-4">Misi</h4>
+
+          <h4 class="text-xl font-bold text-indigo-700 mb-4">Misi</h4>
           <ul class="list-disc list-outside pl-4 text-gray-600 text-justify space-y-2">
             <li>Memberikan layanan digital yang berkualitas dengan harga terjangkau.</li>
             <li>Mendampingi klien dari berbagai latar belakang untuk berkembang di era digital.</li>
@@ -583,110 +594,111 @@
             <li>Menciptakan hasil kerja kreatif yang sesuai kebutuhan dan tren masa kini.</li>
           </ul>
         </div>
-        
-    
-  
+
+
+
         <!-- Kolom 2: Dukungan Pelanggan -->
         <div>
-          <h4 class="text-xl font-bold text-pink-700 mb-4">Dukungan Pelanggan</h4>
+          <h4 class="text-xl font-bold text-indigo-700 mb-4">Dukungan Pelanggan</h4>
           <ul class="text-gray-600">
-            <li><a href="mailto:bububaba061@gmail.com" class="hover:text-pink-600">Email Support</a></li>
-            <li><a href="tel:+6285762525951" class="hover:text-pink-600">Telepon</a></li>
-            <li><a href="#faq" class="hover:text-pink-600">FAQ</a></li>
+            <li><a href="mailto:bububaba061@gmail.com" class="hover:text-indigo-600">Email Support</a></li>
+            <li><a href="tel:+6285762525951" class="hover:text-indigo-600">Telepon</a></li>
+            <li><a href="#faq" class="hover:text-indigo-600">FAQ</a></li>
           </ul>
         </div>
-  
+
         <!-- Kolom 3: Ikuti Kami -->
         <div>
-          <h4 class="text-xl font-bold text-pink-700 mb-4">Ikuti Kami</h4>
+          <h4 class="text-xl font-bold text-indigo-700 mb-4">Ikuti Kami</h4>
           <p class="text-gray-600">Dapatkan update terbaru tentang layanan kami melalui sosial media kami:</p>
           <div class="mt-4 flex space-x-4">
-            <a href="#" class="text-pink-600 hover:text-pink-800">
+            <a href="#" class="text-indigo-600 hover:text-indigo-800">
               <i class="fab fa-facebook-f text-xl"></i>
             </a>
-            <a href="#" class="text-pink-600 hover:text-pink-800">
+            <a href="#" class="text-indigo-600 hover:text-indigo-800">
               <i class="fab fa-twitter text-xl"></i>
             </a>
-            <a href="https://www.instagram.com/tegar._.suryatama?igsh=MWhob29tN3U0OXo0ZQ==" class="text-pink-600 hover:text-pink-800">
+            <a href="https://www.instagram.com/tegar._.suryatama?igsh=MWhob29tN3U0OXo0ZQ=="
+              class="text-indigo-600 hover:text-indigo-800">
               <i class="fab fa-instagram text-xl"></i>
             </a>
           </div>
         </div>
       </div>
-  
-      <div class="text-center mt-12 border-t pt-4">
-        <p class="text-sm text-gray-600">&copy; Starmoon Labs. All Rights Reserved.</p>
+
+      <div class="text-center font-bold mt-12 border-t pt-4">
+        <p class="text-sm text-indigo-600">&copy; Starmoon Labs. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
-  
+
   <!-- Pastikan untuk menambahkan FontAwesome di head HTML -->
   <!-- Link FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
 
-<!-- Script -->
-<script>
-  AOS.init();
 
-  const scrollContainer = document.getElementById('scroll-container');
-  let isMouseDown = false;
-  let startX;
-  let scrollLeft;
+  <!-- Script -->
+  <script>
+    AOS.init();
 
-  // Mouse events for desktop
-  scrollContainer.addEventListener('mousedown', (e) => {
-    isMouseDown = true;
-    startX = e.pageX - scrollContainer.offsetLeft;
-    scrollLeft = scrollContainer.scrollLeft;
-  });
+    const scrollContainer = document.getElementById('scroll-container');
+    let isMouseDown = false;
+    let startX;
+    let scrollLeft;
 
-  scrollContainer.addEventListener('mouseleave', () => {
-    isMouseDown = false;
-  });
+    // Mouse events for desktop
+    scrollContainer.addEventListener('mousedown', (e) => {
+      isMouseDown = true;
+      startX = e.pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
 
-  scrollContainer.addEventListener('mouseup', () => {
-    isMouseDown = false;
-  });
+    scrollContainer.addEventListener('mouseleave', () => {
+      isMouseDown = false;
+    });
 
-  scrollContainer.addEventListener('mousemove', (e) => {
-    if (!isMouseDown) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainer.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust speed of scroll
-    scrollContainer.scrollLeft = scrollLeft - walk;
-  });
+    scrollContainer.addEventListener('mouseup', () => {
+      isMouseDown = false;
+    });
 
-  // Touch events for mobile
-  scrollContainer.addEventListener('touchstart', (e) => {
-    isMouseDown = true;
-    startX = e.touches[0].pageX - scrollContainer.offsetLeft;
-    scrollLeft = scrollContainer.scrollLeft;
-  });
+    scrollContainer.addEventListener('mousemove', (e) => {
+      if (!isMouseDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2; // Adjust speed of scroll
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
 
-  scrollContainer.addEventListener('touchend', () => {
-    isMouseDown = false;
-  });
+    // Touch events for mobile
+    scrollContainer.addEventListener('touchstart', (e) => {
+      isMouseDown = true;
+      startX = e.touches[0].pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
 
-  scrollContainer.addEventListener('touchmove', (e) => {
-    if (!isMouseDown) return;
-    e.preventDefault();
-    const x = e.touches[0].pageX - scrollContainer.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust speed of scroll
-    scrollContainer.scrollLeft = scrollLeft - walk;
-  });
+    scrollContainer.addEventListener('touchend', () => {
+      isMouseDown = false;
+    });
 
-  // FAQ toggle visibility
-  function toggleFAQ(faqId) {
-    const faq = document.getElementById(faqId);
-    faq.classList.toggle('hidden');
-  }
+    scrollContainer.addEventListener('touchmove', (e) => {
+      if (!isMouseDown) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2; // Adjust speed of scroll
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
 
-// Count-up Animation untuk angka
-document.addEventListener('DOMContentLoaded', function () {
-    const animatedNumbers = document.querySelectorAll('.count-up');
-    
-    animatedNumbers.forEach((element) => {
+    // FAQ toggle visibility
+    function toggleFAQ(faqId) {
+      const faq = document.getElementById(faqId);
+      faq.classList.toggle('hidden');
+    }
+
+    // Count-up Animation untuk angka
+    document.addEventListener('DOMContentLoaded', function () {
+      const animatedNumbers = document.querySelectorAll('.count-up');
+
+      animatedNumbers.forEach((element) => {
         const start = parseInt(element.getAttribute('data-start'));
         const end = parseInt(element.getAttribute('data-end'));
         const duration = parseInt(element.getAttribute('data-duration'));
@@ -694,97 +706,117 @@ document.addEventListener('DOMContentLoaded', function () {
         const stepTime = Math.abs(Math.floor(duration / (end - start)));
 
         function updateNumber() {
-            current++;
-            element.textContent = current;
-            if (current < end) {
-                setTimeout(updateNumber, stepTime);
-            }
+          current++;
+          element.textContent = current;
+          if (current < end) {
+            setTimeout(updateNumber, stepTime);
+          }
         }
         updateNumber();
+      });
     });
-});
 
-function tukarKode() {
-    const inputKode = document.getElementById("kode-input").value.trim().toUpperCase();
-
-    let fileGambar = "";
-    if (inputKode === "WIWOKDETOK") {
-      fileGambar = "Voucher StarmoonLabs 1.png";
-    } else if (inputKode === "STARMOONLABS50") {
-      fileGambar = "Voucher StarmoonLabs 2.png";
+    function checkInputKode() {
+      const inputVal = document.getElementById("kode-input").value.trim();
+      document.getElementById("btn-tukar").disabled = inputVal.length === 0;
     }
 
-    if (fileGambar) {
-      const link = document.createElement('a');
-      link.href = fileGambar;
-      link.download = fileGambar;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    function tukarKode() {
+      const inputKode = document.getElementById("kode-input").value.trim().toUpperCase();
 
-      // SweetAlert sukses
-      Swal.fire({
-        icon: 'success',
-        title: 'YEEAAY 😻',
-        text: 'Vocher Starmoon Labs sedang diunduh ^^',
-        confirmButtonColor: '#6366F1'
-      });
+      let fileGambar = "";
+      if (inputKode === "SAYA AKAN LAWAN") {
+        fileGambar = "Voucher StarmoonLabs 1.png";
+      } else if (inputKode === "STARMOONLABS") {
+        fileGambar = "Voucher StarmoonLabs 2.png";
+      }
 
-    } else {
-      // SweetAlert gagal
-      Swal.fire({
-        icon: 'error',
-        title: 'ALAMAK 🙀',
-        text: 'Kode yang Anda masukkan salah!',
-        confirmButtonColor: '#EF4444'
-      });
+      if (fileGambar) {
+        // Efek petasan (confetti)
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+
+        // SweetAlert sukses
+        Swal.fire({
+          icon: 'success',
+          title: 'YEEAAY 😻',
+          text: 'Vocher Starmoon Labs siap diunduh ^^',
+          confirmButtonColor: '#6366F1'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Proses unduh file
+            const link = document.createElement('a');
+            link.href = fileGambar;
+            link.download = fileGambar;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Kosongkan input dan disable tombol setelah sukses
+            document.getElementById("kode-input").value = "";
+            document.getElementById("btn-tukar").disabled = true;
+          }
+        });
+
+      } else {
+        // SweetAlert gagal
+        Swal.fire({
+          icon: 'error',
+          title: 'ALAMAK 🙀',
+          text: 'Kode yang Anda masukkan salah!',
+          confirmButtonColor: '#EF4444'
+        });
+      }
     }
-  }
 
-  // Fungsi animasi count up
-function animateCount(id, start, end, duration, suffix = '') {
-  let range = end - start;
-  let current = start;
-  let increment = end > start ? 1 : -1;
-  let stepTime = Math.abs(Math.floor(duration / range));
-  let obj = document.getElementById(id);
-  let timer = setInterval(() => {
-    current += increment;
-    obj.textContent = current + suffix;
-    if (current == end) {
-      clearInterval(timer);
+    // Fungsi animasi count up
+    function animateCount(id, start, end, duration, suffix = '') {
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let obj = document.getElementById(id);
+      let timer = setInterval(() => {
+        current += increment;
+        obj.textContent = current + suffix;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
     }
-  }, stepTime);
-}
 
-// Animasi bar progress
-function animateBar(id, targetWidth, duration) {
-  const bar = document.getElementById(id);
-  let width = 0;
-  let increment = targetWidth / (duration / 10);
-  let interval = setInterval(() => {
-    width += increment;
-    if (width >= targetWidth) {
-      width = targetWidth;
-      clearInterval(interval);
+    // Animasi bar progress
+    function animateBar(id, targetWidth, duration) {
+      const bar = document.getElementById(id);
+      let width = 0;
+      let increment = targetWidth / (duration / 10);
+      let interval = setInterval(() => {
+        width += increment;
+        if (width >= targetWidth) {
+          width = targetWidth;
+          clearInterval(interval);
+        }
+        bar.style.width = width + '%';
+      }, 10);
     }
-    bar.style.width = width + '%';
-  }, 10);
-}
 
-// Saat halaman selesai dimuat
-window.onload = () => {
-  animateCount('count1', 0, 10, 1500, '+');
-  animateCount('count2', 0, 2, 1500);
-  animateBar('bar1', 90, 1500);  // 90% untuk 10+
-  animateBar('bar2', 20, 1500);  // 20% untuk 2
+    // Saat halaman selesai dimuat
+    window.onload = () => {
+      animateCount('count1', 0, 10, 1500, '+');
+      animateCount('count2', 0, 2, 1500);
+      animateBar('bar1', 80, 1500);  // 90% untuk 10+
+      animateBar('bar2', 50, 1500);  // 20% untuk 2
 
-  animateBar('bar3', 45, 1500);  // 45% untuk KP 5+
-  animateBar('bar4', 27, 1500);  // 27% untuk LA 3+
-  animateBar('bar5', 18, 1500);  // 18% untuk TA 2+
-};
+      animateBar('bar3', 80, 1500);  // 45% untuk KP 5+
+      animateBar('bar4', 80, 1500);  // 27% untuk LA 5+
+      animateBar('bar5', 50, 1500);  // 18% untuk TA 2+
+    };
 
-</script>
+  </script>
 
 </body>
+
 </html>
