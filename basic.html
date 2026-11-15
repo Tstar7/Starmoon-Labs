@@ -1,223 +1,1152 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GlowFashion - Tampil Anggun Setiap Hari</title>
+  <title>GlowFashion | Tampil Anggun & Memesona Setiap Hari</title>
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <!-- Google Fonts: Playfair Display (Luxury/Fashion) & Plus Jakarta Sans (Clean/Modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            glow: {
+              50: '#FFF5F7',
+              100: '#FFE4E9',
+              200: '#FECDD8',
+              300: '#FDA4BA',
+              400: '#FB7197',
+              500: '#F43F74',
+              600: '#E11D5C',
+              700: '#BE1249',
+              800: '#9F1240',
+              900: '#84133A',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- SweetAlert2 for Interactive Shopping Experience -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
   <style>
-    .fade-in {
-      animation: fadeIn 1.5s ease-in-out;
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FFF9FA;
+      color: #372830;
+      overflow-x: hidden;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .font-fashion {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Soft Glow Shadows */
+    .glow-shadow {
+      box-shadow: 0 10px 30px -5px rgba(244, 63, 116, 0.12);
+    }
+    
+    .glow-shadow-lg {
+      box-shadow: 0 20px 40px -10px rgba(244, 63, 116, 0.2);
+    }
+
+    /* Shimmer Effect */
+    @keyframes subtleGlow {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    .animate-glow-pulse {
+      animation: subtleGlow 4s ease-in-out infinite;
     }
   </style>
 </head>
 
-<body class="bg-pink-50 text-gray-800">
-  <!-- Header -->
-  <header class="bg-pink-200 p-6 shadow-md">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-pink-900">GlowFashion</h1>
-      <!-- Hamburger Menu -->
-      <div class="block lg:hidden">
-        <button id="burger" class="text-pink-900 focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+<body class="bg-[#FFF9FA] text-[#372830] antialiased">
+
+  <!-- Demo Top Bar Notice (Linking back to Starmoon Labs) -->
+  <div class="bg-gradient-to-r from-[#BE1249] via-[#E11D5C] to-[#BE1249] text-white text-xs py-2 px-4 text-center font-medium shadow-sm relative z-50">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
+      <div class="flex items-center space-x-2">
+        <span class="bg-white/20 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Demo Portfolio</span>
+        <span>Website E-Commerce Fashion dibuat oleh <strong>Starmoon Labs</strong></span>
       </div>
-      <!-- Nav for larger screens -->
-      <nav id="navbar" class="hidden lg:flex space-x-4 text-pink-800">
-        <a href="#produk" class="hover:underline">Produk</a>
-        <a href="#promo" class="hover:underline">Promo</a>
-        <a href="#galeri" class="hover:underline">Lookbook</a>
-        <a href="#testimoni" class="hover:underline">Testimoni</a>
-        <a href="#kontak" class="hover:underline">Kontak</a>
-      </nav>
+      <a href="index.html" class="inline-flex items-center space-x-1.5 underline hover:text-pink-100 transition">
+        <span>&larr; Kembali ke Website Starmoon Labs</span>
+      </a>
     </div>
-    <!-- Nav for smaller screens (Mobile view) -->
-    <nav id="mobile-navbar" class="lg:hidden hidden bg-pink-200 p-4 mt-4 space-y-4 text-pink-800">
-      <a href="#produk" class="hover:underline">Produk |</a>
-      <a href="#promo" class="hover:underline">Promo |</a>
-      <a href="#galeri" class="hover:underline">Lookbook |</a>
-      <a href="#testimoni" class="hover:underline">Testimoni |</a>
-      <a href="#kontak" class="hover:underline">Kontak</a>
-    </nav>
+  </div>
+
+  <!-- Main Navigation Header (Sticky Glassmorphism) -->
+  <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-pink-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-2.5 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#E11D5C] to-[#FDA4BA] flex items-center justify-center text-white shadow-md shadow-pink-300/50 group-hover:scale-105 transition-transform">
+          <i class="fas fa-gem text-lg"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-bold font-fashion tracking-wide bg-gradient-to-r from-[#9F1240] via-[#E11D5C] to-[#FDA4BA] bg-clip-text text-transparent">
+            GlowFashion
+          </span>
+          <span class="text-[9px] uppercase tracking-widest text-pink-500 font-semibold -mt-1">
+            Boutique &amp; Elegance
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-[#5A404C]">
+        <a href="#beranda" class="hover:text-[#E11D5C] transition-colors">Beranda</a>
+        <a href="#kategori" class="hover:text-[#E11D5C] transition-colors">Kategori</a>
+        <a href="#produk" class="hover:text-[#E11D5C] transition-colors">Koleksi Terbaru</a>
+        <a href="#promo" class="hover:text-[#E11D5C] transition-colors">Flash Sale</a>
+        <a href="#lookbook" class="hover:text-[#E11D5C] transition-colors">Lookbook</a>
+        <a href="#keunggulan" class="hover:text-[#E11D5C] transition-colors">Keunggulan</a>
+        <a href="#testimoni" class="hover:text-[#E11D5C] transition-colors">Ulasan</a>
+      </nav>
+
+      <!-- Action Icons (Search, Cart & WhatsApp CTA) -->
+      <div class="flex items-center space-x-4">
+        <!-- Search Button (Interactive) -->
+        <button onclick="searchProduct()" class="text-[#5A404C] hover:text-[#E11D5C] p-2 rounded-full hover:bg-pink-50 transition" title="Cari Busana">
+          <i class="fas fa-search text-base"></i>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button onclick="showWishlist()" class="text-[#5A404C] hover:text-[#E11D5C] p-2 rounded-full hover:bg-pink-50 transition relative" title="Wishlist">
+          <i class="far fa-heart text-base"></i>
+          <span id="wishlist-badge" class="hidden absolute top-1 right-1 w-2 h-2 bg-pink-500 rounded-full"></span>
+        </button>
+
+        <!-- Cart Button with Live Counter -->
+        <button onclick="openCartModal()" class="flex items-center space-x-1.5 bg-pink-50 hover:bg-pink-100 text-[#E11D5C] px-3.5 py-2 rounded-full font-semibold text-xs transition border border-pink-200">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="hidden sm:inline">Keranjang</span>
+          <span id="cart-count" class="bg-[#E11D5C] text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold">0</span>
+        </button>
+
+        <!-- Mobile Burger Menu Button -->
+        <div class="flex lg:hidden">
+          <button id="burger" class="text-[#5A404C] hover:text-[#E11D5C] focus:outline-none p-2 rounded-lg bg-pink-50">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-navbar" class="hidden lg:hidden bg-white/95 backdrop-blur-lg border-b border-pink-100 px-6 py-4 space-y-3">
+      <a href="#beranda" class="block py-2 text-[#5A404C] font-semibold hover:text-[#E11D5C] border-b border-pink-50">Beranda</a>
+      <a href="#kategori" class="block py-2 text-[#5A404C] font-semibold hover:text-[#E11D5C] border-b border-pink-50">Kategori</a>
+      <a href="#produk" class="block py-2 text-[#5A404C] font-semibold hover:text-[#E11D5C] border-b border-pink-50">Koleksi Terbaru</a>
+      <a href="#promo" class="block py-2 text-[#5A404C] font-semibold hover:text-[#E11D5C] border-b border-pink-50">Flash Sale Spesial</a>
+      <a href="#lookbook" class="block py-2 text-[#5A404C] font-semibold hover:text-[#E11D5C] border-b border-pink-50">Lookbook Inspirasi</a>
+      <a href="#keunggulan" class="block py-2 text-[#5A404C] font-semibold hover:text-[#E11D5C] border-b border-pink-50">Keunggulan</a>
+      <a href="#testimoni" class="block py-2 text-[#5A404C] font-semibold hover:text-[#E11D5C]">Ulasan Pembeli</a>
+      <a href="https://wa.me/6285762525951?text=Halo%20GlowFashion,%20saya%20tertarik%20dengan%20koleksi%20busana%20ini" target="_blank"
+        class="block w-full text-center bg-gradient-to-r from-[#E11D5C] to-[#FDA4BA] text-white py-2.5 rounded-full font-semibold shadow-md">
+        <i class="fab fa-whatsapp mr-1.5"></i> Hubungi Customer Service
+      </a>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="text-center py-20 bg-gradient-to-r from-pink-300 to-pink-100 fade-in">
-    <h2 class="text-4xl font-bold mb-4">Tampil Cantik Setiap Hari</h2>
-    <p class="mb-6 text-lg">Koleksi fashion wanita terkini & terfavorit 💕</p>
-    <a href="#produk" class="bg-pink-600 text-white py-3 px-6 rounded-full hover:bg-pink-700 transition">Belanja Sekarang</a>
+  <!-- Hero Section (Editorial Luxury Fashion) -->
+  <section id="beranda" class="relative bg-gradient-to-br from-[#FFF0F4] via-[#FDF2F7] to-[#FCE7F3] pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
+    <!-- Ambient Blur Background -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-pink-200/50 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-24 w-96 h-96 bg-rose-200/40 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-7 text-left space-y-6" data-aos="fade-right">
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-pink-200 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[#E11D5C] animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#9F1240]">Koleksi Terbaru 2026 &bull; Glow Edition</span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-fashion text-[#541228] leading-[1.15]">
+            Pancarkan Pesona <br class="hidden sm:inline">
+            <span class="italic text-[#E11D5C]">Anggun &amp; Cantik</span> Setiap Hari
+          </h1>
+
+          <!-- Description -->
+          <p class="text-base sm:text-lg text-[#6E4B59] max-w-xl leading-relaxed">
+            Hadirkan sentuhan elegan dalam setiap langkahmu. Didesain dengan material premium yang lembut, nyaman, dan potongan sempurna untuk menonjolkan kecantikan alaminya dirimu.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#produk" class="inline-flex items-center space-x-2 bg-gradient-to-r from-[#E11D5C] to-[#FB7197] hover:from-[#BE1249] hover:to-[#E11D5C] text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-pink-300/40 hover:shadow-pink-300/60 hover:scale-105 transition-all">
+              <span>Belanja Sekarang</span>
+              <i class="fas fa-arrow-right text-xs ml-1"></i>
+            </a>
+
+            <a href="#lookbook" class="inline-flex items-center space-x-2 bg-white hover:bg-pink-50 text-[#9F1240] font-semibold py-3.5 px-6 rounded-full border border-pink-200 shadow-sm hover:scale-105 transition-all">
+              <i class="far fa-images text-pink-500"></i>
+              <span>Lihat Lookbook</span>
+            </a>
+          </div>
+
+          <!-- Stats/Highlights -->
+          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-pink-200/80 max-w-md">
+            <div>
+              <p class="text-2xl font-extrabold text-[#9F1240]">1.5k+</p>
+              <p class="text-xs text-gray-500">Koleksi Terjual</p>
+            </div>
+            <div>
+              <p class="text-2xl font-extrabold text-[#9F1240]">99.8%</p>
+              <p class="text-xs text-gray-500">Klien Puas</p>
+            </div>
+            <div>
+              <p class="text-2xl font-extrabold text-[#9F1240]">100%</p>
+              <p class="text-xs text-gray-500">Kain Premium</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Visual Feature -->
+        <div class="lg:col-span-5 relative" data-aos="fade-left">
+          <div class="relative max-w-md mx-auto">
+            
+            <!-- Soft Glow Circle Behind Image -->
+            <div class="absolute -inset-4 bg-gradient-to-tr from-[#FDA4BA] to-[#FCE7F3] rounded-[40px] blur-2xl opacity-70 animate-glow-pulse"></div>
+
+            <!-- Main Featured Image -->
+            <div class="relative rounded-[32px] overflow-hidden border-4 border-white shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" 
+                alt="GlowFashion Elegant Woman" 
+                class="w-full h-[460px] object-cover object-center transform hover:scale-105 transition-transform duration-700">
+              
+              <!-- Subtle Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+
+              <!-- Overlay Card on Image -->
+              <div class="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-pink-100 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold text-pink-500 uppercase tracking-wider">Paling Dicari</span>
+                  <h4 class="text-sm font-bold text-[#541228]">Aura Silk Blouse Edition</h4>
+                  <p class="text-xs font-semibold text-[#E11D5C]">Rp189.000 <span class="text-[10px] text-gray-400 line-through">Rp260.000</span></p>
+                </div>
+                <button onclick="addToCart('Aura Silk Blouse Edition', 189000, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=300&q=80')" 
+                  class="bg-[#E11D5C] hover:bg-[#BE1249] text-white p-3 rounded-xl shadow-md transition hover:scale-105" title="Beli Langsung">
+                  <i class="fas fa-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Floating Mini Badge -->
+            <div class="absolute -top-4 -left-4 bg-white/95 backdrop-blur-md text-[#541228] py-2 px-4 rounded-2xl shadow-xl border border-pink-200 flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 text-sm">
+                <i class="fas fa-sparkles"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-500 font-medium">Bahan Sutra Katun</p>
+                <p class="text-xs font-bold text-[#E11D5C]">Super Nyaman &amp; Sejuk</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
-<!-- Produk Section -->
-<section id="produk" class="py-16 max-w-6xl mx-auto px-4">
-  <h3 class="text-3xl font-semibold text-center mb-10">Koleksi Terbaru</h3>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-    <!-- Produk Card 1 -->
-    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-      <img src="" alt="Blouse Elegant" class="w-full h-64 object-cover">
-      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
-      <div class="p-4">
-        <h4 class="text-lg font-semibold">Blouse Elegan</h4>
-        <p class="text-pink-700">Rp150.000</p>
-      </div>
+  <!-- Kategori Pilihan -->
+  <section id="kategori" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-aos="fade-up">
+    <div class="text-center mb-10">
+      <span class="text-xs font-bold tracking-widest text-[#E11D5C] uppercase bg-pink-50 px-3.5 py-1.5 rounded-full border border-pink-100">
+        PILIHAN KATEGORI
+      </span>
+      <h2 class="text-3xl font-bold font-fashion text-[#541228] mt-3">Temukan Gaya Favoritmu</h2>
+      <div class="w-12 h-1 bg-[#E11D5C] mx-auto rounded-full mt-3"></div>
     </div>
-    <!-- Produk Card 2 -->
-    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-      <img src="https://images.unsplash.com/photo-1613135727198-3be7cf983f98?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Dress Musim Semi" class="w-full h-64 object-cover">
-      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
-      <div class="p-4">
-        <h4 class="text-lg font-semibold">Dress Musim Semi</h4>
-        <p class="text-pink-700">Rp180.000</p>
-      </div>
-    </div>
-    <!-- Produk Card 3 -->
-    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-      <img src="https://images.unsplash.com/photo-1624014448888-d69ea6e8e5a0?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Kaos Casual" class="w-full h-64 object-cover">
-      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
-      <div class="p-4">
-        <h4 class="text-lg font-semibold">Kaos Casual</h4>
-        <p class="text-pink-700">Rp90.000</p>
-      </div>
-    </div>
-    <!-- Produk Card 4 -->
-    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-      <img src="https://images.unsplash.com/photo-1625744639939-993ee620810d?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Jaket Denim" class="w-full h-64 object-cover">
-      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
-      <div class="p-4">
-        <h4 class="text-lg font-semibold">Jaket Denim</h4>
-        <p class="text-pink-700">Rp250.000</p>
-      </div>
-    </div>
-    <!-- Produk Card 5 -->
-    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-      <img src="https://images.unsplash.com/photo-1635441432400-303e8b26c660?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Rok A-Line" class="w-full h-64 object-cover">
-      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
-      <div class="p-4">
-        <h4 class="text-lg font-semibold">Rok A-Line</h4>
-        <p class="text-pink-700">Rp110.000</p>
-      </div>
-    </div>
-    <!-- Produk Card 6 -->
-    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-      <img src="https://images.unsplash.com/photo-1599191188785-56738be708f4?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Legging Stylish" class="w-full h-64 object-cover">
-      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
-      <div class="p-4">
-        <h4 class="text-lg font-semibold">Legging Stylish</h4>
-        <p class="text-pink-700">Rp85.000</p>
-      </div>
-    </div>
-  </div>
-</section>
 
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      
+      <!-- Category 1 -->
+      <div onclick="filterCategory('dress')" class="cursor-pointer group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=500&q=80" alt="Dress Anggun" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-4 text-white">
+          <h3 class="text-lg font-bold font-fashion">Dress &amp; Gaun</h3>
+          <p class="text-xs text-pink-200">32 Koleksi Tersedia</p>
+        </div>
+      </div>
 
-  <!-- Promo Section -->
-  <section id="promo" class="bg-pink-100 py-12 text-center">
-    <h3 class="text-2xl font-bold mb-4">Flash Sale Spesial Minggu Ini</h3>
-    <p class="mb-2 text-pink-800">Diskon hingga 40% untuk item tertentu</p>
-    <div id="countdown" class="text-3xl font-mono text-pink-700">00:00:00</div>
+      <!-- Category 2 -->
+      <div onclick="filterCategory('blouse')" class="cursor-pointer group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=500&q=80" alt="Blouse Elegan" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-4 text-white">
+          <h3 class="text-lg font-bold font-fashion">Blouse &amp; Tops</h3>
+          <p class="text-xs text-pink-200">28 Koleksi Tersedia</p>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div onclick="filterCategory('outer')" class="cursor-pointer group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=500&q=80" alt="Outerwear" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-4 text-white">
+          <h3 class="text-lg font-bold font-fashion">Outer &amp; Blazer</h3>
+          <p class="text-xs text-pink-200">19 Koleksi Tersedia</p>
+        </div>
+      </div>
+
+      <!-- Category 4 -->
+      <div onclick="filterCategory('bawahan')" class="cursor-pointer group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=500&q=80" alt="Rok & Celana" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-4 text-white">
+          <h3 class="text-lg font-bold font-fashion">Rok &amp; Celana</h3>
+          <p class="text-xs text-pink-200">24 Koleksi Tersedia</p>
+        </div>
+      </div>
+
+    </div>
   </section>
 
-<!-- Lookbook Section -->
-<section id="galeri" class="py-16 max-w-6xl mx-auto px-4">
-  <h3 class="text-3xl font-semibold text-center mb-10">Inspirasi Lookbook 💃</h3>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-    <!-- Gambar 1 -->
-    <div class="relative">
-      <img src="https://source.unsplash.com/400x400/?fashion,summer" alt="Lookbook 1" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
-      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Summer Vibes</div>
-    </div>
-    <!-- Gambar 2 -->
-    <div class="relative">
-      <img src="https://source.unsplash.com/400x400/?fashion,night" alt="Lookbook 2" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
-      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Night Out Chic</div>
-    </div>
-    <!-- Gambar 3 -->
-    <div class="relative">
-      <img src="https://source.unsplash.com/400x400/?fashion,formal" alt="Lookbook 3" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
-      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Formal Elegance</div>
-    </div>
-    <!-- Gambar 4 -->
-    <div class="relative">
-      <img src="https://source.unsplash.com/400x400/?fashion,street" alt="Lookbook 4" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
-      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Street Style</div>
-    </div>
-  </div>
-</section>
+  <!-- Produk Section -->
+  <section id="produk" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FFF9FA] via-[#FFF0F4] to-[#FFF9FA]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-10" data-aos="fade-up">
+        <span class="text-xs font-bold tracking-widest text-[#E11D5C] uppercase bg-pink-50 px-3.5 py-1.5 rounded-full border border-pink-100">
+          KATALOG BUSANA
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold font-fashion text-[#541228] mt-3">Koleksi Terpopuler</h2>
+        <p class="text-sm text-gray-500 mt-2 max-w-md mx-auto">Sentuhan desain anggun dengan kualitas jahitan butik profesional.</p>
+        <div class="w-12 h-1 bg-[#E11D5C] mx-auto rounded-full mt-3"></div>
+      </div>
 
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center items-center gap-2.5 mb-12">
+        <button onclick="filterCategory('all')" class="cat-btn active px-5 py-2 rounded-full text-xs font-bold transition-all bg-[#E11D5C] text-white shadow-md">Semua Koleksi</button>
+        <button onclick="filterCategory('dress')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold transition-all bg-white hover:bg-pink-50 text-[#5A404C] border border-pink-200">Dress</button>
+        <button onclick="filterCategory('blouse')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold transition-all bg-white hover:bg-pink-50 text-[#5A404C] border border-pink-200">Blouse</button>
+        <button onclick="filterCategory('outer')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold transition-all bg-white hover:bg-pink-50 text-[#5A404C] border border-pink-200">Outer &amp; Jaket</button>
+        <button onclick="filterCategory('bawahan')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold transition-all bg-white hover:bg-pink-50 text-[#5A404C] border border-pink-200">Bawahan</button>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+        
+        <!-- Product 1 -->
+        <div class="prod-card dress bg-white rounded-3xl overflow-hidden shadow-md hover:glow-shadow-lg transition-all duration-300 border border-pink-100 flex flex-col justify-between group" data-aos="fade-up">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80" alt="Dress Floral Musim Semi" class="w-full h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-[#E11D5C] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Best Seller</span>
+            <button onclick="toggleWishlist(this, 'Dress Floral Musim Semi')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-[#5A404C] hover:text-[#E11D5C] flex items-center justify-center transition shadow-sm">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="text-gray-400 ml-1 text-[11px] font-medium">(4.9 &bull; 128 terjual)</span>
+            </div>
+            <h3 class="text-lg font-bold font-fashion text-[#541228] mb-1">Dress Floral Musim Semi</h3>
+            <p class="text-xs text-gray-500 mb-4">Gaun bermotif bunga lembut dengan aksen pita di pinggang.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-pink-50">
+              <div>
+                <span class="text-xs text-gray-400 line-through">Rp260.000</span>
+                <p class="text-xl font-bold text-[#E11D5C]">Rp180.000</p>
+              </div>
+              <button onclick="addToCart('Dress Floral Musim Semi', 180000, 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=300&q=80')" 
+                class="bg-pink-50 hover:bg-[#E11D5C] text-[#E11D5C] hover:text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm">
+                + Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="prod-card blouse bg-white rounded-3xl overflow-hidden shadow-md hover:glow-shadow-lg transition-all duration-300 border border-pink-100 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=600&q=80" alt="Blouse Elegan Silk" class="w-full h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Baru Rilis</span>
+            <button onclick="toggleWishlist(this, 'Blouse Elegan Silk')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-[#5A404C] hover:text-[#E11D5C] flex items-center justify-center transition shadow-sm">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="text-gray-400 ml-1 text-[11px] font-medium">(4.8 &bull; 95 terjual)</span>
+            </div>
+            <h3 class="text-lg font-bold font-fashion text-[#541228] mb-1">Blouse Elegan Silk</h3>
+            <p class="text-xs text-gray-500 mb-4">Blouse satin sutra adem dengan kerah vintage anggun.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-pink-50">
+              <div>
+                <span class="text-xs text-gray-400 line-through">Rp210.000</span>
+                <p class="text-xl font-bold text-[#E11D5C]">Rp150.000</p>
+              </div>
+              <button onclick="addToCart('Blouse Elegan Silk', 150000, 'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=300&q=80')" 
+                class="bg-pink-50 hover:bg-[#E11D5C] text-[#E11D5C] hover:text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm">
+                + Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="prod-card outer bg-white rounded-3xl overflow-hidden shadow-md hover:glow-shadow-lg transition-all duration-300 border border-pink-100 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Blazer Chic Parisienne" class="w-full h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-purple-700 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Eksklusif</span>
+            <button onclick="toggleWishlist(this, 'Blazer Chic Parisienne')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-[#5A404C] hover:text-[#E11D5C] flex items-center justify-center transition shadow-sm">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="text-gray-400 ml-1 text-[11px] font-medium">(5.0 &bull; 74 terjual)</span>
+            </div>
+            <h3 class="text-lg font-bold font-fashion text-[#541228] mb-1">Blazer Chic Parisienne</h3>
+            <p class="text-xs text-gray-500 mb-4">Outer formal &amp; semi-formal berpotongan ramping dan modern.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-pink-50">
+              <div>
+                <span class="text-xs text-gray-400 line-through">Rp320.000</span>
+                <p class="text-xl font-bold text-[#E11D5C]">Rp240.000</p>
+              </div>
+              <button onclick="addToCart('Blazer Chic Parisienne', 240000, 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=300&q=80')" 
+                class="bg-pink-50 hover:bg-[#E11D5C] text-[#E11D5C] hover:text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm">
+                + Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="prod-card blouse bg-white rounded-3xl overflow-hidden shadow-md hover:glow-shadow-lg transition-all duration-300 border border-pink-100 flex flex-col justify-between group" data-aos="fade-up">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1624014448888-d69ea6e8e5a0?auto=format&fit=crop&w=600&q=80" alt="Kaos Casual French Chic" class="w-full h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-amber-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Diskon 30%</span>
+            <button onclick="toggleWishlist(this, 'Kaos Casual French Chic')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-[#5A404C] hover:text-[#E11D5C] flex items-center justify-center transition shadow-sm">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="text-gray-400 ml-1 text-[11px] font-medium">(4.7 &bull; 210 terjual)</span>
+            </div>
+            <h3 class="text-lg font-bold font-fashion text-[#541228] mb-1">Kaos Casual French Chic</h3>
+            <p class="text-xs text-gray-500 mb-4">Katun combed 30s premium lembut, breathable &amp; nyaman.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-pink-50">
+              <div>
+                <span class="text-xs text-gray-400 line-through">Rp130.000</span>
+                <p class="text-xl font-bold text-[#E11D5C]">Rp90.000</p>
+              </div>
+              <button onclick="addToCart('Kaos Casual French Chic', 90000, 'https://images.unsplash.com/photo-1624014448888-d69ea6e8e5a0?auto=format&fit=crop&w=300&q=80')" 
+                class="bg-pink-50 hover:bg-[#E11D5C] text-[#E11D5C] hover:text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm">
+                + Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="prod-card outer bg-white rounded-3xl overflow-hidden shadow-md hover:glow-shadow-lg transition-all duration-300 border border-pink-100 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1625744639939-993ee620810d?auto=format&fit=crop&w=600&q=80" alt="Jaket Denim Glow Edition" class="w-full h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-sky-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Favorite</span>
+            <button onclick="toggleWishlist(this, 'Jaket Denim Glow Edition')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-[#5A404C] hover:text-[#E11D5C] flex items-center justify-center transition shadow-sm">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="text-gray-400 ml-1 text-[11px] font-medium">(4.9 &bull; 87 terjual)</span>
+            </div>
+            <h3 class="text-lg font-bold font-fashion text-[#541228] mb-1">Jaket Denim Glow Edition</h3>
+            <p class="text-xs text-gray-500 mb-4">Denim vintage premium dengan aksen jahitan estetik kekinian.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-pink-50">
+              <div>
+                <span class="text-xs text-gray-400 line-through">Rp310.000</span>
+                <p class="text-xl font-bold text-[#E11D5C]">Rp250.000</p>
+              </div>
+              <button onclick="addToCart('Jaket Denim Glow Edition', 250000, 'https://images.unsplash.com/photo-1625744639939-993ee620810d?auto=format&fit=crop&w=300&q=80')" 
+                class="bg-pink-50 hover:bg-[#E11D5C] text-[#E11D5C] hover:text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm">
+                + Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="prod-card bawahan bg-white rounded-3xl overflow-hidden shadow-md hover:glow-shadow-lg transition-all duration-300 border border-pink-100 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80" alt="Rok A-Line Silk Fluffy" class="w-full h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-rose-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Trending</span>
+            <button onclick="toggleWishlist(this, 'Rok A-Line Silk Fluffy')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-[#5A404C] hover:text-[#E11D5C] flex items-center justify-center transition shadow-sm">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="text-gray-400 ml-1 text-[11px] font-medium">(4.9 &bull; 140 terjual)</span>
+            </div>
+            <h3 class="text-lg font-bold font-fashion text-[#541228] mb-1">Rok A-Line Silk Fluffy</h3>
+            <p class="text-xs text-gray-500 mb-4">Potongan A-Line yang anggun membuat siluet tubuh kian jenjang.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-pink-50">
+              <div>
+                <span class="text-xs text-gray-400 line-through">Rp160.000</span>
+                <p class="text-xl font-bold text-[#E11D5C]">Rp110.000</p>
+              </div>
+              <button onclick="addToCart('Rok A-Line Silk Fluffy', 110000, 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=300&q=80')" 
+                class="bg-pink-50 hover:bg-[#E11D5C] text-[#E11D5C] hover:text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all shadow-sm">
+                + Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Flash Sale Promo Section -->
+  <section id="promo" class="py-16 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-r from-[#9F1240] via-[#BE1249] to-[#E11D5C] text-white overflow-hidden shadow-xl" data-aos="zoom-in">
+    <!-- Ambient Decor -->
+    <div class="absolute -top-12 -left-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
+    <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-pink-300/20 rounded-full blur-2xl"></div>
+
+    <div class="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+      
+      <span class="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-bold py-1 px-4 rounded-full border border-white/30 uppercase tracking-widest">
+        ⚡ FLASH SALE SPESIAL MINGGU INI
+      </span>
+
+      <h2 class="text-3xl sm:text-5xl font-bold font-fashion tracking-wide">
+        Diskon Hingga 40% &bull; Waktu Terbatas!
+      </h2>
+
+      <p class="text-pink-100 text-sm sm:text-base max-w-xl mx-auto">
+        Dapatkan potongan harga eksklusif untuk koleksi gaun dan atasan pilihan. Jangan sampai kehabisan ukuranmu!
+      </p>
+
+      <!-- Live Countdown Timer -->
+      <div class="flex justify-center items-center space-x-3 sm:space-x-5 pt-2">
+        <div class="bg-white/15 backdrop-blur-md border border-white/30 rounded-2xl p-3 sm:p-4 w-18 sm:w-24 text-center">
+          <span id="cd-hours" class="block text-2xl sm:text-4xl font-extrabold font-mono">02</span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-wider text-pink-200 font-semibold">Jam</span>
+        </div>
+        <span class="text-2xl font-bold">:</span>
+        <div class="bg-white/15 backdrop-blur-md border border-white/30 rounded-2xl p-3 sm:p-4 w-18 sm:w-24 text-center">
+          <span id="cd-minutes" class="block text-2xl sm:text-4xl font-extrabold font-mono">45</span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-wider text-pink-200 font-semibold">Menit</span>
+        </div>
+        <span class="text-2xl font-bold">:</span>
+        <div class="bg-white/15 backdrop-blur-md border border-white/30 rounded-2xl p-3 sm:p-4 w-18 sm:w-24 text-center">
+          <span id="cd-seconds" class="block text-2xl sm:text-4xl font-extrabold font-mono">18</span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-wider text-pink-200 font-semibold">Detik</span>
+        </div>
+      </div>
+
+      <!-- Voucher Code Banner -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div class="bg-white text-[#9F1240] font-mono text-sm font-bold py-2.5 px-6 rounded-full shadow-md flex items-center space-x-2">
+          <span>KODE: <strong>GLOWINGCANTIK</strong></span>
+          <button onclick="copyVoucher('GLOWINGCANTIK')" class="text-pink-600 hover:text-pink-800 ml-2" title="Salin Kode">
+            <i class="far fa-copy"></i>
+          </button>
+        </div>
+        <a href="#produk" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold py-2.5 px-8 rounded-full shadow-md hover:scale-105 transition text-sm">
+          Klaim Promo Sekarang
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lookbook Section (Inspirasi Gaya Anggun) -->
+  <section id="lookbook" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+    <div class="text-center mb-12">
+      <span class="text-xs font-bold tracking-widest text-[#E11D5C] uppercase bg-pink-50 px-3.5 py-1.5 rounded-full border border-pink-100">
+        INSPIRASI OUTFIT
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold font-fashion text-[#541228] mt-3">Glow Lookbook 💃</h2>
+      <p class="text-sm text-gray-500 mt-2 max-w-md mx-auto">Inspirasi padu-padan busana untuk pesta, hangout, dan aktivitas kantormu.</p>
+      <div class="w-12 h-1 bg-[#E11D5C] mx-auto rounded-full mt-3"></div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      
+      <!-- Look 1 -->
+      <div class="relative group rounded-3xl overflow-hidden shadow-md cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80" alt="Summer Vibes Look" class="w-full h-80 object-cover object-top group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white opacity-95 group-hover:opacity-100 transition">
+          <span class="text-[10px] uppercase tracking-widest text-pink-300 font-bold">Casual Glam</span>
+          <h4 class="text-base font-bold font-fashion">Summer Glow</h4>
+          <p class="text-xs text-gray-300 mt-1">Dress kuning ceria &amp; topi pantai</p>
+        </div>
+      </div>
+
+      <!-- Look 2 -->
+      <div class="relative group rounded-3xl overflow-hidden shadow-md cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Night Out Chic" class="w-full h-80 object-cover object-top group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white opacity-95 group-hover:opacity-100 transition">
+          <span class="text-[10px] uppercase tracking-widest text-pink-300 font-bold">Party Look</span>
+          <h4 class="text-base font-bold font-fashion">Night Out Chic</h4>
+          <p class="text-xs text-gray-300 mt-1">Blazer hitam tegas &amp; lipstik bold</p>
+        </div>
+      </div>
+
+      <!-- Look 3 -->
+      <div class="relative group rounded-3xl overflow-hidden shadow-md cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80" alt="Formal Elegance" class="w-full h-80 object-cover object-top group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white opacity-95 group-hover:opacity-100 transition">
+          <span class="text-[10px] uppercase tracking-widest text-pink-300 font-bold">Office Lady</span>
+          <h4 class="text-base font-bold font-fashion">Formal Elegance</h4>
+          <p class="text-xs text-gray-300 mt-1">Gaun midi profesional &amp; modis</p>
+        </div>
+      </div>
+
+      <!-- Look 4 -->
+      <div class="relative group rounded-3xl overflow-hidden shadow-md cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Street Style" class="w-full h-80 object-cover object-top group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white opacity-95 group-hover:opacity-100 transition">
+          <span class="text-[10px] uppercase tracking-widest text-pink-300 font-bold">Trendsetter</span>
+          <h4 class="text-base font-bold font-fashion">Street Minimalist</h4>
+          <p class="text-xs text-gray-300 mt-1">Paduan denim &amp; crop top santai</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- Keunggulan Section -->
-  <section class="bg-pink-50 py-16">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-2xl font-semibold mb-8">Kenapa Harus GlowFashion?</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div>✅ Bahan Premium</div>
-        <div>🚚 Pengiriman Cepat</div>
-        <div>🎁 Kado Ready</div>
-        <div>💳 Bayar COD</div>
-        <div>🎨 Desain Menarik</div>
-        <div>👗 Kualitas Terjamin</div>
-        <div>🌟 Harga Terjangkau</div>
-        <div>💅 Fitting Room Virtual</div>
+  <section id="keunggulan" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FFF9FA] via-[#FFF0F4] to-[#FFF9FA]">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center mb-14" data-aos="fade-up">
+        <span class="text-xs font-bold tracking-widest text-[#E11D5C] uppercase bg-pink-50 px-3.5 py-1.5 rounded-full border border-pink-100">
+          KENAPA HARUS KAMI
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold font-fashion text-[#541228] mt-3">Keunggulan Berbelanja di GlowFashion</h2>
+        <div class="w-12 h-1 bg-[#E11D5C] mx-auto rounded-full mt-3"></div>
       </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Feature 1 -->
+        <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-sm hover:glow-shadow transition-all duration-300 text-center" data-aos="zoom-in">
+          <div class="w-14 h-14 rounded-2xl bg-pink-50 text-[#E11D5C] flex items-center justify-center text-2xl mx-auto mb-4">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h4 class="font-bold text-[#541228] text-base mb-1">Bahan Pilihan Premium</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">Kain lembut yang tidak panas, tidak menerawang, dan awet dicuci berkali-kali.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-sm hover:glow-shadow transition-all duration-300 text-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="w-14 h-14 rounded-2xl bg-pink-50 text-[#E11D5C] flex items-center justify-center text-2xl mx-auto mb-4">
+            <i class="fas fa-truck-fast"></i>
+          </div>
+          <h4 class="font-bold text-[#541228] text-base mb-1">Pengiriman Cepat</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">Packing rapi dan wangi, dikirim pada hari yang sama untuk kepuasanmu.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-sm hover:glow-shadow transition-all duration-300 text-center" data-aos="zoom-in" data-aos-delay="200">
+          <div class="w-14 h-14 rounded-2xl bg-pink-50 text-[#E11D5C] flex items-center justify-center text-2xl mx-auto mb-4">
+            <i class="fas fa-rotate-left"></i>
+          </div>
+          <h4 class="font-bold text-[#541228] text-base mb-1">Garansi Tukar Ukuran</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">Ukuran kurang pas? Kami siap membantu proses retur dan penukaran ukuran.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-white p-6 rounded-3xl border border-pink-100 shadow-sm hover:glow-shadow transition-all duration-300 text-center" data-aos="zoom-in" data-aos-delay="300">
+          <div class="w-14 h-14 rounded-2xl bg-pink-50 text-[#E11D5C] flex items-center justify-center text-2xl mx-auto mb-4">
+            <i class="fas fa-shield-heart"></i>
+          </div>
+          <h4 class="font-bold text-[#541228] text-base mb-1">Bayar Aman &amp; COD</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">Tersedia opsi transfer bank, e-wallet, hingga bayar di tempat (COD).</p>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
   <!-- Testimoni Section -->
-  <section id="testimoni" class="bg-pink-200 py-16 text-center">
-    <h3 class="text-2xl font-semibold mb-8">Apa Kata Pelanggan?</h3>
-    <div class="max-w-3xl mx-auto">
-      <p class="italic">"GlowFashion adalah tempat belanja favorit saya! Koleksinya keren dan pengirimannya super cepat!"</p>
-      <p class="mt-4 text-pink-700 font-semibold">- Dinda, Jakarta</p>
+  <section id="testimoni" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto" data-aos="fade-up">
+    <div class="text-center mb-12">
+      <span class="text-xs font-bold tracking-widest text-[#E11D5C] uppercase bg-pink-50 px-3.5 py-1.5 rounded-full border border-pink-100">
+        ULASAN REAL PELANGGAN
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold font-fashion text-[#541228] mt-3">Kata Mereka Tentang GlowFashion 💕</h2>
+      <div class="w-12 h-1 bg-[#E11D5C] mx-auto rounded-full mt-3"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Review 1 -->
+      <div class="bg-white p-7 rounded-3xl border border-pink-100 shadow-sm hover:glow-shadow transition flex flex-col justify-between">
+        <div>
+          <div class="text-amber-400 text-sm mb-3">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-sm text-[#5A404C] italic leading-relaxed">
+            "Dress floral-nya beneran secantik di foto! Bahannya jatuh, adem, dan pas banget di badan. Pasti langganan terus di GlowFashion!"
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-pink-50 flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-pink-100 text-[#E11D5C] font-bold flex items-center justify-center text-sm">
+            DA
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-[#541228]">Dinda Ayu</h5>
+            <span class="text-[10px] text-gray-400">Jakarta Selatan &bull; Pembeli Terverifikasi</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="bg-white p-7 rounded-3xl border border-pink-100 shadow-sm hover:glow-shadow transition flex flex-col justify-between">
+        <div>
+          <div class="text-amber-400 text-sm mb-3">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-sm text-[#5A404C] italic leading-relaxed">
+            "Blazer Parisienne-nya mewah banget. Dipakai buat meeting kantor langsung banjir pujian dari rekan kerja. Jahitannya rapi banget!"
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-pink-50 flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-pink-100 text-[#E11D5C] font-bold flex items-center justify-center text-sm">
+            SL
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-[#541228]">Sherly Lestari</h5>
+            <span class="text-[10px] text-gray-400">Surabaya &bull; Pembeli Terverifikasi</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="bg-white p-7 rounded-3xl border border-pink-100 shadow-sm hover:glow-shadow transition flex flex-col justify-between">
+        <div>
+          <div class="text-amber-400 text-sm mb-3">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-sm text-[#5A404C] italic leading-relaxed">
+            "Pengiriman super kilat, packaging-nya berasa unboxing kado mewah! Wangi dan dapat thank you card yang manis."
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-pink-50 flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-pink-100 text-[#E11D5C] font-bold flex items-center justify-center text-sm">
+            VR
+          </div>
+          <div>
+            <h5 class="text-xs font-bold text-[#541228]">Vania Rahma</h5>
+            <span class="text-[10px] text-gray-400">Bandung &bull; Pembeli Terverifikasi</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Footer Section -->
-  <footer id="kontak" class="bg-pink-300 py-6 text-center">
-    <p>Hubungi kami via WhatsApp:</p>
-    <a href="https://wa.me/6281234567890" class="text-white bg-green-500 px-4 py-2 rounded-full mt-2 inline-block hover:bg-green-600">💬 Chat Kami</a>
-    <p class="mt-4 text-pink-900">© 2025 GlowFashion. All rights reserved.</p>
+  <footer class="bg-[#3A1020] text-white pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#E11D5C] to-[#FDA4BA] flex items-center justify-center text-white">
+              <i class="fas fa-gem text-base"></i>
+            </div>
+            <span class="text-2xl font-bold font-fashion text-white">GlowFashion</span>
+          </div>
+          <p class="text-xs sm:text-sm text-pink-200/80 leading-relaxed max-w-sm">
+            GlowFashion adalah butik fashion online yang mengutamakan kenyamanan, kualitas bahan terbaik, dan model busana yang selalu anggun setiap saat.
+          </p>
+          <div class="flex space-x-3 pt-2">
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#E11D5C] flex items-center justify-center transition">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#E11D5C] flex items-center justify-center transition">
+              <i class="fab fa-tiktok text-sm"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#E11D5C] flex items-center justify-center transition">
+              <i class="fab fa-whatsapp text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-pink-300">Navigasi Butik</h4>
+          <ul class="text-xs sm:text-sm text-pink-200/80 space-y-2">
+            <li><a href="#beranda" class="hover:text-white transition">Beranda Utama</a></li>
+            <li><a href="#produk" class="hover:text-white transition">Katalog Produk</a></li>
+            <li><a href="#promo" class="hover:text-white transition">Promo Flash Sale</a></li>
+            <li><a href="#lookbook" class="hover:text-white transition">Lookbook Inspirasi</a></li>
+            <li><a href="#testimoni" class="hover:text-white transition">Ulasan Pembeli</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service -->
+        <div class="md:col-span-4 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-pink-300">Bantuan &amp; Konsultasi</h4>
+          <p class="text-xs text-pink-200/80">Butuh bantuan seputar ukuran atau pemesanan khusus?</p>
+          <a href="https://wa.me/6285762525951" target="_blank"
+            class="inline-flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-md hover:scale-105 transition">
+            <i class="fab fa-whatsapp text-sm"></i>
+            <span>Chat CS: +62 857-6252-5951</span>
+          </a>
+          <p class="text-[11px] text-pink-300/60 pt-2">Jam Operasional: Setiap Hari (08.00 - 21.00 WIB)</p>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Creator Credit -->
+      <div class="border-t border-pink-900/60 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-pink-200/60">
+        <p>&copy; 2026 GlowFashion Boutique. All rights reserved.</p>
+        <p class="mt-2 sm:mt-0 flex items-center space-x-1">
+          <span>Website demo portofolio profesional karya</span>
+          <a href="index.html" class="text-pink-300 hover:text-white underline font-bold">Starmoon Labs</a>
+        </p>
+      </div>
+
+    </div>
   </footer>
 
-  <!-- Floating Chat Button -->
-  <a href="https://wa.me/6281234567890" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600">💬</a>
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/6285762525951?text=Halo%20GlowFashion,%20saya%20mau%20tanya%20seputar%20produk" target="_blank"
+    class="fixed bottom-6 right-6 z-40 bg-gradient-to-tr from-emerald-500 to-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all group" title="Chat Customer Service">
+    <i class="fab fa-whatsapp text-2xl"></i>
+    <span class="absolute right-16 bg-white text-gray-800 text-xs font-semibold py-1.5 px-3 rounded-xl shadow-lg border border-pink-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+      Konsultasi Ukuran &amp; Order 💕
+    </span>
+  </a>
 
-  <!-- JavaScript for Burger Menu Toggle -->
+  <!-- Cart Modal (Simple & Beautiful) -->
+  <div id="cart-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-pink-100 flex flex-col max-h-[85vh]">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-pink-100">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-shopping-bag text-[#E11D5C]"></i>
+          <h3 class="font-bold text-lg text-[#541228]">Keranjang Belanja</h3>
+        </div>
+        <button onclick="closeCartModal()" class="text-gray-400 hover:text-gray-600 p-1">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Items List -->
+      <div id="cart-items" class="py-4 space-y-3 overflow-y-auto flex-1">
+        <p class="text-center text-sm text-gray-400 py-8">Keranjang belanja Anda masih kosong.</p>
+      </div>
+
+      <!-- Footer Checkout -->
+      <div class="pt-4 border-t border-pink-100 space-y-3">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-gray-500 font-medium">Total Tagihan:</span>
+          <span id="cart-total" class="font-extrabold text-lg text-[#E11D5C]">Rp0</span>
+        </div>
+        <button onclick="checkoutViaWhatsApp()" class="w-full bg-gradient-to-r from-[#E11D5C] to-[#FDA4BA] hover:from-[#BE1249] hover:to-[#E11D5C] text-white py-3 rounded-full font-bold text-sm shadow-md transition">
+          Lanjut Checkout via WhatsApp &rarr;
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript -->
   <script>
-    const burger = document.getElementById("burger");
-    const mobileNavbar = document.getElementById("mobile-navbar");
-
-    burger.addEventListener("click", () => {
-      mobileNavbar.classList.toggle("hidden");
+    // Initialize AOS
+    AOS.init({
+      once: true,
+      duration: 700,
+      easing: 'ease-out'
     });
 
-    // Countdown script
-    const countdown = document.getElementById("countdown");
-    let time = 3600; // 1 hour countdown
+    // Mobile Navbar Burger Toggle
+    const burger = document.getElementById("burger");
+    const mobileNavbar = document.getElementById("mobile-navbar");
+    if (burger && mobileNavbar) {
+      burger.addEventListener("click", () => {
+        mobileNavbar.classList.toggle("hidden");
+      });
+      mobileNavbar.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileNavbar.classList.add("hidden");
+        });
+      });
+    }
+
+    // Flash Sale Countdown Timer
+    let countdownHours = 2;
+    let countdownMinutes = 45;
+    let countdownSeconds = 18;
+
     setInterval(() => {
-      if (time > 0) {
-        time--;
-        let h = String(Math.floor(time / 3600)).padStart(2, '0');
-        let m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
-        let s = String(time % 60).padStart(2, '0');
-        countdown.innerText = `${h}:${m}:${s}`;
+      if (countdownSeconds > 0) {
+        countdownSeconds--;
+      } else {
+        if (countdownMinutes > 0) {
+          countdownMinutes--;
+          countdownSeconds = 59;
+        } else {
+          if (countdownHours > 0) {
+            countdownHours--;
+            countdownMinutes = 59;
+            countdownSeconds = 59;
+          }
+        }
       }
+
+      document.getElementById('cd-hours').innerText = String(countdownHours).padStart(2, '0');
+      document.getElementById('cd-minutes').innerText = String(countdownMinutes).padStart(2, '0');
+      document.getElementById('cd-seconds').innerText = String(countdownSeconds).padStart(2, '0');
     }, 1000);
+
+    // Copy Voucher Code
+    function copyVoucher(code) {
+      navigator.clipboard.writeText(code).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Kode Disalin! 🎉',
+          text: `Voucher "${code}" berhasil disalin. Gunakan saat checkout untuk diskon spesial!`,
+          confirmButtonColor: '#E11D5C',
+          timer: 2500
+        });
+      });
+    }
+
+    // Filter Products by Category
+    function filterCategory(cat) {
+      const cards = document.querySelectorAll('.prod-card');
+      const buttons = document.querySelectorAll('.cat-btn');
+
+      // Update button styling
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-[#E11D5C]', 'text-white', 'shadow-md');
+        btn.classList.add('bg-white', 'text-[#5A404C]', 'border', 'border-pink-200');
+      });
+
+      if (event && event.target && event.target.classList.contains('cat-btn')) {
+        event.target.classList.add('bg-[#E11D5C]', 'text-white', 'shadow-md');
+        event.target.classList.remove('bg-white', 'text-[#5A404C]', 'border-pink-200');
+      }
+
+      // Filter cards
+      cards.forEach(card => {
+        if (cat === 'all' || card.classList.contains(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Shopping Cart State & Management
+    let cart = [];
+
+    function addToCart(title, price, img) {
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ title, price, img, qty: 1 });
+      }
+      updateCartUI();
+
+      // SweetAlert Notification
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil Ditambahkan! 🛍️',
+        text: `"${title}" telah dimasukkan ke keranjang belanja Anda.`,
+        showConfirmButton: false,
+        timer: 1500,
+        toast: true,
+        position: 'top-end'
+      });
+    }
+
+    function updateCartUI() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cart-count').innerText = totalQty;
+
+      const itemsContainer = document.getElementById('cart-items');
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = '<p class="text-center text-sm text-gray-400 py-8">Keranjang belanja Anda masih kosong.</p>';
+        document.getElementById('cart-total').innerText = 'Rp0';
+        return;
+      }
+
+      let total = 0;
+      let html = '';
+      cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        html += `
+          <div class="flex items-center justify-between p-2.5 rounded-2xl bg-pink-50/60 border border-pink-100">
+            <div class="flex items-center space-x-3">
+              <img src="${item.img}" class="w-12 h-12 object-cover rounded-xl" alt="${item.title}">
+              <div>
+                <h5 class="text-xs font-bold text-[#541228] line-clamp-1">${item.title}</h5>
+                <p class="text-[11px] text-[#E11D5C] font-semibold">Rp${item.price.toLocaleString('id-ID')} &times; ${item.qty}</p>
+              </div>
+            </div>
+            <button onclick="removeFromCart(${index})" class="text-gray-400 hover:text-red-500 p-1 text-xs">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      itemsContainer.innerHTML = html;
+      document.getElementById('cart-total').innerText = 'Rp' + total.toLocaleString('id-ID');
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function openCartModal() {
+      const modal = document.getElementById('cart-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCartModal() {
+      const modal = document.getElementById('cart-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Keranjang Kosong',
+          text: 'Pilih produk favorit Anda terlebih dahulu!',
+          confirmButtonColor: '#E11D5C'
+        });
+        return;
+      }
+
+      let text = "Halo GlowFashion, saya ingin memesan produk berikut:%0A%0A";
+      let total = 0;
+      cart.forEach((item, idx) => {
+        text += `${idx + 1}. ${item.title} (${item.qty}x) - Rp${(item.price * item.qty).toLocaleString('id-ID')}%0A`;
+        total += item.price * item.qty;
+      });
+      text += `%0ATotal: Rp${total.toLocaleString('id-ID')}%0A%0AMohon konfirmasi ketersediaan dan ongkos kirim. Terima kasih!`;
+
+      window.open(`https://wa.me/6285762525951?text=${text}`, '_blank');
+      closeCartModal();
+    }
+
+    // Wishlist Toggle
+    function toggleWishlist(btn, title) {
+      const icon = btn.querySelector('i');
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas', 'text-pink-500');
+        document.getElementById('wishlist-badge').classList.remove('hidden');
+        Swal.fire({
+          icon: 'success',
+          title: 'Ditambahkan ke Wishlist ❤️',
+          text: `"${title}" disimpan ke daftar favorit Anda.`,
+          showConfirmButton: false,
+          timer: 1400,
+          toast: true,
+          position: 'top-end'
+        });
+      } else {
+        icon.classList.remove('fas', 'text-pink-500');
+        icon.classList.add('far');
+      }
+    }
+
+    function showWishlist() {
+      Swal.fire({
+        icon: 'info',
+        title: 'Wishlist Favorit Anda ❤️',
+        text: 'Daftar produk favorit tersimpan dengan rapi.',
+        confirmButtonColor: '#E11D5C'
+      });
+    }
+
+    // Search Product Popup
+    function searchProduct() {
+      Swal.fire({
+        title: 'Cari Busana Favorit 🔍',
+        input: 'text',
+        inputPlaceholder: 'Ketik nama gaun, blouse, atau outer...',
+        showCancelButton: true,
+        confirmButtonText: 'Cari',
+        cancelButtonText: 'Batal',
+        confirmButtonColor: '#E11D5C'
+      }).then((result) => {
+        if (result.isConfirmed && result.value) {
+          const query = result.value.toLowerCase();
+          const cards = document.querySelectorAll('.prod-card');
+          let found = 0;
+          cards.forEach(card => {
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            if (title.includes(query)) {
+              card.style.display = 'flex';
+              found++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          if (found === 0) {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Tidak Ditemukan',
+              text: `Tidak ada busana yang cocok dengan kata kunci "${result.value}".`,
+              confirmButtonColor: '#E11D5C'
+            });
+            filterCategory('all');
+          }
+        }
+      });
+    }
   </script>
+
 </body>
 
 </html>
