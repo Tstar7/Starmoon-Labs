@@ -1,721 +1,1552 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Starmoon Labs | Membantumu dengan senang hati ^^</title>
-  <link rel="icon" type="image/png" href="icon.png?v=1">
-  <!-- Tailwind CDN (versi stabil) -->
+  <title>Starmoon Labs | Create • Build • Grow</title>
+  <link rel="icon" type="image/png" href="icon.png?v=2">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Tambahkan ini di dalam <head> atau sebelum penutup -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            starmoon: {
+              50: '#F4F7FF',
+              100: '#E9EEFF',
+              200: '#D6DEFD',
+              300: '#BAC8FC',
+              400: '#95A6FA',
+              500: '#7888EB',
+              600: '#6472D9',
+              700: '#4F5BBF',
+              800: '#3D4696',
+              900: '#262B5E',
+              950: '#151733',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Confetti Animation -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
   <style>
-    /* Hide scrollbar completely */
-    .no-scrollbar {
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFF;
+      color: #2D325A;
       overflow-x: hidden;
     }
 
-    .scroll-smooth {
-      scroll-behavior: smooth;
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
 
-    /* Loading animation */
+    /* Starmoon Theme Gradients */
+    .bg-starmoon-hero {
+      background: linear-gradient(135deg, #7484EC 0%, #8A99F7 45%, #9FB0FA 70%, #8596F3 100%);
+    }
+
+    .bg-starmoon-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .starmoon-shadow {
+      box-shadow: 0 10px 30px -5px rgba(116, 132, 236, 0.15);
+    }
+
+    .starmoon-shadow-lg {
+      box-shadow: 0 20px 40px -10px rgba(116, 132, 236, 0.25);
+    }
+
+    /* Floating animation */
+    @keyframes floatSlow {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(1deg);
+      }
+    }
+
+    .animate-float-slow {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.35; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    .animate-twinkle {
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .animate-twinkle-delay {
+      animation: twinkle 4s ease-in-out infinite 1.5s;
+    }
+
+    /* Orbit pulse */
+    @keyframes orbitPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.03); }
+    }
+
+    .animate-orbit {
+      animation: orbitPulse 5s ease-in-out infinite;
+    }
+
+    /* Text Shimmer for Brand Name */
+    @keyframes textShimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animate-text-shimmer {
+      background: linear-gradient(90deg, #FFFFFF 0%, #E8EEFF 25%, #FFFFFF 50%, #CAD6FF 75%, #FFFFFF 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShimmer 5s ease-in-out infinite;
+    }
+
+    /* Slow Spin */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .animate-spin-slow {
+      animation: spinSlow 20s linear infinite;
+    }
+
+    /* Pulse Glow */
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 35px rgba(158, 176, 250, 0.45));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 50px rgba(158, 176, 250, 0.7));
+        transform: scale(1.02);
+      }
+    }
+
+    .animate-pulse-glow {
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    /* Reverse Float */
+    @keyframes floatReverse {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(8px) rotate(-1deg);
+      }
+    }
+
+    .animate-float-reverse {
+      animation: floatReverse 7s ease-in-out infinite;
+    }
+
+    /* Loading screen */
     #loading {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #fff;
+      background: linear-gradient(135deg, #7484EC 0%, #8A99F7 50%, #9EB0FA 100%);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 50;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
     }
 
-    #loading.hidden {
-      animation: fadeOut 3s;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
+    #loading.hidden-loader {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
   </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-[#F8FAFF] text-[#2D325A] antialiased">
 
   <!-- Loading Animation -->
   <div id="loading">
-    <div class="animate-bounce text-4xl font-bold text-[#b08968]">⭐ Starmoon Labs...</div>
+    <div class="relative flex flex-col items-center">
+      <!-- Glowing Starmoon Sparkle & Moon -->
+      <div class="relative mb-6">
+        <div class="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.6)] animate-pulse">
+          <svg class="w-10 h-10 text-white fill-current" viewBox="0 0 24 24">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+          </svg>
+        </div>
+        <div class="absolute -top-2 -right-2 w-6 h-6 text-yellow-200 animate-twinkle">
+          ✦
+        </div>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-wide drop-shadow-md">Starmoon Labs</h2>
+      <p class="text-indigo-100 text-sm tracking-widest uppercase mt-2 font-medium">Create • Build • Grow</p>
+      <div class="w-32 h-1 bg-white/30 rounded-full mt-4 overflow-hidden">
+        <div class="w-full h-full bg-white rounded-full animate-[progress_1.5s_ease-in-out_infinite]"></div>
+      </div>
+    </div>
   </div>
 
   <script>
     window.addEventListener('load', () => {
-      document.getElementById('loading').classList.add('hidden');
+      setTimeout(() => {
+        const loader = document.getElementById('loading');
+        if (loader) loader.classList.add('hidden-loader');
+      }, 400);
     });
   </script>
 
-  <!-- Hero Section -->
-  <section
-    class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-200 via-purple-200 to-indigo-200 text-center p-6"
-    data-aos="fade-down">
-    <h1 class="text-5xl font-bold mb-5 text-white drop-shadow-lg">Starmoon Labs</h1>
-    <p class="text-xl text-white mb-6">CV • Portofolio • Tugas Akademik • Laporan KP & LA MI • Website • Aplikasi
-      berbasis Web • Dan lain-lain</p>
-    <a href="#layanan"
-      class="bg-white text-indigo-600 font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white transition">Lihat
-      Layanan</a>
+  <!-- Sticky Navbar (Glassmorphism Starmoon Style) -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-indigo-100/70 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#7484EC] to-[#9EB0FA] flex items-center justify-center text-white shadow-md shadow-indigo-300/40 group-hover:scale-105 transition-transform">
+          <!-- 4-point Sparkle Star -->
+          <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold bg-gradient-to-r from-[#5967D6] via-[#7484EC] to-[#8C9DF6] bg-clip-text text-transparent">Starmoon Labs</span>
+          <span class="text-[10px] text-indigo-400 font-medium tracking-wider -mt-1 uppercase">Create • Build • Grow</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-7 text-sm font-semibold text-[#4A527A]">
+        <a href="#tentang" class="hover:text-[#6472D9] transition-colors">Tentang</a>
+        <a href="#layanan" class="hover:text-[#6472D9] transition-colors">Layanan</a>
+        <a href="#proyek" class="hover:text-[#6472D9] transition-colors">Portofolio</a>
+        <a href="#voucher" class="hover:text-[#6472D9] transition-colors">Tukar Kode</a>
+        <a href="#faq" class="hover:text-[#6472D9] transition-colors">FAQ</a>
+        <a href="#testimoni" class="hover:text-[#6472D9] transition-colors">Testimoni</a>
+        <a href="#kontak" class="hover:text-[#6472D9] transition-colors">Kontak</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <a href="https://wa.me/6285762525951" target="_blank"
+          class="flex items-center space-x-2 bg-gradient-to-r from-[#7484EC] to-[#8A99F7] hover:from-[#6472D9] hover:to-[#7888EB] text-white text-sm font-semibold py-2.5 px-5 rounded-full shadow-md shadow-indigo-400/30 hover:shadow-indigo-400/50 hover:scale-[1.02] transition-all">
+          <i class="fab fa-whatsapp text-base"></i>
+          <span>Hubungi Kami</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex md:hidden">
+        <button id="mobile-menu-btn" class="text-indigo-700 hover:text-indigo-900 focus:outline-none p-2 rounded-lg bg-indigo-50">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg border-b border-indigo-100 px-6 py-4 space-y-3">
+      <a href="#tentang" class="block py-2 text-[#4A527A] font-semibold hover:text-[#6472D9] border-b border-indigo-50">Tentang Kami</a>
+      <a href="#layanan" class="block py-2 text-[#4A527A] font-semibold hover:text-[#6472D9] border-b border-indigo-50">Layanan</a>
+      <a href="#proyek" class="block py-2 text-[#4A527A] font-semibold hover:text-[#6472D9] border-b border-indigo-50">Portofolio</a>
+      <a href="#voucher" class="block py-2 text-[#4A527A] font-semibold hover:text-[#6472D9] border-b border-indigo-50">Tukar Kode</a>
+      <a href="#faq" class="block py-2 text-[#4A527A] font-semibold hover:text-[#6472D9] border-b border-indigo-50">FAQ</a>
+      <a href="#testimoni" class="block py-2 text-[#4A527A] font-semibold hover:text-[#6472D9] border-b border-indigo-50">Testimoni</a>
+      <a href="#kontak" class="block py-2 text-[#4A527A] font-semibold hover:text-[#6472D9]">Kontak</a>
+      <a href="https://wa.me/6285762525951" target="_blank" class="block w-full text-center bg-gradient-to-r from-[#7484EC] to-[#8A99F7] text-white py-2.5 rounded-full font-semibold shadow-md">
+        <i class="fab fa-whatsapp mr-1.5"></i> Hubungi via WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section (Matches Tema Starmoonlabs.png Aesthetic) -->
+  <section class="relative bg-starmoon-hero text-white pt-16 pb-28 md:pt-24 md:pb-36 overflow-hidden">
+    <!-- Star Sparkle Elements in Sky -->
+    <div class="absolute top-10 left-[8%] text-white/80 animate-twinkle text-2xl select-none">✦</div>
+    <div class="absolute top-24 left-[40%] text-white/50 animate-twinkle-delay text-base select-none">✧</div>
+    <div class="absolute top-8 right-[25%] text-white/70 animate-twinkle text-xl select-none">✦</div>
+    <div class="absolute top-36 right-[12%] text-white/40 animate-twinkle text-xs select-none">✦</div>
+    <div class="absolute bottom-32 left-[18%] text-white/60 animate-twinkle-delay text-lg select-none">✧</div>
+    <div class="absolute top-1/2 right-[38%] text-white/35 animate-twinkle text-xs select-none">✦</div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        
+        <!-- Left Column: Starmoon Labs Title, Slogan, and CTA (Recreating the exact layout from Tema Starmoonlabs.png) -->
+        <div class="lg:col-span-7 text-left" data-aos="fade-right">
+          
+          <!-- Sparkle + Brand Name with Animation & Illustration -->
+          <div class="flex items-center space-x-3.5 mb-2 group">
+            <div class="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+              <!-- Glow Aura -->
+              <div class="absolute inset-0 bg-white/30 rounded-full blur-md animate-pulse"></div>
+              <!-- 4-point Sparkle SVG spinning gently -->
+              <svg class="w-8 h-8 md:w-10 md:h-10 text-white fill-current animate-spin-slow filter drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]" viewBox="0 0 24 24">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+              </svg>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight animate-text-shimmer drop-shadow-md">
+              Starmoon Labs
+            </h1>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-indigo-100 text-sm sm:text-base md:text-lg font-semibold tracking-widest pl-1 mb-4 flex items-center space-x-2">
+            <span>Create</span>
+            <span class="text-yellow-200 text-xs animate-twinkle">✦</span>
+            <span>Build</span>
+            <span class="text-yellow-200 text-xs animate-twinkle-delay">✦</span>
+            <span>Grow</span>
+          </p>
+
+          <!-- Divider Bar like in Tema Starmoonlabs.png -->
+          <div class="w-16 h-1 bg-white/75 rounded-full mb-6"></div>
+
+          <!-- Slogan -->
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white/95 leading-snug mb-4 drop-shadow-sm">
+            Solusi Digital untuk<br class="hidden sm:inline"> Ide dan Kebutuhan Anda
+          </h2>
+
+          <!-- Subtitle / Services Summary -->
+          <p class="text-indigo-100/90 text-sm sm:text-base max-w-xl leading-relaxed mb-8">
+            Melayani pembuatan CV &bull; Portofolio &bull; Tugas Akademik &bull; Laporan KP &amp; LA MI &bull; Pembuatan Website &bull; Aplikasi Berbasis Web &bull; Dan kebutuhan digital lainnya secara rapi dan profesional.
+          </p>
+
+          <!-- Button matching Tema Starmoonlabs.png -->
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#layanan"
+              class="inline-flex items-center space-x-2 bg-white text-[#6472D9] hover:text-[#4F5BBF] font-bold py-3.5 px-8 rounded-full shadow-[0_10px_25px_rgba(45,50,90,0.18)] hover:shadow-[0_15px_30px_rgba(45,50,90,0.25)] hover:scale-105 active:scale-95 transition-all">
+              <span>Lihat Layanan</span>
+              <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+
+            <a href="https://wa.me/6285762525951" target="_blank"
+              class="inline-flex items-center space-x-2 bg-white/20 hover:bg-white/30 text-white font-semibold py-3.5 px-6 rounded-full backdrop-blur-md border border-white/30 hover:scale-105 transition-all">
+              <i class="fab fa-whatsapp text-lg"></i>
+              <span>Konsultasi Cepat</span>
+            </a>
+          </div>
+
+          <!-- Quick Trust Badges -->
+          <div class="mt-8 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-indigo-100/90">
+            <div class="flex items-center space-x-1.5">
+              <i class="fas fa-check-circle text-white"></i>
+              <span>Cepat &amp; Tepat Waktu</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <i class="fas fa-check-circle text-white"></i>
+              <span>Bonus Revisi 1-3x</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <i class="fas fa-check-circle text-white"></i>
+              <span>Harga Ramah Pelajar</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Animated Celestial Moon & Stars Illustration -->
+        <div class="lg:col-span-5 flex justify-center items-center" data-aos="fade-left">
+          <div class="relative w-full max-w-[440px] aspect-square flex items-center justify-center">
+            
+            <!-- Soft Ambient Back Glow -->
+            <div class="absolute w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-gradient-to-tr from-white/25 via-indigo-200/35 to-purple-200/25 blur-3xl animate-pulse"></div>
+
+            <!-- Floating Celestial Container -->
+            <div class="relative w-full h-full flex items-center justify-center animate-float-slow">
+              
+              <!-- SVG Illustration: Moon, Orbit & Stars -->
+              <svg class="w-full h-full select-none" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Moon Gradient: Pearlescent White to Soft Periwinkle -->
+                  <linearGradient id="moonGrad" x1="160" y1="80" x2="350" y2="300" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FFFFFF"/>
+                    <stop offset="35%" stop-color="#F4F7FF"/>
+                    <stop offset="70%" stop-color="#D7E1FD"/>
+                    <stop offset="100%" stop-color="#B2C2FA"/>
+                  </linearGradient>
+
+                  <!-- Crater Gradient -->
+                  <linearGradient id="craterGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#8FA2F4" stop-opacity="0.32"/>
+                    <stop offset="100%" stop-color="#6F83E6" stop-opacity="0.12"/>
+                  </linearGradient>
+
+                  <!-- Orbit Ring Gradient -->
+                  <linearGradient id="orbitGrad" x1="50" y1="190" x2="370" y2="190" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+                    <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+                    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.3"/>
+                  </linearGradient>
+
+                  <!-- Soft Dreamy Clouds Gradient -->
+                  <linearGradient id="cloudGrad" x1="200" y1="280" x2="200" y2="390" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+                    <stop offset="50%" stop-color="#EBF0FF" stop-opacity="0.88"/>
+                    <stop offset="100%" stop-color="#D6E2FD" stop-opacity="0.75"/>
+                  </linearGradient>
+
+                  <!-- Glow Filter -->
+                  <filter id="celestialGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Back Orbital Ring (behind moon) -->
+                <g transform="rotate(-22 250 190)">
+                  <ellipse cx="250" cy="190" rx="160" ry="54" stroke="url(#orbitGrad)" stroke-width="2" stroke-dasharray="5 5" opacity="0.6"/>
+                </g>
+
+                <!-- Crescent Moon Body -->
+                <g class="animate-pulse-glow">
+                  <!-- Moon Shape (bulges to the right, tips pointing left) -->
+                  <path d="M 172 94 A 115 115 0 0 1 172 286 A 100 100 0 0 0 172 94 Z" fill="url(#moonGrad)" filter="url(#celestialGlow)"/>
+                  
+                  <!-- Moon Surface Craters for aesthetic realism -->
+                  <circle cx="260" cy="140" r="10" fill="url(#craterGrad)"/>
+                  <circle cx="285" cy="170" r="14" fill="url(#craterGrad)"/>
+                  <circle cx="270" cy="215" r="12" fill="url(#craterGrad)"/>
+                  <circle cx="240" cy="250" r="8" fill="url(#craterGrad)"/>
+                  <circle cx="295" cy="200" r="7" fill="url(#craterGrad)"/>
+                  <circle cx="245" cy="175" r="6" fill="url(#craterGrad)"/>
+                </g>
+
+                <!-- Front Orbital Ring (passes in front of the moon) -->
+                <g transform="rotate(-22 250 190)">
+                  <path d="M 90 190 A 160 54 0 0 0 410 190" stroke="url(#orbitGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#celestialGlow)"/>
+
+                  <!-- Orbiting Particle (Sparkle Star circling the moon) -->
+                  <circle r="5" fill="#FFFFFF" filter="url(#celestialGlow)">
+                    <animateMotion dur="7s" repeatCount="indefinite" path="M 90 190 A 160 54 0 1 0 410 190 A 160 54 0 1 0 90 190"/>
+                  </circle>
+                  <circle r="2" fill="#FEF08A">
+                    <animateMotion dur="7s" repeatCount="indefinite" path="M 90 190 A 160 54 0 1 0 410 190 A 160 54 0 1 0 90 190"/>
+                  </circle>
+                </g>
+
+                <!-- Floating 4-Point Diamond Sparkle Stars (✦) -->
+                <!-- Sparkle 1: Inside the crescent opening (left center) -->
+                <g transform="translate(140, 175)" class="animate-twinkle">
+                  <path d="M14 0L17.2 10.8L28 14L17.2 17.2L14 28L10.8 17.2L0 14L10.8 10.8L14 0Z" fill="#FFFFFF" filter="url(#celestialGlow)"/>
+                </g>
+
+                <!-- Sparkle 2: Top Right of Moon -->
+                <g transform="translate(320, 95)" class="animate-twinkle-delay">
+                  <path d="M12 0L14.7 9.3L24 12L14.7 14.7L12 24L9.3 14.7L0 12L9.3 9.3L12 0Z" fill="#FFFFFF" filter="url(#celestialGlow)"/>
+                </g>
+
+                <!-- Sparkle 3: Top Center Small -->
+                <g transform="translate(200, 45)" class="animate-twinkle">
+                  <path d="M8 0L9.8 6.2L16 8L9.8 9.8L8 16L6.2 9.8L0 8L6.2 6.2L8 0Z" fill="#FFFFFF" opacity="0.85"/>
+                </g>
+
+                <!-- Sparkle 4: Bottom Center -->
+                <g transform="translate(195, 305)" class="animate-twinkle-delay">
+                  <path d="M10 0L12.3 7.7L20 10L12.3 12.3L10 20L7.7 12.3L0 10L7.7 7.7L10 0Z" fill="#FFFFFF" filter="url(#celestialGlow)"/>
+                </g>
+
+                <!-- Sparkle 5: Far Right Tiny -->
+                <g transform="translate(355, 230)" class="animate-twinkle">
+                  <path d="M7 0L8.6 5.4L14 7L8.6 8.6L7 14L5.4 8.6L0 7L5.4 5.4L7 0Z" fill="#FFFFFF" opacity="0.7"/>
+                </g>
+
+                <!-- Dreamy Fluffy Clouds at Bottom Base -->
+                <g class="animate-float-reverse">
+                  <path d="M 60 375 C 75 325, 135 320, 165 345 C 190 310, 260 310, 285 340 C 310 320, 365 325, 375 360 C 395 375, 390 400, 360 400 L 60 400 Z" fill="url(#cloudGrad)"/>
+                </g>
+              </svg>
+
+              <!-- Floating Interactive Badges -->
+              <!-- Badge 1: Top Floating Emblem -->
+              <!-- <div class="absolute -top-3 right-4 bg-white/20 backdrop-blur-md text-white border border-white/40 py-1.5 px-4 rounded-full text-xs font-semibold shadow-lg flex items-center space-x-1.5 animate-float-slow">
+                <span class="text-yellow-200 text-sm">✦</span>
+                <span class="tracking-wide">Starmoon Labs</span>
+              </div> -->
+
+              <!-- Badge 2: Bottom Left Floating Card -->
+              <!-- <div class="absolute bottom-4 left-0 bg-white/90 backdrop-blur-md text-[#2D325A] py-2 px-3.5 rounded-2xl shadow-xl border border-indigo-100 flex items-center space-x-2.5 animate-float-reverse">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#7484EC] to-[#9EB0FA] text-white flex items-center justify-center text-sm shadow-sm">
+                  <i class="fas fa-moon"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] text-gray-500 font-medium">Solusi Digital</p>
+                  <p class="text-xs font-bold text-[#4F5BBF]">Cepat &amp; Estetik ✨</p>
+                </div>
+              </div> -->
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Soft Cloud Wave Transition at the bottom of hero -->
+    <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+      <svg class="relative block w-full h-12 md:h-20 text-[#F8FAFF] fill-current" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"></path>
+      </svg>
+    </div>
   </section>
 
   <!-- Tentang Kami -->
-  <section class="py-16 px-6 text-center bg-white" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-4 text-indigo-700">Tentang Kami</h2>
-    <p class="max-w-2xl mx-auto">Kami menyediakan layanan pengerjaan dokumen yang cepat, rapi, dan terpercaya!
-      <br></br>
-      Melayani pembuatan CV ATS/non-ATS, portofolio Excel, tugas kuliah dan tugas sekolah, laporan akhir
-      jurusan Manajemen Informatika, laporan akhir universitas lain, pembuatan aplikasi berbasis website, pembuatan
-      website, serta berbagai kebutuhan lainnya sesuai permintaan pelanggan.
-      <br></br>
-      Harga bersahabat, pengerjaan rapi, dan hasil bisa disesuaikan dengan kebutuhan kamu!
-    </p>
+  <section id="tentang" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto" data-aos="fade-up">
+    <!-- Header Badge -->
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center space-x-1.5 bg-indigo-50 text-[#6472D9] text-xs font-bold px-3.5 py-1.5 rounded-full border border-indigo-100 tracking-wide uppercase">
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+        </svg>
+        <span>Tentang Kami</span>
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#262B5E] mt-3">
+        Membantu Kebutuhan Digitalmu dengan Senang Hati
+      </h2>
+      <div class="w-12 h-1 bg-[#7484EC] mx-auto rounded-full mt-3"></div>
+    </div>
+
+    <!-- Content Card -->
+    <div class="bg-starmoon-card border border-indigo-100 rounded-3xl p-8 sm:p-12 starmoon-shadow relative overflow-hidden">
+      <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-indigo-100/50 rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-base sm:text-lg text-[#4A527A] leading-relaxed mb-8">
+          Kami menyediakan layanan pengerjaan dokumen dan solusi digital yang <strong class="text-[#4F5BBF]">cepat, rapi, dan terpercaya!</strong>
+        </p>
+
+        <p class="text-sm sm:text-base text-[#5A6390] leading-relaxed mb-10">
+          Melayani pembuatan CV ATS / non-ATS, portofolio interaktif Excel, tugas kuliah dan sekolah, laporan akhir Manajemen Informatika (KP, LA &amp; TA), laporan universitas lain, hingga pembuatan website dan aplikasi berbasis web.
+          <br><br>
+          <span class="font-semibold text-[#262B5E]">Harga bersahabat, pengerjaan rapi, dan hasil bisa disesuaikan sepenuhnya dengan kebutuhan Anda!</span>
+        </p>
+
+        <!-- Feature Points -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-indigo-100/80">
+          <div class="flex flex-col items-center p-4 rounded-2xl bg-indigo-50/50 hover:bg-indigo-50 transition">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#7484EC] to-[#9EB0FA] text-white flex items-center justify-center text-xl mb-3 shadow-sm">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h4 class="font-bold text-[#262B5E] text-base mb-1">Cepat &amp; Tepat</h4>
+            <p class="text-xs text-gray-500 text-center">Selesai sesuai deadline yang disepakati</p>
+          </div>
+
+          <div class="flex flex-col items-center p-4 rounded-2xl bg-indigo-50/50 hover:bg-indigo-50 transition">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#7484EC] to-[#9EB0FA] text-white flex items-center justify-center text-xl mb-3 shadow-sm">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4 class="font-bold text-[#262B5E] text-base mb-1">Kualitas Rapi</h4>
+            <p class="text-xs text-gray-500 text-center">Format baku, terstruktur, &amp; profesional</p>
+          </div>
+
+          <div class="flex flex-col items-center p-4 rounded-2xl bg-indigo-50/50 hover:bg-indigo-50 transition">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#7484EC] to-[#9EB0FA] text-white flex items-center justify-center text-xl mb-3 shadow-sm">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h4 class="font-bold text-[#262B5E] text-base mb-1">Bonus Revisi</h4>
+            <p class="text-xs text-gray-500 text-center">Tersedia garansi revisi 1-3 kali</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
-  <!-- Layanan -->
-  <section id="layanan" class="py-16 px-6 bg-gradient-to-b from-white to-indigo-100">
-    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12" data-aos="fade-right">Layanan Kami</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
-      <!-- Card CV -->
-      <div class="bg-white p-6 rounded-xl border-2 border-green-400 shadow-lg hover:shadow-2xl transition"
-        data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-green-600 mb-2">CV</h3>
-        <ul class="list-disc ml-5 text-gray-700">
-          <li>ATS: 20k</li>
-          <li>Non-ATS: 15k</li>
-          <li>Surat lamaran: 10k</li>
-        </ul>
+  <!-- Layanan Section -->
+  <section id="layanan" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F8FAFF] via-[#EEF2FF] to-[#F8FAFF]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="inline-flex items-center space-x-1.5 bg-indigo-50 text-[#6472D9] text-xs font-bold px-3.5 py-1.5 rounded-full border border-indigo-100 tracking-wide uppercase">
+          ✦ DAFTAR LAYANAN
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#262B5E] mt-3">Layanan Terbaik Kami</h2>
+        <p class="text-[#5A6390] text-sm sm:text-base mt-2 max-w-xl mx-auto">Pilih layanan yang kamu butuhkan dengan harga terjangkau dan kualitas terjamin.</p>
+        <div class="w-12 h-1 bg-[#7484EC] mx-auto rounded-full mt-3"></div>
       </div>
 
-      <!-- Card Portofolio Excel -->
-      <div class="bg-white p-6 rounded-xl border-2 border-yellow-400 shadow-lg hover:shadow-2xl transition"
-        data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-yellow-600 mb-2">Portofolio Excel</h3>
-        <ul class="list-disc ml-5 text-gray-700">
-          <li>Basic: 100k - 200k</li>
-          <li>Intermediate: 200k - 300k</li>
-          <li>Advance: 300k - 400k</li>
-        </ul>
+      <!-- Grid Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+        <!-- Card 1: CV -->
+        <div class="bg-white rounded-2xl p-6 border border-indigo-100/90 hover:border-indigo-300 starmoon-shadow hover:starmoon-shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" data-aos="zoom-in">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-xl">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <span class="text-xs font-bold bg-indigo-50 text-[#6472D9] py-1 px-3 rounded-full border border-indigo-100">Dokumen Karir</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#262B5E] mb-3">CV &amp; Lamaran</h3>
+            <ul class="space-y-2.5 text-sm text-[#4A527A]">
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>CV ATS Friendly</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">20k</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>CV Non-ATS (Desain Kreatif)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">15k</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Surat Lamaran Kerja</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">10k</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20pesan%20layanan%20CV" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-indigo-50 hover:bg-[#7484EC] text-[#6472D9] hover:text-white font-semibold text-xs tracking-wider uppercase transition">
+            Pesan Layanan CV
+          </a>
+        </div>
+
+        <!-- Card 2: Portofolio Excel -->
+        <div class="bg-white rounded-2xl p-6 border border-indigo-100/90 hover:border-indigo-300 starmoon-shadow hover:starmoon-shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="100">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-xl">
+                <i class="fas fa-file-excel"></i>
+              </div>
+              <span class="text-xs font-bold bg-indigo-50 text-[#6472D9] py-1 px-3 rounded-full border border-indigo-100">Spreadsheet</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#262B5E] mb-3">Portofolio Excel</h3>
+            <ul class="space-y-2.5 text-sm text-[#4A527A]">
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Basic Formula &amp; Tabel</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">100k - 200k</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Intermediate Dashboard</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">200k - 300k</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Advance Visual &amp; Automasi</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">300k - 400k</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20pesan%20Portofolio%20Excel" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-indigo-50 hover:bg-[#7484EC] text-[#6472D9] hover:text-white font-semibold text-xs tracking-wider uppercase transition">
+            Pesan Portofolio Excel
+          </a>
+        </div>
+
+        <!-- Card 3: Website & Aplikasi Berbasis Web -->
+        <div class="bg-white rounded-2xl p-6 border-2 border-indigo-200/90 hover:border-[#7484EC] starmoon-shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative" data-aos="zoom-in" data-aos-delay="200">
+          <div class="absolute -top-3 right-4 bg-gradient-to-r from-[#7484EC] to-[#9EB0FA] text-white text-[10px] font-bold py-1 px-3 rounded-full shadow-sm">
+            ✨ POPULER
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-xl">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <span class="text-xs font-bold bg-indigo-50 text-[#6472D9] py-1 px-3 rounded-full border border-indigo-100">Web Development</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#262B5E] mb-3">Website &amp; Aplikasi Web</h3>
+            <ul class="space-y-2.5 text-sm text-[#4A527A]">
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Basic Landing Page</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">150k - 300k</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Interactive Website</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">300k - 500k</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Aplikasi Berbasis Web</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">500k - 1.000k</span>
+              </li>
+            </ul>
+            <div class="mt-4 pt-3 border-t border-indigo-100 text-center">
+              <a href="basic.html" target="_blank" class="inline-flex items-center justify-center space-x-1.5 w-full py-2 px-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-[#6472D9] font-bold text-xs transition border border-indigo-200/60 shadow-sm">
+                <i class="fas fa-desktop text-xs"></i>
+                <span>Lihat Contoh Demo Web (GlowFashion)</span>
+                <i class="fas fa-external-link-alt text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20konsultasi%20pembuatan%20Website" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-[#7484EC] to-[#8A99F7] text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-indigo-300/30 hover:opacity-95 transition">
+            Konsultasi Website
+          </a>
+        </div>
+
+        <!-- Card 4: Tugas -->
+        <div class="bg-white rounded-2xl p-6 border border-indigo-100/90 hover:border-indigo-300 starmoon-shadow hover:starmoon-shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" data-aos="zoom-in">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-xl">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <span class="text-xs font-bold bg-indigo-50 text-[#6472D9] py-1 px-3 rounded-full border border-indigo-100">Akademik</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#262B5E] mb-3">Tugas Akademik</h3>
+            <ul class="space-y-2.5 text-sm text-[#4A527A]">
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Presentasi PPT</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">2k / slide</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Essai</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">4k / slide</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Makalah</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">3k / hal</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Proposal</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">3k / slide</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Pencarian Jurnal</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">5k / file</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20bantu%20kerjakan%20Tugas" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-indigo-50 hover:bg-[#7484EC] text-[#6472D9] hover:text-white font-semibold text-xs tracking-wider uppercase transition">
+            Pesan Layanan Tugas
+          </a>
+        </div>
+
+        <!-- Card 5: Pengolahan File -->
+        <div class="bg-white rounded-2xl p-6 border border-indigo-100/90 hover:border-indigo-300 starmoon-shadow hover:starmoon-shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="100">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-xl">
+                <i class="fas fa-folder-open"></i>
+              </div>
+              <span class="text-xs font-bold bg-indigo-50 text-[#6472D9] py-1 px-3 rounded-full border border-indigo-100">File &amp; PDF</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#262B5E] mb-3">Pengolahan File</h3>
+            <ul class="space-y-2.5 text-sm text-[#4A527A]">
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Pemisah File (Split)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">3k / file</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Gabung File (Merge)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">2k / file</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Konversi Format</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">2k / file</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Kompresi Ukuran File</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">2k / file</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20layanan%20Pengolahan%20File" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-indigo-50 hover:bg-[#7484EC] text-[#6472D9] hover:text-white font-semibold text-xs tracking-wider uppercase transition">
+            Pesan Pengolahan File
+          </a>
+        </div>
+
+        <!-- Card 6: Diagram
+        <div class="bg-white rounded-2xl p-6 border border-indigo-100/90 hover:border-indigo-300 starmoon-shadow hover:starmoon-shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="200">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-xl">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <span class="text-xs font-bold bg-indigo-50 text-[#6472D9] py-1 px-3 rounded-full border border-indigo-100">Visual Arsitektur</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#262B5E] mb-3">Diagram &amp; Flowchart</h3>
+            <ul class="space-y-2.5 text-sm text-[#4A527A]">
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Basic (Flowchart / DFD)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">150k - 300k</span>
+              </li>
+              <li class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Standar (UML, Use Case, ERD)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">200k - 400k</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Lengkap &amp; Relasi Database</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">250k - 500k</span>
+              </li>
+            </ul>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20pesan%20Diagram" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-indigo-50 hover:bg-[#7484EC] text-[#6472D9] hover:text-white font-semibold text-xs tracking-wider uppercase transition">
+            Pesan Layanan Diagram
+          </a>
+        </div> -->
+
+        <!-- Card 7: Laporan MI 'KP, LA & TA' -->
+        <div class="bg-white rounded-2xl p-6 border border-indigo-100/90 hover:border-indigo-300 starmoon-shadow hover:starmoon-shadow-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between lg:col-span-2" data-aos="zoom-in">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-xl">
+                <i class="fas fa-book"></i>
+              </div>
+              <span class="text-xs font-bold bg-indigo-50 text-[#6472D9] py-1 px-3 rounded-full border border-indigo-100">Spesialisasi Kampus</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#262B5E] mb-1">Laporan MI (KP, LA &amp; TA)</h3>
+            <p class="text-xs text-gray-500 mb-4">Penyusunan dan perapihan dokumen akademik jurusan Manajemen Informatika &amp; Umum.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-[#4A527A]">
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Daftar Isi &amp; No Halaman</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">50k - 200k</span>
+              </div>
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Bab 1 (Pendahuluan)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">150k - 200k</span>
+              </div>
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Bab 2 (Landasan Teori)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">250k - 400k</span>
+              </div>
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Bab 3 (Metodologi / Analisis)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">200k - 350k</span>
+              </div>
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Bab 4 (Hasil &amp; Pembahasan)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">400k - 550k</span>
+              </div>
+              <div class="flex items-center justify-between pb-2 border-b border-indigo-50">
+                <span>Bab 5 (Kesimpulan &amp; Saran)</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">20k - 50k</span>
+              </div>
+              <div class="flex items-center justify-between sm:col-span-2 pt-1">
+                <span>Rapihin Format Laporan Full</span>
+                <span class="font-bold text-[#6472D9] bg-indigo-50 px-2.5 py-0.5 rounded-full text-xs">50k - 200k</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20konsultasi%20Laporan%20MI" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-indigo-50 hover:bg-[#7484EC] text-[#6472D9] hover:text-white font-semibold text-xs tracking-wider uppercase transition">
+            Konsultasi Laporan MI
+          </a>
+        </div>
+
+        <!-- Card 8: Paket Bundle Hemat -->
+        <div class="bg-gradient-to-br from-[#7484EC] to-[#95A6FA] text-white rounded-2xl p-6 shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="100">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl text-white">
+                <i class="fas fa-gift"></i>
+              </div>
+              <span class="text-xs font-bold bg-white/20 backdrop-blur-md py-1 px-3 rounded-full text-white border border-white/30">HEMAT</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-white">Paket Bundle Pilihan</h3>
+            
+            <div class="space-y-4 text-sm text-indigo-50">
+              <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/20">
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-1">Bundle CV &amp; Lamaran</h4>
+                <div class="flex justify-between items-center text-xs">
+                  <span>CV ATS + Surat Lamaran</span>
+                  <span class="font-bold bg-white text-[#4F5BBF] px-2 py-0.5 rounded-full">25k</span>
+                </div>
+                <div class="flex justify-between items-center text-xs mt-1.5">
+                  <span>CV Non-ATS + Surat Lamaran</span>
+                  <span class="font-bold bg-white text-[#4F5BBF] px-2 py-0.5 rounded-full">22k</span>
+                </div>
+              </div>
+
+              <div class="bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/20">
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-1">Bundle Pengolahan File</h4>
+                <div class="space-y-1 text-xs">
+                  <div class="flex justify-between">
+                    <span>Basic (&le;5 file)</span>
+                    <span class="font-bold">8k</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Profesional (&le;10 file)</span>
+                    <span class="font-bold">20k</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Lengkap (&le;15 file)</span>
+                    <span class="font-bold">30k</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="https://wa.me/6285762525951?text=Halo%20Starmoon%20Labs,%20saya%20mau%20pesan%20Paket%20Bundle" target="_blank"
+            class="mt-6 w-full text-center py-2.5 rounded-xl bg-white text-[#4F5BBF] hover:bg-indigo-50 font-bold text-xs tracking-wider uppercase transition shadow-md">
+            Ambil Paket Bundle
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Proyek yang Telah Dikerjakan -->
+  <section id="proyek" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" data-aos="fade-up">
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center space-x-1.5 bg-indigo-50 text-[#6472D9] text-xs font-bold px-3.5 py-1.5 rounded-full border border-indigo-100 tracking-wide uppercase">
+        ✦ PORTOFOLIO SELESAI
+      </span>
+      <h2 class="text-3xl font-extrabold text-[#262B5E] mt-3">Proyek yang Telah Diselesaikan</h2>
+      <p class="text-[#5A6390] text-sm mt-1">Komitmen dan bukti nyata hasil pengerjaan kami untuk klien.</p>
+      <div class="w-12 h-1 bg-[#7484EC] mx-auto rounded-full mt-3"></div>
+    </div>
+
+    <div class="bg-starmoon-card border border-indigo-100 rounded-3xl p-6 sm:p-10 starmoon-shadow space-y-8">
+      
+      <!-- Sub: Aplikasi -->
+      <div>
+        <h3 class="text-base font-bold text-[#4F5BBF] uppercase tracking-wider mb-5 flex items-center space-x-2">
+          <i class="fas fa-code"></i>
+          <span>Pengembangan Website &amp; Aplikasi</span>
+        </h3>
+
+        <!-- App 1 -->
+        <div class="mb-5">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-semibold text-sm sm:text-base text-[#2D325A]">Aplikasi Berbasis Website</span>
+            <span class="font-bold text-[#6472D9] text-sm" id="count1">0+</span>
+          </div>
+          <div class="w-full bg-indigo-100/60 rounded-full h-3 overflow-hidden">
+            <div id="bar1" class="bg-gradient-to-r from-[#7484EC] to-[#95A6FA] h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- App 2 -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-semibold text-sm sm:text-base text-[#2D325A]">Aplikasi Berbasis Web dengan Metode Tertentu</span>
+            <span class="font-bold text-[#6472D9] text-sm" id="count2">0</span>
+          </div>
+          <div class="w-full bg-indigo-100/60 rounded-full h-3 overflow-hidden">
+            <div id="bar2" class="bg-gradient-to-r from-[#7484EC] to-[#95A6FA] h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
+          </div>
+        </div>
       </div>
 
-      <!-- Card Web Front End & PHP App -->
-      <div class="bg-white p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition"
-        data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-indigo-600 mb-2">Website & Aplikasi berbasis Web</h3>
-        <ul class="list-disc ml-5 text-gray-700">
-          <li>Basic: 150k - 300k</li>
-          <li>Interactive: 300k - 500k</li>
-          <li>Aplikasi berbasis Web: 500k - 1.000k</li>
-          <br>
-          <a href="basic.html">Example</a><br>
-        </ul>
-      </div>
+      <div class="border-t border-indigo-100"></div>
 
-      <!-- Card Tugas -->
-      <div class="bg-white p-6 rounded-xl border-2 border-blue-500 shadow-lg hover:shadow-2xl transition"
-        data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-blue-600 mb-2">Tugas</h3>
-        <ul class="list-disc ml-5 text-gray-700">
-          <li>PPT: 2k/slide</li>
-          <li>Essai: 4k/slide</li>
-          <li>Makalah: 3k/hal</li>
-          <li>Proposal: 3k/slide</li>
-          <li>Mencari Jurnal: 5k/file</li>
-        </ul>
-      </div>
+      <!-- Sub: Laporan MI -->
+      <div>
+        <h3 class="text-base font-bold text-[#4F5BBF] uppercase tracking-wider mb-5 flex items-center space-x-2">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Laporan MI (KP, LA &amp; TA)</span>
+        </h3>
 
-      <!-- Card Pengolahan File -->
-      <div class="bg-white p-6 rounded-xl border-2 border-purple-600 shadow-lg hover:shadow-2xl transition"
-        data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-purple-600 mb-2">Pengolahan File</h3>
-        <ul class="list-disc ml-5 text-gray-700">
-          <li>Pemisah: 3k/file</li>
-          <li>Gabung: 2k/file</li>
-          <li>Konversi: 2k/file</li>
-          <li>Kompresi: 2k/file</li>
-        </ul>
-      </div>
+        <!-- KP -->
+        <div class="mb-5">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-semibold text-sm sm:text-base text-[#2D325A]">Kerja Praktek (KP)</span>
+            <span class="font-bold text-[#6472D9] text-sm" id="count3">5+</span>
+          </div>
+          <div class="w-full bg-indigo-100/60 rounded-full h-3 overflow-hidden">
+            <div id="bar3" class="bg-gradient-to-r from-[#7484EC] to-[#95A6FA] h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
+          </div>
+        </div>
 
-      <!-- Card Pengolahan File -->
-      <div class="bg-white p-6 rounded-xl border-2 border-purple-600 shadow-lg hover:shadow-2xl transition"
-        data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-purple-600 mb-2">Diagram</h3>
-        <ul class="list-disc ml-5 text-gray-700">
-          <li>Basic: 150k - 300k</li>
-          <li>Standar: 200k - 400k</li>
-          <li>Lengkap: 250k - 500k</li>
-        </ul>
-      </div>
+        <!-- LA -->
+        <div class="mb-5">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-semibold text-sm sm:text-base text-[#2D325A]">Laporan Akhir (LA)</span>
+            <span class="font-bold text-[#6472D9] text-sm" id="count4">5+</span>
+          </div>
+          <div class="w-full bg-indigo-100/60 rounded-full h-3 overflow-hidden">
+            <div id="bar4" class="bg-gradient-to-r from-[#7484EC] to-[#95A6FA] h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
+          </div>
+        </div>
 
-      <!-- Card Laporan MI -->
-      <div class="bg-white p-6 rounded-xl border-2 border-red-500 shadow-lg hover:shadow-2xl transition"
-        data-aos="zoom-in">
-        <h3 class="text-xl font-bold text-red-600 mb-2">Laporan MI 'KP, LA & TA'</h3>
-        <ul class="list-disc ml-5 text-gray-700">
-          <li>Daftar Isi dan No Halaman: 50K - 200k</li>
-          <li>Bab 1: 150k - 200k</li>
-          <li>Bab 2: 250k - 400k</li>
-          <li>Bab 3: 200k - 350k</li>
-          <li>Bab 4: 400k - 550k</li>
-          <li>Bab 5: 20K - 50k</li>
-          <li>Rapihin Laporan: 50K - 200k</li>
+        <!-- TA -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-semibold text-sm sm:text-base text-[#2D325A]">Tugas Akhir (TA)</span>
+            <span class="font-bold text-[#6472D9] text-sm" id="count5">2</span>
+          </div>
+          <div class="w-full bg-indigo-100/60 rounded-full h-3 overflow-hidden">
+            <div id="bar5" class="bg-gradient-to-r from-[#7484EC] to-[#95A6FA] h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
+          </div>
+        </div>
 
-        </ul>
-      </div>
-
-      <!-- Card Paket Bundle: CV & Surat Lamaran -->
-      <div class="bg-white p-6 rounded-xl border-2 border-blue-500 shadow-lg hover:shadow-2xl transition"
-        data-aos="fade-up">
-        <h3 class="text-xl font-bold text-blue-700 mb-3">Paket CV & Surat Lamaran Kerja</h3>
-        <ul class="list-disc ml-5 text-gray-800 space-y-1">
-          <li>CV ATS + Surat Lamaran: <span class="font-semibold text-blue-600">25k</span></li>
-          <li>CV Non-ATS + Surat Lamaran: <span class="font-semibold text-blue-600">22k</span></li>
-        </ul>
-      </div>
-
-      <!-- Card Paket Bundle: Pengolahan File -->
-      <div class="bg-white p-6 rounded-xl border-2 border-indigo-500 shadow-lg hover:shadow-2xl transition"
-        data-aos="fade-up">
-        <h3 class="text-xl font-bold text-indigo-700 mb-3">Paket Pengolahan File</h3>
-        <ul class="list-disc ml-5 text-gray-800 space-y-1">
-          <li>Paket Basic <br> (Gabung + Kompresi ≤5 file): <span class="font-semibold text-indigo-600">8k</span></li>
-          <li>Paket Profesional <br> (Pemisah + Gabung + Konversi ≤10 file): <span
-              class="font-semibold text-indigo-600">20k</span></li>
-          <li>Paket Lengkap <br> (Semua layanan ≤15 file): <span class="font-semibold text-indigo-600">30k</span></li>
-          <li>Tambahan file: <span class="font-semibold text-indigo-600">+1k/file</span></li>
-        </ul>
       </div>
 
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-white" data-aos="fade-up">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-2xl font-bold mb-8 text-center">Aplikasi yang Telah Dikerjakan</h2>
-
-      <!-- Aplikasi berbasis website -->
-      <div class="mb-6">
-        <div class="flex items-center justify-between mb-1">
-          <span class="font-medium text-lg">Aplikasi berbasis website</span>
-          <span class="font-bold text-lg" id="count1">0+</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-          <div id="bar1" class="bg-green-400 h-4 rounded-full" style="width: 0%"></div>
-        </div>
+  <!-- Tukar Kode Voucher Section -->
+  <section id="voucher" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F8FAFF] via-[#EEF2FF] to-[#F8FAFF]" data-aos="fade-up">
+    <div class="max-w-md mx-auto">
+      
+      <div class="text-center mb-8">
+        <span class="inline-flex items-center space-x-1.5 bg-indigo-50 text-[#6472D9] text-xs font-bold px-3.5 py-1.5 rounded-full border border-indigo-100 tracking-wide uppercase">
+          🎁 REWARD SPESIAL
+        </span>
+        <h2 class="text-3xl font-extrabold text-[#262B5E] mt-3">Tukar Kode Voucher</h2>
+        <p class="text-xs sm:text-sm text-[#5A6390] mt-1">Punya kode rahasia dari event Starmoon Labs? Klaim voucher Anda di sini!</p>
       </div>
 
-      <!-- Aplikasi berbasis web dengan metode tertentu -->
-      <div class="mb-6">
-        <div class="flex items-center justify-between mb-1">
-          <span class="font-medium text-lg">Aplikasi berbasis web dengan metode tertentu</span>
-          <span class="font-bold text-lg" id="count2">0</span>
+      <div class="bg-white rounded-3xl p-7 border border-indigo-100 starmoon-shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-6 -mt-6 w-24 h-24 bg-gradient-to-br from-[#7484EC]/20 to-transparent rounded-full pointer-events-none"></div>
+
+        <div class="space-y-4">
+          <label for="kode-input" class="block text-xs font-bold text-[#4F5BBF] uppercase tracking-wider">
+            Masukkan Kode Voucher
+          </label>
+          <div class="relative">
+            <input id="kode-input" type="text" placeholder="Contoh: STARMOONLABS" oninput="checkInputKode()"
+              class="w-full pl-11 pr-4 py-3.5 border-2 border-indigo-100 rounded-xl focus:outline-none focus:border-[#7484EC] focus:ring-4 focus:ring-indigo-100 text-sm font-semibold text-[#2D325A] uppercase tracking-wider transition">
+            <div class="absolute left-3.5 top-3.5 text-indigo-400">
+              <i class="fas fa-ticket-alt"></i>
+            </div>
+          </div>
+
+          <button id="btn-tukar" onclick="tukarKode()" disabled
+            class="w-full bg-gradient-to-r from-[#7484EC] to-[#8A99F7] text-white py-3.5 rounded-xl font-bold text-sm tracking-wide shadow-md shadow-indigo-300/30 hover:shadow-indigo-300/50 hover:opacity-95 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition duration-200 flex items-center justify-center space-x-2">
+            <span>Tukar Kode Sekarang</span>
+            <i class="fas fa-gift text-sm"></i>
+          </button>
         </div>
-        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-          <div id="bar2" class="bg-green-400 h-4 rounded-full" style="width: 0%"></div>
-        </div>
+
+        <p class="text-[11px] text-gray-400 text-center mt-4">
+          *Pastikan penulisan kode sesuai huruf besar/kecil.
+        </p>
       </div>
 
-      <br>
-
-      <!-- Laporan MI -->
-      <h2 class="text-2xl font-bold mb-4 mt-10 text-center">Laporan MI 'KP, LA & TA' Telah Dikerjakan</h2>
-
-      <!-- KP -->
-      <div class="mb-6">
-        <div class="flex items-center justify-between mb-1">
-          <span class="font-medium text-lg">Kerja Praktek (KP)</span>
-          <span class="font-bold text-lg" id="count3">5+</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-          <div id="bar3" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <!-- LA -->
-      <div class="mb-6">
-        <div class="flex items-center justify-between mb-1">
-          <span class="font-medium text-lg">Laporan Akhir (LA)</span>
-          <span class="font-bold text-lg" id="count4">5+</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-          <div id="bar4" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <!-- TA -->
-      <div class="mb-6">
-        <div class="flex items-center justify-between mb-1">
-          <span class="font-medium text-lg">Tugas Akhir (TA)</span>
-          <span class="font-bold text-lg" id="count5">2</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-          <div id="bar5" class="bg-blue-500 h-4 rounded-full" style="width: 0%"></div>
-        </div>
-      </div>
     </div>
   </section>
 
+  <!-- Statistik Angka -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto" data-aos="fade-up">
+    <div class="bg-white border border-indigo-100 rounded-3xl p-8 sm:p-12 starmoon-shadow">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-indigo-100">
+        
+        <!-- Stat 1 -->
+        <div class="pt-4 md:pt-0 flex flex-col items-center">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-2xl mb-3 shadow-inner">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-[#262B5E]">
+            <span id="animated-number" class="count-up" data-start="0" data-end="50" data-duration="3000">0</span><span class="text-[#6472D9]">+</span>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-[#5A6390] mt-1">Orang Telah Terbantu</p>
+        </div>
 
-  <section id="faq" class="py-16 px-6 bg-gradient-to-b from-white to-indigo-100" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">Tukar Kode</h2>
+        <!-- Stat 2 -->
+        <div class="pt-6 md:pt-0 flex flex-col items-center">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-[#6472D9] flex items-center justify-center text-2xl mb-3 shadow-inner">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-[#262B5E]">
+            <span id="animated-number-web" class="count-up" data-start="0" data-end="100" data-duration="3000">0</span><span class="text-[#6472D9]">+</span>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-[#5A6390] mt-1">Kunjungan Web Aktif</p>
+        </div>
 
-    <div class="max-w-md mx-auto bg-indigo-50 p-6 rounded-xl shadow-md space-y-4">
-      <h3 class="text-xl font-semibold text-indigo-700 text-center">Masukkan Kode Voucher</h3>
+        <!-- Stat 3 -->
+        <div class="pt-6 md:pt-0 flex flex-col items-center">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-amber-500 flex items-center justify-center text-2xl mb-3 shadow-inner">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-[#262B5E]">
+            <span id="animated-number-satisfaction" class="count-up" data-start="0" data-end="90" data-duration="3000">0</span><span class="text-[#6472D9]">%</span>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-[#5A6390] mt-1">Tingkat Kepuasan Klien</p>
+        </div>
 
-      <input id="kode-input" type="text" placeholder="Disini...." oninput="checkInputKode()"
-        class="w-full px-4 py-2 border border-indigo-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-
-      <button id="btn-tukar" onclick="tukarKode()" disabled
-        class="w-full bg-indigo-700 text-white py-2 rounded-md hover:bg-indigo-800 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200">
-        Tukar Kode
-      </button>
+      </div>
     </div>
   </section>
-
-
 
   <!-- FAQ Section -->
-  <section id="faq" class="py-16 px-6 bg-white" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">FAQ</h2>
-    <div class="max-w-3xl mx-auto">
-      <div class="space-y-6">
+  <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" data-aos="fade-up">
+    <div class="text-center mb-14">
+      <span class="inline-flex items-center space-x-1.5 bg-indigo-50 text-[#6472D9] text-xs font-bold px-3.5 py-1.5 rounded-full border border-indigo-100 tracking-wide uppercase">
+        ✦ PERTANYAAN UMUM
+      </span>
+      <h2 class="text-3xl font-extrabold text-[#262B5E] mt-3">Frequently Asked Questions</h2>
+      <p class="text-[#5A6390] text-sm mt-1">Punya pertanyaan seputar layanan kami? Temukan jawabannya di sini.</p>
+      <div class="w-12 h-1 bg-[#7484EC] mx-auto rounded-full mt-3"></div>
+    </div>
 
-        <div>
-          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
-            onclick="toggleFAQ('faq1')">Bisa tidak order jasa di luar list layanan?</button>
-          <p id="faq1" class="hidden text-gray-700 mt-2">Tentu bisa! Kami sangat fleksibel. Jika kamu punya kebutuhan
-            lain di luar layanan yang tertera, langsung hubungi kami lewat WhatsApp atau email. Kami akan bantu
-            diskusikan dan sesuaikan dengan kebutuhanmu.</p>
+    <div class="space-y-4">
+      
+      <!-- FAQ 1 -->
+      <div class="bg-white rounded-2xl border border-indigo-100 p-5 starmoon-shadow transition">
+        <button class="w-full flex justify-between items-center text-left font-bold text-[#262B5E] text-base focus:outline-none" onclick="toggleFAQ('faq1')">
+          <span>Bisa tidak order jasa di luar list layanan?</span>
+          <i id="icon-faq1" class="fas fa-chevron-down text-[#6472D9] text-xs transition-transform duration-300"></i>
+        </button>
+        <p id="faq1" class="hidden text-sm text-[#4A527A] mt-3 pt-3 border-t border-indigo-50 leading-relaxed">
+          Tentu bisa! Kami sangat fleksibel. Jika kamu punya kebutuhan lain di luar layanan yang tertera, langsung hubungi kami lewat WhatsApp atau email. Kami akan bantu diskusikan dan sesuaikan dengan kebutuhanmu.
+        </p>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="bg-white rounded-2xl border border-indigo-100 p-5 starmoon-shadow transition">
+        <button class="w-full flex justify-between items-center text-left font-bold text-[#262B5E] text-base focus:outline-none" onclick="toggleFAQ('faq2')">
+          <span>Apa itu jasa joki dokumen?</span>
+          <i id="icon-faq2" class="fas fa-chevron-down text-[#6472D9] text-xs transition-transform duration-300"></i>
+        </button>
+        <p id="faq2" class="hidden text-sm text-[#4A527A] mt-3 pt-3 border-t border-indigo-50 leading-relaxed">
+          Jasa joki dokumen adalah layanan bantuan profesional dalam pembuatan dan penyusunan berbagai dokumen, seperti CV ATS, portofolio, tugas kuliah, tugas sekolah, serta laporan akhir agar selesai rapi dan tepat waktu.
+        </p>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="bg-white rounded-2xl border border-indigo-100 p-5 starmoon-shadow transition">
+        <button class="w-full flex justify-between items-center text-left font-bold text-[#262B5E] text-base focus:outline-none" onclick="toggleFAQ('faq3')">
+          <span>Apakah ada bonus garansi revisi?</span>
+          <i id="icon-faq3" class="fas fa-chevron-down text-[#6472D9] text-xs transition-transform duration-300"></i>
+        </button>
+        <p id="faq3" class="hidden text-sm text-[#4A527A] mt-3 pt-3 border-t border-indigo-50 leading-relaxed">
+          Ya, tersedia bonus garansi revisi mulai dari 1 kali hingga 3 kali, tergantung jenis pesanan layanan. Kami memastikan hasil akhir benar-benar memuaskan dan sesuai harapanmu.
+        </p>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="bg-white rounded-2xl border border-indigo-100 p-5 starmoon-shadow transition">
+        <button class="w-full flex justify-between items-center text-left font-bold text-[#262B5E] text-base focus:outline-none" onclick="toggleFAQ('faq4')">
+          <span>Berapa lama waktu pengerjaan?</span>
+          <i id="icon-faq4" class="fas fa-chevron-down text-[#6472D9] text-xs transition-transform duration-300"></i>
+        </button>
+        <p id="faq4" class="hidden text-sm text-[#4A527A] mt-3 pt-3 border-t border-indigo-50 leading-relaxed">
+          Waktu pengerjaan disesuaikan dengan jenis dan kompleksitas layanan yang dipesan. Untuk dokumen ringan (CV, file) bisa selesai dalam hitungan jam atau 1 hari. Laporan atau website disesuaikan dengan timeline yang disepakati.
+        </p>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="bg-white rounded-2xl border border-indigo-100 p-5 starmoon-shadow transition">
+        <button class="w-full flex justify-between items-center text-left font-bold text-[#262B5E] text-base focus:outline-none" onclick="toggleFAQ('faq5')">
+          <span>Bagaimana alur cara memesan?</span>
+          <i id="icon-faq5" class="fas fa-chevron-down text-[#6472D9] text-xs transition-transform duration-300"></i>
+        </button>
+        <p id="faq5" class="hidden text-sm text-[#4A527A] mt-3 pt-3 border-t border-indigo-50 leading-relaxed">
+          Sangat mudah! Kamu cukup klik tombol WhatsApp di web ini, konsultasikan kebutuhan tugas atau dokumenmu, sepakati harga dan deadline, lalu tim kami langsung mulai mengerjakan.
+        </p>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="bg-white rounded-2xl border border-indigo-100 p-5 starmoon-shadow transition">
+        <button class="w-full flex justify-between items-center text-left font-bold text-[#262B5E] text-base focus:outline-none" onclick="toggleFAQ('faq6')">
+          <span>Metode pembayaran apa saja yang diterima?</span>
+          <i id="icon-faq6" class="fas fa-chevron-down text-[#6472D9] text-xs transition-transform duration-300"></i>
+        </button>
+        <p id="faq6" class="hidden text-sm text-[#4A527A] mt-3 pt-3 border-t border-indigo-50 leading-relaxed">
+          Pembayaran dapat dilakukan dengan dua opsi: DP 50% di awal dan pelunasan setelah pekerjaan selesai, atau langsung lunas di awal. Kami menerima transfer Bank (BCA, Mandiri, BRI, dll.) dan seluruh e-wallet (GoPay, OVO, Dana, ShopeePay).
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimoni Klien -->
+  <section id="testimoni" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#F8FAFF] via-[#EEF2FF] to-[#F8FAFF]" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center mb-12">
+        <span class="inline-flex items-center space-x-1.5 bg-indigo-50 text-[#6472D9] text-xs font-bold px-3.5 py-1.5 rounded-full border border-indigo-100 tracking-wide uppercase">
+          💬 ULASAN KLIEN
+        </span>
+        <h2 class="text-3xl font-extrabold text-[#262B5E] mt-3">Apa Kata Mereka Tentang Starmoon Labs?</h2>
+        <p class="text-xs sm:text-sm text-[#5A6390] mt-1">Geser ke samping untuk melihat ulasan lengkap dari klien-klien kami.</p>
+        <div class="w-12 h-1 bg-[#7484EC] mx-auto rounded-full mt-3"></div>
+      </div>
+
+      <div class="overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing pb-6" id="scroll-container">
+        <div class="flex space-x-6 snap-x snap-mandatory px-4 md:px-10">
+
+          <!-- 1 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"CV ATS-nya sangat rapi dan berhasil lolos ke tahap interview. Sangat recommended!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">N**** T.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">Layanan CV ATS</span>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"CV non-ATS-nya sesuai dengan branding aku, desainnya estetik dan efektif!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">M**** A.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">CV Non-ATS</span>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"Portofolio Excel-nya jelas dan rapi. Atasan langsung suka!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">I**** D.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">Excel Portfolio</span>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"Web front-end-nya responsive, enak dilihat dan digunakan!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">Z**** R.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">Website</span>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"Laporan KP saya selesai tepat waktu dan sesuai dengan instruksi dosen!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">W**** S.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">Laporan KP</span>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"Portofolio Excel-nya sangat memudahkan saya dalam pekerjaan sehari-hari. Terima kasih!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">R**** H.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">Excel Portfolio</span>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"Desain PPT yang dibuat sangat eye-catching, presentasi jadi lebih menarik!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">D**** T.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">PPT Slide</span>
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"Laporan makalah saya jadi lebih sistematis dan jelas. Sangat membantu!"</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">M**** K.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">Makalah</span>
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="min-w-[320px] max-w-[340px] bg-white p-6 rounded-2xl border border-indigo-100 starmoon-shadow snap-start flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 text-sm mb-3">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              </div>
+              <p class="text-sm text-[#4A527A] italic leading-relaxed">"Portofolio Excel Advance-nya detail banget! Sangat membantu untuk presentasi bisnis."</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-50 flex items-center justify-between">
+              <span class="font-bold text-xs text-[#262B5E]">L**** P.</span>
+              <span class="text-[11px] text-[#6472D9] font-medium bg-indigo-50 px-2 py-0.5 rounded-full">Excel Advance</span>
+            </div>
+          </div>
+
         </div>
+      </div>
 
-        <div>
-          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
-            onclick="toggleFAQ('faq2')">Apa itu jasa joki dokumen?</button>
-          <p id="faq2" class="hidden text-gray-700 mt-2">Jasa joki dokumen adalah layanan yang membantu kamu dalam
-            pembuatan berbagai dokumen, seperti CV, portofolio, tugas kuliah, laporan akhir, dan lain-lain.</p>
-        </div>
+    </div>
+  </section>
 
-        <div>
-          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
-            onclick="toggleFAQ('faq3')">
-            Apakah ada bonus revisi?
-          </button>
-          <p id="faq3" class="hidden text-gray-700 mt-2">
-            Ya, tersedia bonus revisi mulai dari 1 kali hingga 3 kali, tergantung jenis pesanan revisi. Kami memastikan
-            hasil akhir sesuai dengan kebutuhan dan keinginan Anda.
-          </p>
-        </div>
+  <!-- Hubungi Kami (Kontak Banner) -->
+  <section id="kontak" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto" data-aos="fade-up">
+    <div class="relative bg-starmoon-hero rounded-3xl p-8 sm:p-14 text-white overflow-hidden shadow-2xl text-center">
+      <!-- Ambient Sparkles -->
+      <div class="absolute top-6 left-10 text-white/50 text-xl animate-twinkle">✦</div>
+      <div class="absolute bottom-8 right-12 text-white/40 text-2xl animate-twinkle-delay">✧</div>
 
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <span class="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-bold py-1 px-4 rounded-full border border-white/30 uppercase tracking-wider mb-4">
+          Hubungi Tim Starmoon
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+          Siap Mewujudkan Kebutuhan Digitalmu?
+        </h2>
+        <p class="text-indigo-100 text-sm sm:text-base mb-8 leading-relaxed">
+          Konsultasikan ide atau tugasmu langsung bersama kami. Respon cepat, ramah, dan solutif setiap saat!
+        </p>
+        
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="https://wa.me/6285762525951" target="_blank"
+            class="inline-flex items-center space-x-2.5 bg-white text-[#6472D9] hover:text-[#4F5BBF] font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+            <i class="fab fa-whatsapp text-xl text-green-500"></i>
+            <span>Chat via WhatsApp</span>
+          </a>
 
-        <div>
-          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
-            onclick="toggleFAQ('faq4')">Berapa lama waktu pengerjaan?</button>
-          <p id="faq4" class="hidden text-gray-700 mt-2">Waktu pengerjaan tergantung layanan yang dipesan.</p>
-        </div>
-
-        <div>
-          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
-            onclick="toggleFAQ('faq5')">Bagaimana cara memesan?</button>
-          <p id="faq5" class="hidden text-gray-700 mt-2">Untuk memesan, kamu bisa menghubungi kami melalui WhatsApp yang
-            tersedia di halaman kontak.</p>
-        </div>
-
-        <div>
-          <button class="w-full text-left font-semibold text-indigo-700 border-b-2 border-gray-300 py-2"
-            onclick="toggleFAQ('faq6')">Bagaimana cara pembayaran?</button>
-          <p id="faq6" class="hidden text-gray-700 mt-2">Pembayaran dapat dilakukan dengan dua opsi: DP 50% di awal dan
-            sisanya setelah pekerjaan selesai, atau langsung lunas di awal. Kami menerima transfer bank dan pembayaran
-            melalui e-wallet.</p>
+          <a href="mailto:bububaba061@gmail.com"
+            class="inline-flex items-center space-x-2 bg-white/20 hover:bg-white/30 text-white font-semibold py-3.5 px-6 rounded-full border border-white/30 backdrop-blur-sm transition">
+            <i class="far fa-envelope"></i>
+            <span>Kirim Email</span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-white" data-aos="fade-up">
-    <div class="flex flex-col md:flex-row justify-center items-center mb-8">
-      <!-- Icon Person -->
-      <div class="flex justify-center items-center mb-4 md:mb-0">
-        <i class="fas fa-user-circle text-6xl text-green-400"></i>
-      </div>
-      <!-- Angka Animasi Orang Terbantu -->
-      <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number" class="count-up" data-start="0" data-end="50" data-duration="33000">0</span><span
-          class="text-xl">+</span>
-      </div>
-      <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
-        Orang Terbantu
-      </div>
+  <!-- Footer (Starmoon Theme) -->
+  <footer class="bg-[#181C38] text-white pt-16 pb-12 border-t border-indigo-900/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
 
-      <!-- Spacer -->
-      <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
-        |
-      </div>
-
-      <!-- Icon Kunjungan Web -->
-      <div class="flex justify-center items-center mb-4 md:mb-0">
-        <i class="fas fa-chart-line text-6xl text-blue-400"></i>
-      </div>
-      <!-- Angka Animasi Kunjungan Web -->
-      <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number-web" class="count-up" data-start="0" data-end="100"
-          data-duration="33000">0</span><span class="text-xl">+</span>
-      </div>
-      <div class="ml-4 text-lg md:text-xl font-medium text-black-700 mb-4 md:mb-0">
-        Kunjungan Web
-      </div>
-
-      <!-- Spacer -->
-      <div class="mx-4 text-4xl font-bold text-indigo-200 hidden md:block">
-        |
-      </div>
-
-      <!-- Icon Tingkat Kepuasan Pengguna -->
-      <div class="flex justify-center items-center mb-4 md:mb-0">
-        <i class="fas fa-star text-6xl text-yellow-300"></i>
-      </div>
-      <!-- Angka Animasi Tingkat Kepuasan Pengguna -->
-      <div class="text-3xl md:text-4xl font-bold text-black-700 mb-4 md:mb-0">
-        <span id="animated-number-satisfaction" class="count-up" data-start="0" data-end="90"
-          data-duration="33000">0</span><span class="text-xl">%</span>
-      </div>
-      <div class="ml-4 text-lg md:text-xl font-medium text-black-700">
-        Tingkat Kepuasan Pengguna
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- Testimoni -->
-  <section class="py-16 px-6 bg-white" data-aos="fade-up">
-
-    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-12">Testimoni Klien</h2>
-    <div class="overflow-x-auto no-scrollbar">
-      <div class="flex space-x-6 snap-x snap-mandatory px-2 md:px-10 overflow-x-hidden pb-4 scroll-smooth"
-        id="scroll-container">
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"CV ATS-nya sangat rapi dan berhasil lolos ke tahap interview. Sangat recommended!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- N**** T.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
+        <!-- Kolom 1: Brand & Moto -->
+        <div class="md:col-span-6 space-y-4">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#7484EC] to-[#9EB0FA] flex items-center justify-center text-white shadow-md">
+              <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold tracking-wide text-white">Starmoon Labs</span>
           </div>
-        </div>
 
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"CV non-ATS-nya sesuai dengan branding aku, desainnya estetik dan efektif!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- M**** A.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Portofolio Excel-nya jelas dan rapi. Atasan langsung suka!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- I**** D.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Web front-end-nya responsive, enak dilihat dan digunakan!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- Z**** R.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Laporan KP saya selesai tepat waktu dan sesuai dengan instruksi dosen!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- W**** S.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Portofolio Excel-nya sangat memudahkan saya dalam pekerjaan sehari-hari. Terima kasih!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- R**** H.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Desain PPT yang dibuat sangat eye-catching, presentasi jadi lebih menarik!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- D**** T.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Laporan makalah saya jadi lebih sistematis dan jelas. Sangat membantu!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- M**** K.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Portofolio Excel Advance-nya detail banget! Sangat membantu untuk presentasi bisnis."</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- L**** P.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"CV saya langsung diterima di perusahaan impian, berkat bantuan jasa ini!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- A**** W.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Desain UI/UX untuk aplikasi saya sangat keren dan user-friendly!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- K**** T.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Laporan riset saya dikerjakan dengan sangat baik dan sangat terperinci!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- H**** Y.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Pekerjaan PPT saya selesai dengan rapi dan professional, sangat membantu presentasi saya!"
-          </p>
-          <span class="block mt-4 font-semibold text-indigo-600">- M**** L.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Laporan tugas saya selesai tepat waktu dan sesuai dengan harapan dosen!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- F**** P.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Layanan konversi dan pemisahan file-nya cepat dan akurat, sangat membantu!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- T**** H.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Hasil pekerjaan laporan saya sangat terstruktur dan mudah dipahami!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- R**** J.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Laporan bab 4 saya selesai dengan sangat detail dan sesuai dengan instruksi!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- N**** F.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-          </div>
-        </div>
-
-        <div class="min-w-[300px] bg-indigo-50 p-6 rounded-lg shadow snap-start">
-          <p class="italic">"Hasil tugas saya dikerjakan sangat baik dan sesuai dengan deadline!"</p>
-          <span class="block mt-4 font-semibold text-indigo-600">- D**** K.</span>
-          <div class="mt-2 text-yellow-500">
-            &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 4 stars -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Kontak -->
-  <section id="kontak" class="py-16 px-6 bg-gradient-to-b from-white text-center">
-    <h2 class="text-3xl font-bold text-indigo-700 mb-4">Hubungi Kami</h2>
-    <p class="text-lg text-gray-700 mb-6">Untuk pertanyaan lebih lanjut atau memesan layanan, silakan hubungi kami!</p>
-    <a href="https://wa.me/6285762525951"
-      class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition">Hubungi via WhatsApp</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gradient-to-t from-indigo-300 to-white text-gray-800 py-12 mt-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-
-        <!-- Kolom 1: Syarat & Ketentuan -->
-        <div>
-          <h4 class="text-xl font-bold text-indigo-700 mb-4">Moto</h4>
-          <p class="text-gray-600 mb-4 text-justify">
-            "Menjadi solusi digital yang mudah dijangkau dan berkualitas, dengan komitmen untuk membantu individu dan
-            bisnis tumbuh melalui layanan yang ramah, profesional, dan inovatif."
+          <p class="text-indigo-200/80 text-xs sm:text-sm leading-relaxed max-w-lg">
+            "Menjadi solusi digital yang mudah dijangkau dan berkualitas, dengan komitmen untuk membantu individu dan bisnis tumbuh melalui layanan yang ramah, profesional, dan inovatif."
           </p>
 
-          <h4 class="text-xl font-bold text-indigo-700 mb-4">Misi</h4>
-          <ul class="list-disc list-outside pl-4 text-gray-600 text-justify space-y-2">
-            <li>Memberikan layanan digital yang berkualitas dengan harga terjangkau.</li>
-            <li>Mendampingi klien dari berbagai latar belakang untuk berkembang di era digital.</li>
-            <li>Mengedepankan pelayanan yang ramah, cepat, dan solutif.</li>
-            <li>Menciptakan hasil kerja kreatif yang sesuai kebutuhan dan tren masa kini.</li>
-          </ul>
+          <div class="pt-2">
+            <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Misi Kami:</h5>
+            <ul class="text-xs text-indigo-300/80 space-y-1.5 list-disc list-inside">
+              <li>Memberikan layanan digital berkualitas dengan harga terjangkau.</li>
+              <li>Mendampingi klien dari berbagai latar belakang untuk berkembang.</li>
+              <li>Mengedepankan pelayanan yang ramah, cepat, dan solutif.</li>
+              <li>Menciptakan hasil kerja kreatif sesuai tren masa kini.</li>
+            </ul>
+          </div>
         </div>
-
-
 
         <!-- Kolom 2: Dukungan Pelanggan -->
-        <div>
-          <h4 class="text-xl font-bold text-indigo-700 mb-4">Dukungan Pelanggan</h4>
-          <ul class="text-gray-600">
-            <li><a href="mailto:bububaba061@gmail.com" class="hover:text-indigo-600">Email Support</a></li>
-            <li><a href="tel:+6285762525951" class="hover:text-indigo-600">Telepon</a></li>
-            <li><a href="#faq" class="hover:text-indigo-600">FAQ</a></li>
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Dukungan Pelanggan</h4>
+          <ul class="text-xs sm:text-sm text-indigo-200/80 space-y-2">
+            <li>
+              <a href="mailto:bububaba061@gmail.com" class="hover:text-white transition flex items-center space-x-2">
+                <i class="far fa-envelope text-indigo-400 w-4"></i>
+                <span>Email Support</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+6285762525951" class="hover:text-white transition flex items-center space-x-2">
+                <i class="fas fa-phone-alt text-indigo-400 w-4"></i>
+                <span>Telepon: +62 857-6252-5951</span>
+              </a>
+            </li>
+            <li>
+              <a href="#faq" class="hover:text-white transition flex items-center space-x-2">
+                <i class="far fa-question-circle text-indigo-400 w-4"></i>
+                <span>FAQ &amp; Bantuan</span>
+              </a>
+            </li>
           </ul>
         </div>
 
         <!-- Kolom 3: Ikuti Kami -->
-        <div>
-          <h4 class="text-xl font-bold text-indigo-700 mb-4">Ikuti Kami</h4>
-          <p class="text-gray-600">Dapatkan update terbaru tentang layanan kami melalui sosial media kami:</p>
-          <div class="mt-4 flex space-x-4">
-            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-              <i class="fab fa-facebook-f text-xl"></i>
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Ikuti Kami</h4>
+          <p class="text-xs text-indigo-200/80">Dapatkan update terbaru tentang promo dan layanan menarik dari kami:</p>
+          <div class="flex space-x-3 pt-2">
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#7484EC] text-white flex items-center justify-center transition">
+              <i class="fab fa-facebook-f text-sm"></i>
             </a>
-            <a href="#" class="text-indigo-600 hover:text-indigo-800">
-              <i class="fab fa-twitter text-xl"></i>
+            <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#7484EC] text-white flex items-center justify-center transition">
+              <i class="fab fa-twitter text-sm"></i>
             </a>
-            <a href="https://www.instagram.com/tegar._.suryatama?igsh=MWhob29tN3U0OXo0ZQ=="
-              class="text-indigo-600 hover:text-indigo-800">
-              <i class="fab fa-instagram text-xl"></i>
+            <a href="https://www.instagram.com/tegar._.suryatama?igsh=MWhob29tN3U0OXo0ZQ==" target="_blank"
+              class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#7484EC] text-white flex items-center justify-center transition">
+              <i class="fab fa-instagram text-sm"></i>
             </a>
           </div>
         </div>
+
       </div>
 
-      <div class="text-center font-bold mt-12 border-t pt-4">
-        <p class="text-sm text-indigo-600">&copy; Starmoon Labs. All Rights Reserved.</p>
+      <!-- Copyright -->
+      <div class="border-t border-indigo-900/60 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-indigo-300/70">
+        <p>&copy; Starmoon Labs. All Rights Reserved.</p>
+        <p class="mt-2 sm:mt-0 flex items-center space-x-1">
+          <span>Created with</span>
+          <span class="text-rose-400">&hearts;</span>
+          <span>for all students &amp; businesses</span>
+        </p>
       </div>
+
     </div>
   </footer>
 
-  <!-- Pastikan untuk menambahkan FontAwesome di head HTML -->
-  <!-- Link FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-  <!-- Script -->
+  <!-- Scripts -->
   <script>
-    AOS.init();
-
-    const scrollContainer = document.getElementById('scroll-container');
-    let isMouseDown = false;
-    let startX;
-    let scrollLeft;
-
-    // Mouse events for desktop
-    scrollContainer.addEventListener('mousedown', (e) => {
-      isMouseDown = true;
-      startX = e.pageX - scrollContainer.offsetLeft;
-      scrollLeft = scrollContainer.scrollLeft;
+    // Initialize AOS
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: 'ease-out-cubic'
     });
 
-    scrollContainer.addEventListener('mouseleave', () => {
-      isMouseDown = false;
-    });
-
-    scrollContainer.addEventListener('mouseup', () => {
-      isMouseDown = false;
-    });
-
-    scrollContainer.addEventListener('mousemove', (e) => {
-      if (!isMouseDown) return;
-      e.preventDefault();
-      const x = e.pageX - scrollContainer.offsetLeft;
-      const walk = (x - startX) * 2; // Adjust speed of scroll
-      scrollContainer.scrollLeft = scrollLeft - walk;
-    });
-
-    // Touch events for mobile
-    scrollContainer.addEventListener('touchstart', (e) => {
-      isMouseDown = true;
-      startX = e.touches[0].pageX - scrollContainer.offsetLeft;
-      scrollLeft = scrollContainer.scrollLeft;
-    });
-
-    scrollContainer.addEventListener('touchend', () => {
-      isMouseDown = false;
-    });
-
-    scrollContainer.addEventListener('touchmove', (e) => {
-      if (!isMouseDown) return;
-      e.preventDefault();
-      const x = e.touches[0].pageX - scrollContainer.offsetLeft;
-      const walk = (x - startX) * 2; // Adjust speed of scroll
-      scrollContainer.scrollLeft = scrollLeft - walk;
-    });
-
-    // FAQ toggle visibility
-    function toggleFAQ(faqId) {
-      const faq = document.getElementById(faqId);
-      faq.classList.toggle('hidden');
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      // Close menu on link click
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
     }
 
-    // Count-up Animation untuk angka
-    document.addEventListener('DOMContentLoaded', function () {
-      const animatedNumbers = document.querySelectorAll('.count-up');
+    // Scroll drag logic for Testimonials
+    const scrollContainer = document.getElementById('scroll-container');
+    if (scrollContainer) {
+      let isMouseDown = false;
+      let startX;
+      let scrollLeft;
 
-      animatedNumbers.forEach((element) => {
-        const start = parseInt(element.getAttribute('data-start'));
-        const end = parseInt(element.getAttribute('data-end'));
-        const duration = parseInt(element.getAttribute('data-duration'));
-        let current = start;
-        const stepTime = Math.abs(Math.floor(duration / (end - start)));
+      scrollContainer.addEventListener('mousedown', (e) => {
+        isMouseDown = true;
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+      });
 
-        function updateNumber() {
-          current++;
-          element.textContent = current;
-          if (current < end) {
-            setTimeout(updateNumber, stepTime);
+      scrollContainer.addEventListener('mouseleave', () => {
+        isMouseDown = false;
+      });
+
+      scrollContainer.addEventListener('mouseup', () => {
+        isMouseDown = false;
+      });
+
+      scrollContainer.addEventListener('mousemove', (e) => {
+        if (!isMouseDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollContainer.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch events for mobile
+      scrollContainer.addEventListener('touchstart', (e) => {
+        isMouseDown = true;
+        startX = e.touches[0].pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+      });
+
+      scrollContainer.addEventListener('touchend', () => {
+        isMouseDown = false;
+      });
+
+      scrollContainer.addEventListener('touchmove', (e) => {
+        if (!isMouseDown) return;
+        const x = e.touches[0].pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollContainer.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFAQ(faqId) {
+      const faq = document.getElementById(faqId);
+      const icon = document.getElementById('icon-' + faqId);
+      if (faq) {
+        const isHidden = faq.classList.contains('hidden');
+        faq.classList.toggle('hidden');
+        if (icon) {
+          if (isHidden) {
+            icon.classList.add('rotate-180');
+          } else {
+            icon.classList.remove('rotate-180');
           }
         }
-        updateNumber();
-      });
-    });
+      }
+    }
 
+    // Voucher Redemption Logic
     function checkInputKode() {
       const inputVal = document.getElementById("kode-input").value.trim();
       document.getElementById("btn-tukar").disabled = inputVal.length === 0;
@@ -732,22 +1563,21 @@
       }
 
       if (fileGambar) {
-        // Efek petasan (confetti)
+        // Confetti Fireworks
         confetti({
           particleCount: 150,
           spread: 70,
           origin: { y: 0.6 }
         });
 
-        // SweetAlert sukses
+        // SweetAlert Success
         Swal.fire({
           icon: 'success',
           title: 'YEEAAY 😻',
-          text: 'Vocher Starmoon Labs siap diunduh ^^',
-          confirmButtonColor: '#6366F1'
+          text: 'Voucher Starmoon Labs siap diunduh ^^',
+          confirmButtonColor: '#7484EC'
         }).then((result) => {
           if (result.isConfirmed) {
-            // Proses unduh file
             const link = document.createElement('a');
             link.href = fileGambar;
             link.download = fileGambar;
@@ -755,14 +1585,13 @@
             link.click();
             document.body.removeChild(link);
 
-            // Kosongkan input dan disable tombol setelah sukses
             document.getElementById("kode-input").value = "";
             document.getElementById("btn-tukar").disabled = true;
           }
         });
 
       } else {
-        // SweetAlert gagal
+        // SweetAlert Fail
         Swal.fire({
           icon: 'error',
           title: 'ALAMAK 🙀',
@@ -772,13 +1601,14 @@
       }
     }
 
-    // Fungsi animasi count up
+    // Count Up Function
     function animateCount(id, start, end, duration, suffix = '') {
       let range = end - start;
       let current = start;
       let increment = end > start ? 1 : -1;
       let stepTime = Math.abs(Math.floor(duration / range));
       let obj = document.getElementById(id);
+      if (!obj) return;
       let timer = setInterval(() => {
         current += increment;
         obj.textContent = current + suffix;
@@ -788,9 +1618,10 @@
       }, stepTime);
     }
 
-    // Animasi bar progress
+    // Progress Bar Animation
     function animateBar(id, targetWidth, duration) {
       const bar = document.getElementById(id);
+      if (!bar) return;
       let width = 0;
       let increment = targetWidth / (duration / 10);
       let interval = setInterval(() => {
@@ -803,18 +1634,36 @@
       }, 10);
     }
 
-    // Saat halaman selesai dimuat
-    window.onload = () => {
+    // Trigger on Load
+    window.addEventListener('load', () => {
+      // Numbers animation in stats section
+      const animatedNumbers = document.querySelectorAll('.count-up');
+      animatedNumbers.forEach((element) => {
+        const start = parseInt(element.getAttribute('data-start'));
+        const end = parseInt(element.getAttribute('data-end'));
+        const duration = parseInt(element.getAttribute('data-duration'));
+        let current = start;
+        const stepTime = Math.abs(Math.floor(duration / (end - start)));
+
+        function updateNumber() {
+          current++;
+          element.textContent = current;
+          if (current < end) {
+            setTimeout(updateNumber, stepTime);
+          }
+        }
+        updateNumber();
+      });
+
+      // Project section counters & progress bars
       animateCount('count1', 0, 10, 1500, '+');
       animateCount('count2', 0, 2, 1500);
-      animateBar('bar1', 80, 1500);  // 90% untuk 10+
-      animateBar('bar2', 50, 1500);  // 20% untuk 2
-
-      animateBar('bar3', 80, 1500);  // 45% untuk KP 5+
-      animateBar('bar4', 80, 1500);  // 27% untuk LA 5+
-      animateBar('bar5', 50, 1500);  // 18% untuk TA 2+
-    };
-
+      animateBar('bar1', 80, 1500);
+      animateBar('bar2', 50, 1500);
+      animateBar('bar3', 80, 1500);
+      animateBar('bar4', 80, 1500);
+      animateBar('bar5', 50, 1500);
+    });
   </script>
 
 </body>
