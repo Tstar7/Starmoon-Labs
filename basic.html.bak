@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlowFashion - Tampil Anggun Setiap Hari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-pink-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-pink-200 p-6 shadow-md">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-pink-900">GlowFashion</h1>
+      <!-- Hamburger Menu -->
+      <div class="block lg:hidden">
+        <button id="burger" class="text-pink-900 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Nav for larger screens -->
+      <nav id="navbar" class="hidden lg:flex space-x-4 text-pink-800">
+        <a href="#produk" class="hover:underline">Produk</a>
+        <a href="#promo" class="hover:underline">Promo</a>
+        <a href="#galeri" class="hover:underline">Lookbook</a>
+        <a href="#testimoni" class="hover:underline">Testimoni</a>
+        <a href="#kontak" class="hover:underline">Kontak</a>
+      </nav>
+    </div>
+    <!-- Nav for smaller screens (Mobile view) -->
+    <nav id="mobile-navbar" class="lg:hidden hidden bg-pink-200 p-4 mt-4 space-y-4 text-pink-800">
+      <a href="#produk" class="hover:underline">Produk |</a>
+      <a href="#promo" class="hover:underline">Promo |</a>
+      <a href="#galeri" class="hover:underline">Lookbook |</a>
+      <a href="#testimoni" class="hover:underline">Testimoni |</a>
+      <a href="#kontak" class="hover:underline">Kontak</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-gradient-to-r from-pink-300 to-pink-100 fade-in">
+    <h2 class="text-4xl font-bold mb-4">Tampil Cantik Setiap Hari</h2>
+    <p class="mb-6 text-lg">Koleksi fashion wanita terkini & terfavorit 💕</p>
+    <a href="#produk" class="bg-pink-600 text-white py-3 px-6 rounded-full hover:bg-pink-700 transition">Belanja Sekarang</a>
+  </section>
+
+<!-- Produk Section -->
+<section id="produk" class="py-16 max-w-6xl mx-auto px-4">
+  <h3 class="text-3xl font-semibold text-center mb-10">Koleksi Terbaru</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <!-- Produk Card 1 -->
+    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <img src="" alt="Blouse Elegant" class="w-full h-64 object-cover">
+      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Blouse Elegan</h4>
+        <p class="text-pink-700">Rp150.000</p>
+      </div>
+    </div>
+    <!-- Produk Card 2 -->
+    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <img src="https://images.unsplash.com/photo-1613135727198-3be7cf983f98?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Dress Musim Semi" class="w-full h-64 object-cover">
+      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Dress Musim Semi</h4>
+        <p class="text-pink-700">Rp180.000</p>
+      </div>
+    </div>
+    <!-- Produk Card 3 -->
+    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <img src="https://images.unsplash.com/photo-1624014448888-d69ea6e8e5a0?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Kaos Casual" class="w-full h-64 object-cover">
+      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Kaos Casual</h4>
+        <p class="text-pink-700">Rp90.000</p>
+      </div>
+    </div>
+    <!-- Produk Card 4 -->
+    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <img src="https://images.unsplash.com/photo-1625744639939-993ee620810d?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Jaket Denim" class="w-full h-64 object-cover">
+      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Jaket Denim</h4>
+        <p class="text-pink-700">Rp250.000</p>
+      </div>
+    </div>
+    <!-- Produk Card 5 -->
+    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <img src="https://images.unsplash.com/photo-1635441432400-303e8b26c660?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Rok A-Line" class="w-full h-64 object-cover">
+      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Rok A-Line</h4>
+        <p class="text-pink-700">Rp110.000</p>
+      </div>
+    </div>
+    <!-- Produk Card 6 -->
+    <div class="relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <img src="https://images.unsplash.com/photo-1599191188785-56738be708f4?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA1fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400" alt="Legging Stylish" class="w-full h-64 object-cover">
+      <span class="absolute top-3 left-3 bg-red-400 text-white text-xs px-3 py-1 rounded-full">Baru</span>
+      <div class="p-4">
+        <h4 class="text-lg font-semibold">Legging Stylish</h4>
+        <p class="text-pink-700">Rp85.000</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Promo Section -->
+  <section id="promo" class="bg-pink-100 py-12 text-center">
+    <h3 class="text-2xl font-bold mb-4">Flash Sale Spesial Minggu Ini</h3>
+    <p class="mb-2 text-pink-800">Diskon hingga 40% untuk item tertentu</p>
+    <div id="countdown" class="text-3xl font-mono text-pink-700">00:00:00</div>
+  </section>
+
+<!-- Lookbook Section -->
+<section id="galeri" class="py-16 max-w-6xl mx-auto px-4">
+  <h3 class="text-3xl font-semibold text-center mb-10">Inspirasi Lookbook 💃</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <!-- Gambar 1 -->
+    <div class="relative">
+      <img src="https://source.unsplash.com/400x400/?fashion,summer" alt="Lookbook 1" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Summer Vibes</div>
+    </div>
+    <!-- Gambar 2 -->
+    <div class="relative">
+      <img src="https://source.unsplash.com/400x400/?fashion,night" alt="Lookbook 2" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Night Out Chic</div>
+    </div>
+    <!-- Gambar 3 -->
+    <div class="relative">
+      <img src="https://source.unsplash.com/400x400/?fashion,formal" alt="Lookbook 3" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Formal Elegance</div>
+    </div>
+    <!-- Gambar 4 -->
+    <div class="relative">
+      <img src="https://source.unsplash.com/400x400/?fashion,street" alt="Lookbook 4" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-2xl transition">
+      <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 w-full text-white py-2 text-center font-semibold">Street Style</div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Keunggulan Section -->
+  <section class="bg-pink-50 py-16">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl font-semibold mb-8">Kenapa Harus GlowFashion?</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div>✅ Bahan Premium</div>
+        <div>🚚 Pengiriman Cepat</div>
+        <div>🎁 Kado Ready</div>
+        <div>💳 Bayar COD</div>
+        <div>🎨 Desain Menarik</div>
+        <div>👗 Kualitas Terjamin</div>
+        <div>🌟 Harga Terjangkau</div>
+        <div>💅 Fitting Room Virtual</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimoni Section -->
+  <section id="testimoni" class="bg-pink-200 py-16 text-center">
+    <h3 class="text-2xl font-semibold mb-8">Apa Kata Pelanggan?</h3>
+    <div class="max-w-3xl mx-auto">
+      <p class="italic">"GlowFashion adalah tempat belanja favorit saya! Koleksinya keren dan pengirimannya super cepat!"</p>
+      <p class="mt-4 text-pink-700 font-semibold">- Dinda, Jakarta</p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer id="kontak" class="bg-pink-300 py-6 text-center">
+    <p>Hubungi kami via WhatsApp:</p>
+    <a href="https://wa.me/6281234567890" class="text-white bg-green-500 px-4 py-2 rounded-full mt-2 inline-block hover:bg-green-600">💬 Chat Kami</a>
+    <p class="mt-4 text-pink-900">© 2025 GlowFashion. All rights reserved.</p>
+  </footer>
+
+  <!-- Floating Chat Button -->
+  <a href="https://wa.me/6281234567890" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600">💬</a>
+
+  <!-- JavaScript for Burger Menu Toggle -->
+  <script>
+    const burger = document.getElementById("burger");
+    const mobileNavbar = document.getElementById("mobile-navbar");
+
+    burger.addEventListener("click", () => {
+      mobileNavbar.classList.toggle("hidden");
+    });
+
+    // Countdown script
+    const countdown = document.getElementById("countdown");
+    let time = 3600; // 1 hour countdown
+    setInterval(() => {
+      if (time > 0) {
+        time--;
+        let h = String(Math.floor(time / 3600)).padStart(2, '0');
+        let m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+        let s = String(time % 60).padStart(2, '0');
+        countdown.innerText = `${h}:${m}:${s}`;
+      }
+    }, 1000);
+  </script>
+</body>
+
+</html>
